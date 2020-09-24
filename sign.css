@@ -1,0 +1,18 @@
+* {
+    border: none;
+    /*margin: 0;
+    padding: 0;*/
+    box-sizing: border-box;
+}
+body {
+    border-radius: 50px;
+    background: linear-gradient(315deg, #4a95e6, #58b1ff);
+    box-shadow:  -20px -20px 60px #468cd9, 
+     20px 20px 60px #5ebeff;
+}
+.in {
+    border-radius: 18px;
+    background: linear-gradient(315deg, #d4d4d4, #fbfbfb);
+    box-shadow:  -20px -20px 60px #cfcfcf, 
+     20px 20px 60px #ffffff;
+}
