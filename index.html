@@ -36,7 +36,7 @@ function getPosition(position) {
         let  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
         let  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
       
-        let  map  =  L.map('map').setView([x,  y],  10);  
+        let  map  =  L.map('map').setView([x,  y],  13);  
         map.addLayer(osmLayer).addLayer(waqiLayer);  
 
      }   
