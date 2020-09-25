@@ -20,26 +20,27 @@ function getLocation() {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
-
+getLocation();
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
+  let x = position.coords.latitude;
+  let y = position.coords.longitude;
+  console.log(x + " " + y);
 }
 
-        function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(getPosition());
-        } else {
-            console.log("Геолокация не се поддържа от браузъра.");
-        }
-        }
-        getLocation();
+        // function getLocation() {
+        // if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(getPosition());
+        // } else {
+        //     console.log("Геолокация не се поддържа от браузъра.");
+        // }
+        // }
+        // getLocation();
 
-        function getPosition(position) {
-            let x = position.coords.latitude;
-            let y = position.coords.longitude;
-            console.log(x + " " + y);
-        }
+        // function getPosition(position) {
+        //     let x = position.coords.latitude;
+        //     let y = position.coords.longitude;
+        //     console.log(x + " " + y);
+        // }
 
     
         // let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
