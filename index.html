@@ -15,16 +15,49 @@
 
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(getPosition);
+                navigator.geolocation.getCurrentPosition(getPosition, onError);
             } else { 
-                let x = 43.575;
-                let y = 27.77;
+                defaltPosition();
             }
         }
         getLocation();
+
+        function onError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                defaltPosition();
+                break;
+                case error.POSITION_UNAVAILABLE:
+                defaltPosition();
+                break;
+                case error.TIMEOUT:
+                defaltPosition();
+                break;
+                case error.UNKNOWN_ERROR:
+                defaltPosition();
+                break;
+            }
+        }
+
+
         function getPosition(position) {
             let x = position.coords.latitude;
             let y = position.coords.longitude;
+            let z = 13;
+            runPosition(x, y, z);
+        }
+
+        function defaltPosition(){
+            let x = 42.703;
+            let y = 23.30;
+            let z = 6;
+            runPosition(x, y, z);
+        }
+
+
+    
+
+        function runPosition(x, y, z) {
 
             let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
             let  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
@@ -34,31 +67,12 @@
             let  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
             let  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
         
-            let  map  =  L.map('map').setView([x,  y],  13);  
+            let  map  =  L.map('map').setView([x,  y],  z);  // z=zoom
             map.addLayer(osmLayer).addLayer(waqiLayer);  
 
         }   
 
-        function showError(error) {
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                let x = 43.575;
-                let y = 27.77;
-                break;
-                case error.POSITION_UNAVAILABLE:
-                let x = 43.575;
-                let y = 27.77;
-                break;
-                case error.TIMEOUT:
-                let x = 43.575;
-                let y = 27.77;
-                break;
-                case error.UNKNOWN_ERROR:
-                let x = 43.575;
-                let y = 27.77;
-                break;
-            }
-        }
+    
 
     </script>
 
