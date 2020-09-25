@@ -12,23 +12,24 @@
     <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>  
       
     <script>
-    
-        // // let x = document.getElementById("gps");
-        function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition();
-        } else {
-            // x.innerHTML = "Геолокация не се поддържа от браузъра.";
-        }
-        }
+    // console.log("f");
+    //     // // let x = document.getElementById("gps");
+    //     function getLocation() {
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition();
+    //     } else {
+    //         // x.innerHTML = "Геолокация не се поддържа от браузъра.";
+    //     }
+    //     }
+    //     getLocation();
 
         // function showPosition(position) {
         // x.innerHTML = "Latitude: " +  +
         // "<br>Longitude: " + 
         // }
 
-        let x = 44.444;
-        let y = 44.44;
+        let x = position.coords.latitude;
+        let y = position.coords.longitude;
     
         let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
         let  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
