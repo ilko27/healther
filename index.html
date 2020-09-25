@@ -25,22 +25,7 @@ function getPosition(position) {
   let x = position.coords.latitude;
   let y = position.coords.longitude;
   console.log(x + " " + y);
-}
 
-        // function getLocation() {
-        // if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition(getPosition());
-        // } else {
-        //     console.log("Геолокация не се поддържа от браузъра.");
-        // }
-        // }
-        // getLocation();
-
-        // function getPosition(position) {
-        //     let x = position.coords.latitude;
-        //     let y = position.coords.longitude;
-        //     console.log(x + " " + y);
-        // }
 
     
         let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
@@ -53,6 +38,8 @@ function getPosition(position) {
       
         let  map  =  L.map('map').setView([x,  y],  10);  
         map.addLayer(osmLayer).addLayer(waqiLayer);  
+
+     }   
     </script>
 
 </body>
