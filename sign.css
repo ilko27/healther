@@ -3,8 +3,7 @@
     box-sizing: border-box;
 }
 body {
-    border-radius: 50px;
-    background: linear-gradient(315deg, #4a95e6, #58b1ff);
+    background-color: #d6d6d6;
 }
 .in {
     border-radius: 18px;
@@ -14,7 +13,11 @@ body {
 }
 .textplace {
     border-radius: 16px;
-    background: #55b9f3;
-    box-shadow: inset 15px 15px 29px #489dcf, 
-    inset -15px -15px 29px #62d5ff;
+    background: #d6d6d6;
+    box-shadow: inset 15px 15px 29px #7e7e7e, 
+                inset -15px -15px 29px #ffffff;
+    outline: none;
+    margin: 20px;
+    width: auto;
+    height: 30px;
 }
