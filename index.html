@@ -12,21 +12,20 @@
     <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>  
       
     <script>
-    // console.log("f");
-    //     // // let x = document.getElementById("gps");
-    //     function getLocation() {
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition();
-    //     } else {
-    //         // x.innerHTML = "Геолокация не се поддържа от браузъра.";
-    //     }
-    //     }
-    //     getLocation();
+    console.log("f");
+        function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(getPosition());
+        } else {
+            console.log("Геолокация не се поддържа от браузъра.");
+        }
+        }
+        getLocation();
 
-        // function showPosition(position) {
-        // x.innerHTML = "Latitude: " +  +
-        // "<br>Longitude: " + 
-        // }
+        function getPosition(position) {
+        x.innerHTML = "Latitude: " +  +
+        "<br>Longitude: " + 
+        }
 
         let x = position.coords.latitude;
         let y = position.coords.longitude;
