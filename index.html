@@ -38,6 +38,28 @@
             map.addLayer(osmLayer).addLayer(waqiLayer);  
 
         }   
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                let x = 43.575;
+                let y = 27.77;
+                break;
+                case error.POSITION_UNAVAILABLE:
+                let x = 43.575;
+                let y = 27.77;
+                break;
+                case error.TIMEOUT:
+                let x = 43.575;
+                let y = 27.77;
+                break;
+                case error.UNKNOWN_ERROR:
+                let x = 43.575;
+                let y = 27.77;
+                break;
+            }
+        }
+
     </script>
 
 </body>
