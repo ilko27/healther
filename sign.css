@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #d6d6d6;
+    background-color: #55b9f3;
 }
 .in {
     border-radius: 18px;
@@ -12,22 +12,26 @@ body {
      20px 20px 60px #ffffff;
 }
 .textplace {
-    border-radius: 16px;
-    background: #d6d6d6;
-    box-shadow: inset 15px 15px 29px #7e7e7e, 
-                inset -15px -15px 29px #ffffff;
+    border-radius: 50px;
+    background: #55b9f3;
+    box-shadow: inset 19px 19px 38px #336f92, 
+                inset -19px -19px 38px #77ffff;
     outline: none;
     margin: 20px;
     width: auto;
     height: 30px;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #c7c7c7;
+    opacity: 1; /* Firefox */
+}
 .buttonDes {
-    border-radius: 38px;
-    background: linear-gradient(145deg, #e5e5e5, #c1c1c1);
-    box-shadow:  10px 10px 20px #7e7e7e, 
-                 -10px -10px 20px #ffffff;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #5bc6ff, #4da7db);
+    box-shadow:  20px 20px 60px #336f92, 
+                -20px -20px 60px #77ffff;
     width: 200px;
     height: 100px;
     outline: none;
-    margin: 20px;
+    margin: 50px;
 }
