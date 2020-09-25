@@ -7,11 +7,25 @@
 </head>
 <body>
     
-    <div  id='map'  style='height:380px;'  />  
+    <!-- <div  id='map'  style='height:380px;'  />  
     <link  rel="stylesheet"  href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"  />  
-    <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>  
+    <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>   -->
       
     <script>
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+
         function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(getPosition());
