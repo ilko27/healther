@@ -11,17 +11,33 @@
     <link  rel="stylesheet"  href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"  />  
     <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>  
       
-    <script>  
-          var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
-          var  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
-          var  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
+    <script>
+        function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(getPosition());
+        } else {
+            console.log("Геолокация не се поддържа от браузъра.");
+        }
+        }
+        getLocation();
+
+        function getPosition(position) {
+            let x = position.coords.latitude;
+            let y = position.coords.longitude;
+            console.log(x + " " + y);
+        }
+
+    
+        let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
+        let  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
+        let  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
       
-          var  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=_TOKEN_ID_";  
-          var  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
-          var  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
+        let  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=_TOKEN_ID_";  
+        let  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
+        let  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
       
-          var  map  =  L.map('map').setView([43.575,  27.77],  13);  
-          map.addLayer(osmLayer).addLayer(waqiLayer);  
+        let  map  =  L.map('map').setView([x,  y],  10);  
+        map.addLayer(osmLayer).addLayer(waqiLayer);  
     </script>
 
 </body>
