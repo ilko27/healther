@@ -13,8 +13,8 @@ body {
      20px 20px 60px #ffffff;
 }
 .textplace {
-    border-radius: 18px;
-    background: linear-gradient(315deg, #d4d4d4, #fbfbfb);
-    box-shadow:  -20px -20px 60px #cfcfcf, 
-     20px 20px 60px #ffffff;
+    border-radius: 16px;
+    background: #55b9f3;
+    box-shadow: inset 15px 15px 29px #489dcf, 
+    inset -15px -15px 29px #62d5ff;
 }
