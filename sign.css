@@ -3,29 +3,31 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #2b6973;
+    background-color: #d6d6d6;
+}
+.in {
+    border-radius: 18px;
+    background: linear-gradient(315deg, #d4d4d4, #fbfbfb);
+    box-shadow:  -20px -20px 60px #cfcfcf, 
+     20px 20px 60px #ffffff;
 }
 .textplace {
     border-radius: 50px;
-    background: #2b6973;
-    box-shadow: inset 25px 25px 50px #1f4c53, 
-                inset -25px -25px 50px #378693;
+    background: #d6d6d6;
+    box-shadow: inset 11px 11px 29px #9a9a9a, 
+                inset -11px -11px 29px #ffffff;
     outline: none;
     margin: 20px;
     width: auto;
     height: 30px;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #c7c7c7;
-    opacity: 1; /* Firefox */
-}
 .buttonDes {
-    border-radius: 50px;
-    background: linear-gradient(145deg, #2e707b, #275f68);
-    box-shadow:  25px 25px 50px #1f4c53, 
-                 -25px -25px 50px #378693;
+    border-radius: 38px;
+    background: linear-gradient(145deg, #e5e5e5, #c1c1c1);
+    box-shadow:  10px 10px 20px #7e7e7e, 
+                 -10px -10px 20px #ffffff;
     width: 200px;
     height: 100px;
     outline: none;
-    margin: 50px;
-}
+    margin: 20px;
+} 
