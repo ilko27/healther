@@ -15,13 +15,13 @@
 
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(getPosition);
   } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
+    console.log("fuck");
   }
 }
 getLocation();
-function showPosition(position) {
+function getPosition(position) {
   let x = position.coords.latitude;
   let y = position.coords.longitude;
   console.log(x + " " + y);
@@ -43,16 +43,16 @@ function showPosition(position) {
         // }
 
     
-        // let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
-        // let  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
-        // let  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
+        let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
+        let  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
+        let  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
       
-        // let  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=_TOKEN_ID_";  
-        // let  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
-        // let  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
+        let  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=_TOKEN_ID_";  
+        let  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
+        let  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
       
-        // let  map  =  L.map('map').setView([x,  y],  10);  
-        // map.addLayer(osmLayer).addLayer(waqiLayer);  
+        let  map  =  L.map('map').setView([x,  y],  10);  
+        map.addLayer(osmLayer).addLayer(waqiLayer);  
     </script>
 
 </body>
