@@ -24,21 +24,11 @@
 
         function onError(error) {
             switch(error.code) {
-                case error.PERMISSION_DENIED:
-                defaltPosition();
-                break;
-                case error.POSITION_UNAVAILABLE:
-                defaltPosition();
-                break;
-                case error.TIMEOUT:
-                defaltPosition();
-                break;
-                case error.UNKNOWN_ERROR:
+                case error.PERMISSION_DENIED || error.POSITION_UNAVAILABLE || error.TIMEOUT || error.UNKNOWN_ERROR:
                 defaltPosition();
                 break;
             }
         }
-
 
         function getPosition(position) {
             let x = position.coords.latitude;
@@ -53,9 +43,6 @@
             let z = 6;
             runPosition(x, y, z);
         }
-
-
-    
 
         function runPosition(x, y, z) {
 
