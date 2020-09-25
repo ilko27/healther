@@ -3,19 +3,13 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #55b9f3;
-}
-.in {
-    border-radius: 18px;
-    background: linear-gradient(315deg, #d4d4d4, #fbfbfb);
-    box-shadow:  -20px -20px 60px #cfcfcf, 
-     20px 20px 60px #ffffff;
+    background-color: #2b6973;
 }
 .textplace {
     border-radius: 50px;
-    background: #55b9f3;
-    box-shadow: inset 19px 19px 38px #336f92, 
-                inset -19px -19px 38px #77ffff;
+    background: #2b6973;
+    box-shadow: inset 25px 25px 50px #1f4c53, 
+                inset -25px -25px 50px #378693;
     outline: none;
     margin: 20px;
     width: auto;
@@ -27,9 +21,9 @@ body {
 }
 .buttonDes {
     border-radius: 50px;
-    background: linear-gradient(145deg, #5bc6ff, #4da7db);
-    box-shadow:  20px 20px 60px #336f92, 
-                -20px -20px 60px #77ffff;
+    background: linear-gradient(145deg, #2e707b, #275f68);
+    box-shadow:  25px 25px 50px #1f4c53, 
+                 -25px -25px 50px #378693;
     width: 200px;
     height: 100px;
     outline: none;
