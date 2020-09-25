@@ -12,7 +12,6 @@
     <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>  
       
     <script>
-    console.log("f");
         function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(getPosition());
@@ -23,12 +22,11 @@
         getLocation();
 
         function getPosition(position) {
-        x.innerHTML = "Latitude: " +  +
-        "<br>Longitude: " + 
+            let x = position.coords.latitude;
+            let y = position.coords.longitude;
+            console.log(x + " " + y);
         }
 
-        let x = position.coords.latitude;
-        let y = position.coords.longitude;
     
         let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
         let  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
