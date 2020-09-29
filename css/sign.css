@@ -34,9 +34,22 @@ body {
 }
 #firsthalf {
     width: 50%;
-    float: left;
+    position: absolute;
+    left: 0px;
+    height: 100%;
 }
 #secondhalf {
+    background: url("C:\\Users\\PC\\Pictures\\Camera Roll\\cumulus-cloud.jpg");
+    background-size: 50% 100%;
+    background-position: right top;
     width: 50%;
-    float: right;
+    position: absolute;
+    left: 50%;
+    height: 100%;
 }
+/*.skyphoto {
+    display: inline-block;
+    /*max-width: 100%;
+    width: fit-content;
+    height: fit-content;
+}*/
