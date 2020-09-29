@@ -15,16 +15,36 @@
 
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(getPosition);
+                navigator.geolocation.getCurrentPosition(getPosition, onError);
             } else { 
-                let x = 43.575;
-                let y = 27.77;
+                defaltPosition();
             }
         }
         getLocation();
+
+        function onError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED || error.POSITION_UNAVAILABLE || error.TIMEOUT || error.UNKNOWN_ERROR:
+                defaltPosition();
+                break;
+            }
+        }
+
         function getPosition(position) {
             let x = position.coords.latitude;
             let y = position.coords.longitude;
+            let z = 13;
+            runPosition(x, y, z);
+        }
+
+        function defaltPosition(){
+            let x = 42.703;
+            let y = 23.30;
+            let z = 6;
+            runPosition(x, y, z);
+        }
+
+        function runPosition(x, y, z) {
 
             let  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
             let  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
@@ -34,10 +54,13 @@
             let  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';  
             let  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
         
-            let  map  =  L.map('map').setView([x,  y],  13);  
+            let  map  =  L.map('map').setView([x,  y],  z);  // z=zoom
             map.addLayer(osmLayer).addLayer(waqiLayer);  
 
         }   
+
+    
+
     </script>
 
 </body>
