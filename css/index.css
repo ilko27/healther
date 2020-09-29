@@ -20,9 +20,8 @@ body {
 
 #map {
     border-radius: 50px;
-    background: #55b9f3;
-    box-shadow:  20px 20px 60px #489dcf, 
-             -20px -20px 60px #62d5ff;
+    box-shadow:  -20px 20px 60px #b6b6b6, 
+            20px -20px 60px #f6f6f6;
     padding-top: 100px;
     float: right;
     height:380px;
