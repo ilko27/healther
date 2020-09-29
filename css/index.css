@@ -2,6 +2,29 @@
     border: none;
     box-sizing: border-box;
 }
+
 body {
     background-color: #d6d6d6;
+}
+
+.header {
+    overflow: hidden;
+    background-color: #ec0000;
+    /* padding: 100px; */
+    margin-bottom: 100px;
+}
+
+.main {
+    padding-top: 1000px;
+}
+
+#map {
+    border-radius: 50px;
+    background: #55b9f3;
+    box-shadow:  20px 20px 60px #489dcf, 
+             -20px -20px 60px #62d5ff;
+    padding-top: 100px;
+    float: right;
+    height:380px;
+    width: 50%;
 }
