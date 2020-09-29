@@ -31,3 +31,11 @@ body {
     box-shadow: inset 11px 11px 29px #9a9a9a, 
                 inset -11px -11px 29px #ffffff;
 }
+#firsthalf {
+    width: 50%;
+    float: left;
+}
+#secondhalf {
+    width: 50%;
+    float: right;
+}
