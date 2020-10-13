@@ -33,16 +33,16 @@ body {
                 inset -11px -11px 29px #ffffff;
 }
 #firsthalf {
-    width: 50%;
+    width: 25%;
     position: absolute;
     left: 0px;
     height: 100%;
 }
 #secondhalf {
     background-position: right top;
-    width: 50%;
+    width: 75%;
     position: absolute;
-    left: 50%;
+    left: 25%;
     height: 100%;
 }
 .skyphoto {
