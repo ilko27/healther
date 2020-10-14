@@ -6,6 +6,10 @@
 body {
     background-color: #d6d6d6;
 }
+.textform {
+    text-align: center;
+    margin-top: 35%;
+}
 .textplace {
     border-radius: 50px;
     background: #d6d6d6;
@@ -13,7 +17,8 @@ body {
                 inset -11px -11px 29px #ffffff;
     outline: none;
     margin: 20px;
-    width: auto;
+    /* width: auto; */
+    width: 45%;
     height: 30px;
 }
 .buttonDes {
@@ -21,8 +26,8 @@ body {
     background: linear-gradient(145deg, #e5e5e5, #c1c1c1);
     box-shadow:  10px 10px 20px #7e7e7e, 
                  -10px -10px 20px #ffffff;
-    width: 200px;
-    height: 100px;
+    width: 150px;
+    height: 50px;
     outline: none;
     margin: 20px;
 }
