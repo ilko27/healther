@@ -30,11 +30,16 @@ body {
     height:380px;
     width: 50%;
 }
-#temperature {
-    border-radius: 50px;
+#charts {
     float: left;
-    height: 380px;
+    height: 700px;
+    width: 40%;
+    position: absolute;
+}
+#tempChart {
     width: 50%;
+    /*height: 100%;*/
+    position: relative;
 }
 
 .navbar-custom {
