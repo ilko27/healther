@@ -27,3 +27,9 @@ body {
     height:380px;
     width: 50%;
 }
+#temperature {
+    border-radius: 50px;
+    float: left;
+    height: 380px;
+    width: 50%;
+}
