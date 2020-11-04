@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed: " . $conn->connect_error);
         } 
         
-        $sql = "INSERT INTO `sensorData`(`sensor`, `temeratureC`, `pressure`, `humidity`) VALUES ('$sensor', '$temp', '$pressure', '$humidity')";
+        $sql = "INSERT INTO `sensorData`(`sensor`, `temperatureC`, `pressure`, `humidity`) VALUES ('$sensor', '$temp', '$pressure', '$humidity')";
         
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
