@@ -10,33 +10,10 @@
     <title>Healther</title>
 </head>
 <body>
-
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="#">Healther</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="html/signup.html">Sign Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="html/signin.html">Log In</a>
-              </li>
-            </ul>
-          </div>
+    <header id="header">
+        <div class="header-right">
+            <img src="images\logo.png">
         </div>
-      </nav> -->
-
-    <header>
-        <!-- <div class="header-right">
-            <a href="html/signin.html">Sign In</a>
-            <a href="html/signup.html">Sign Up</a>
-        </div> -->
-
-
     </header>
     <div id='map'></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
@@ -66,24 +43,18 @@
                 if (this.readyState == 4 && this.status == 200) {
                     rs = JSON.parse(this.responseText);
                     for(let i = 0; i < rs.length; i++){
-                        console.log(rs[i].temperatureC);
-                        console.log(typeof temp);
                         timestamps.push(rs[i].readingTime);
                         temp.push(rs[i].temperatureC);
                         humidity.push(rs[i].humidity);
                     }
-                    toChart(temp);
-                    console.log(temp);
-                    //temp = readingsData;
+                    toChart();
                 }
             };
             xmlhttp.open("GET", "php/getData.php", true);
             xmlhttp.send();
         }
         getData();
-    function toChart(temp){
-        //console.log(temp);
-        //let readingsData = getData();
+    function toChart(){
         
         Chart.platform.disableCSSInjection = true;
         var ctx = document.getElementById('tempChart').getContext('2d');
