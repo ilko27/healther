@@ -10,9 +10,7 @@
 </head>
 <body>
     <header id="header">
-        <div class="header-right">
-            <img src="images\logo.png">
-        </div>
+        <p id="avValues">Average Temparature <span id="avTemp"></span> </p>
     </header>
 
     <div id='map'></div>
@@ -37,7 +35,7 @@
 
         function getData(){
             var toSend = JSON.stringify({
-                sensorName: "IlkoSensor",
+                sensorName: "Kuhnq",
             });
             var xmlhttp = new XMLHttpRequest();
             let readingsData = [];
@@ -50,6 +48,7 @@
                         humidity.push(rs[i].humidity);
                     }
                     toChart();
+                    toAverage();
                 }
             };
             xmlhttp.open("POST", "php/getData.php", false);
@@ -57,14 +56,23 @@
             xmlhttp.send(toSend);
         }
         getData();
-    function toChart(){
-        
-        Chart.platform.disableCSSInjection = true;
-        var ctx = document.getElementById('tempChart').getContext('2d');
-        var ctx2 = document.getElementById('humidityChart').getContext('2d');
-        makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
-        makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
-    }
+        function toChart(){
+            
+            Chart.platform.disableCSSInjection = true;
+            var ctx = document.getElementById('tempChart').getContext('2d');
+            var ctx2 = document.getElementById('humidityChart').getContext('2d');
+            makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
+            makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
+        }
+        function toAverage(){
+            var sum = 0;
+            for( var i = 0; i < temp.length; i++ ){
+                sum += parseInt( temp[i], 10 ); //don't forget to add the base
+            }
+
+            var avg = sum/temp.length;
+            document.getElementById("avTemp").innerHTML = avg.toFixed(2);
+        }
         function makeChart(ctxi, timestampsarr, dataarr, label, color){
             var graph = new Chart(ctxi, {
             type: 'line',
