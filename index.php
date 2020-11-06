@@ -63,7 +63,7 @@
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     rs = JSON.parse(this.responseText);
-                    for(let i = 0; i <= rs.length; i++){
+                    for(let i = 0; i < rs.length; i++){
                         console.log(rs[i].temperatureC);
                         console.log(typeof temp);
                         temp.push(rs[i].temperatureC);

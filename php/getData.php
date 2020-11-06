@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "ilko";
-$password = "ilko";
+$username = "samuil";
+$password = "samuil";
 $db = "healther";
 
 $tempArray = [];
