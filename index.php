@@ -6,7 +6,6 @@
     <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
-    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
     <title>Healther</title>
 </head>
 <body>
@@ -15,6 +14,7 @@
             <img src="images\logo.png">
         </div>
     </header>
+
     <div id='map'></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -31,7 +31,6 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
-        let datata = [];
         let temp = new Array();
         let humidity = new Array();
         let timestamps = new Array();
