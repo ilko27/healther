@@ -37,6 +37,9 @@
         let timestamps = new Array();
 
         function getData(){
+            var toSend = JSON.stringify({
+                sensorName: "IlkoSensor",
+            });
             var xmlhttp = new XMLHttpRequest();
             let readingsData = [];
             xmlhttp.onreadystatechange = function() {
@@ -50,8 +53,9 @@
                     toChart();
                 }
             };
-            xmlhttp.open("GET", "php/getData.php", true);
-            xmlhttp.send();
+            xmlhttp.open("POST", "php/getData.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(toSend);
         }
         getData();
     function toChart(){
