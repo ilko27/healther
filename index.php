@@ -10,22 +10,10 @@
     <title>Healther</title>
 </head>
 <body>
-<<<<<<< HEAD
     <header id="header">
         <div class="header-right">
             <img src="images\logo.png">
         </div>
-=======
-
-
-    <header>
-        <!-- <div class="header-right">
-            <a href="html/signin.html">Sign In</a>
-            <a href="html/signup.html">Sign Up</a>
-        </div> -->
-
-
->>>>>>> 27d9220597b6a5bd77db46579d66992ffd89fc94
     </header>
     <div id='map'></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
