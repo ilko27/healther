@@ -62,6 +62,7 @@
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     temp = JSON.parse(this.responseText);
+                    toChart(temp);
                     console.log(temp);
                     //temp = readingsData;
                 }
@@ -70,6 +71,7 @@
             xmlhttp.send();
         }
         getData();
+    function toChart(temp){
         //console.log(temp);
         //let readingsData = getData();
         let humidity = [];
@@ -113,6 +115,7 @@
                 }]
             }
         });
+    }
     </script>
 </body>
 </html>
