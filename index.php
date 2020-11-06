@@ -10,6 +10,12 @@
     <title>Healther</title>
 </head>
 <body>
+<<<<<<< HEAD
+    <header id="header">
+        <div class="header-right">
+            <img src="images\logo.png">
+        </div>
+=======
 
 
     <header>
@@ -19,6 +25,7 @@
         </div> -->
 
 
+>>>>>>> 27d9220597b6a5bd77db46579d66992ffd89fc94
     </header>
     <div id='map'></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
@@ -48,24 +55,18 @@
                 if (this.readyState == 4 && this.status == 200) {
                     rs = JSON.parse(this.responseText);
                     for(let i = 0; i < rs.length; i++){
-                        console.log(rs[i].temperatureC);
-                        console.log(typeof temp);
                         timestamps.push(rs[i].readingTime);
                         temp.push(rs[i].temperatureC);
                         humidity.push(rs[i].humidity);
                     }
-                    toChart(temp);
-                    console.log(temp);
-                    //temp = readingsData;
+                    toChart();
                 }
             };
             xmlhttp.open("GET", "php/getData.php", true);
             xmlhttp.send();
         }
         getData();
-    function toChart(temp){
-        //console.log(temp);
-        //let readingsData = getData();
+    function toChart(){
         
         Chart.platform.disableCSSInjection = true;
         var ctx = document.getElementById('tempChart').getContext('2d');
