@@ -38,7 +38,7 @@ body {
     box-shadow:  13px 13px 26px #7c7c7c, 
                  -13px -13px 26px #f0f0f0;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     #chartsDiv, #map {
         float: none;
         width: 100%;
