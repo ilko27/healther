@@ -46,7 +46,7 @@ session_start();
                 if (this.readyState == 4 && this.status == 200) {
                     rs = JSON.parse(this.responseText);
                     for(let i = 0; i < rs.length; i++){
-                        timestamps.push(rs[i].readingTime);
+                        timestamps.push(rs[i].readingTime.substring(10));
                         temp.push(rs[i].temperatureC);
                         humidity.push(rs[i].humidity);
                     }

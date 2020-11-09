@@ -39,11 +39,21 @@ body {
                  -13px -13px 26px #f0f0f0;
 }
 @media screen and (max-width: 800px) {
-    body{
-        background-color: red;
-    }
     #chartsDiv, #map {
-        margin-top: auto;
+        float: none;
         width: 100%;
+    }
+    .charts {
+        height: max-content;
+    }
+    #map {
+        margin-top: 20px;
+        height: 200px;
+    }
+    * {
+        border: none;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
     }
 }
