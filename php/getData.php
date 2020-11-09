@@ -1,6 +1,8 @@
 <?php
 require 'dbconn.php';
 
+// if (isset($inInfo)) {
+
 $inInfo = json_decode(file_get_contents("php://input"));
 $sensorName = $inInfo->sensorName;
 
