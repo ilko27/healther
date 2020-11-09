@@ -10,7 +10,7 @@
 </head>
 <body>
     <header id="header">
-        <p id="avValues">Average Temparature <span id="avTemp"></span> </p>
+        <p id="avValues">Average Temparature <span id="avTemp">0.0</span> Average Humidity <span id="avHumidity">0.0</span></p>
     </header>
 
     <div id='map'></div>
@@ -72,6 +72,13 @@
 
             var avg = sum/temp.length;
             document.getElementById("avTemp").innerHTML = avg.toFixed(2);
+            var sumH = 0;
+            for( var i = 0; i < humidity.length; i++ ){
+                sum += parseInt( humidity[i], 10 ); //don't forget to add the base
+            }
+
+            var avgH = sumH/humidity.length;
+            document.getElementById("avHumidity").innerHTML = avgH.toFixed(2);
         }
         function makeChart(ctxi, timestampsarr, dataarr, label, color){
             var graph = new Chart(ctxi, {
