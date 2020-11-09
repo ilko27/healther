@@ -20,7 +20,7 @@ function onError(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
             defaltPosition();
-            error_map = "Достъпът го местополижение е отказан."
+            error_map = "Достъпът до местополижение е отказан."
             break;
         case error.POSITION_UNAVAILABLE:
             defaltPosition();
