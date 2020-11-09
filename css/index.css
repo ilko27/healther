@@ -17,8 +17,9 @@ body {
 
 #map {
     border-radius: 50px;
-    box-shadow:  -20px 20px 60px, 
-            20px -20px 60px #f6f6f6;
+    background: #d6d6d6;
+    box-shadow:  23px 23px 47px #a1a1a1, 
+                 -23px -23px 47px #ffffff;
     /* padding-top: 100px; */
     /* padding: 0; */
     float: right;
@@ -32,11 +33,10 @@ body {
     position: absolute;
 }
 .charts{
-    margin-top: 20px;
     border-radius: 50px;
-    background: #b6b6b6;
-    box-shadow:  13px 13px 26px #7c7c7c, 
-                 -13px -13px 26px #f0f0f0;
+    background: #d6d6d6;
+    box-shadow:  23px 23px 47px #a1a1a1, 
+                 -23px -23px 47px #ffffff;
 }
 @media screen and (max-width: 900px) {
     #chartsDiv, #map {
@@ -44,6 +44,7 @@ body {
         width: 100%;
     }
     .charts {
+        margin-top: 20px;
         height: max-content;
     }
     #map {

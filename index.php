@@ -21,7 +21,7 @@ session_start();
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <div id='chartsDiv'>
         <div class="charts"><canvas id="tempChart"></canvas></div>
-        <div class="charts"><canvas id="humidityChart"></canvas></div>
+        <div class="charts" style="margin-top: 20px"><canvas id="humidityChart"></canvas></div>
     </div>
     <main>
         
