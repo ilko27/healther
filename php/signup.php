@@ -4,7 +4,23 @@ require 'dbconn.php';
 
 
     $inInfo = json_decode(file_get_contents("php://input"));
-    $sensorName = $inInfo->sensorName;
+    $username = $inInfo->username;
+    $password = $inInfo->password;
+    $repassword = $inInfo->username;
+    $email = $inInfo->username;
+
+    if (empty($email) || empty($password) || empty($re_password) || empty($f_name) || empty($m_name) || empty($l_name)) {
+        header("Location: ../pages/login.php?error=emptyfields");
+        exit();
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: ../pages/login.php?error=email");
+    } else if (mb_strlen($password) < 8) {
+        header("Location: ../pages/login.php?error=shortpass");
+    } else if (strcmp($password, $re_password) !== 0) {
+        $outp = 'password_check_error';
+    } else {
+
+    }
 
     $sql = "SELECT * FROM sensorData WHERE sensor = ?";
     $stmt = mysqli_prepare($conn, $sql);
@@ -16,8 +32,8 @@ require 'dbconn.php';
 
     echo json_encode($outp);
 
-} else {
-    header("Location: ../index.php");
-    exit();
-}
+// } else {
+//     header("Location: ../index.php");
+//     exit();
+// }
 ?>
