@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sensor = test_input($_POST["sensor"]);
         $temp = test_input($_POST["temp"]);
         $pressure = test_input($_POST["pressure"]);
-        $humidty = test_input($_POST["humidty"]);
+        $humidty = test_input($_POST["humidity"]);
         
         $sql = "INSERT INTO `sensorData`(`sensor`, `temperatureC`, `pressure`, `humidity`) VALUES ('$sensor', '$temp', '$pressure', '$humidity')";
         
