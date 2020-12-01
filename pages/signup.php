@@ -11,13 +11,12 @@
 
     <div id="firsthalf">
         <form class="textform">
+            <input type="email" id="email" placeholder="Email" class="textplace"> <br>
             <input type="text" id="username" placeholder="Username" class="textplace"> <br>
             <input type="password" id="password" placeholder="Password" class="textplace"> <br>
             <input type="password" id="repassword" placeholder="Repeat Password" class="textplace"> <br>
-            <input type="email" id="email" placeholder="Email" class="textplace"> <br>
-            <input type="button" value="Sign Up" class="buttonDes">
-            <!-- <input type="button" value="Sign Up" class="buttonDes" onclick="send()"> -->
-            <p>Sign in <a href="signin.html">Here</a></p>
+            <input type="button" value="Sign Up" class="buttonDes" onclick="send()">
+            <p>Sign in <a href="signin.php">Here</a></p>
         </form>
     </div>
 
