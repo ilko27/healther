@@ -11,15 +11,15 @@ body {
     background-color: #d6d6d6;
 }
 
-#header {
+header {
     background-color: #d6d6d6;
 }
 
 #map {
-    border-radius: 50px;
+    /*border-radius: 50px;
     background: #d6d6d6;
     box-shadow:  23px 23px 47px #a1a1a1, 
-                 -23px -23px 47px #ffffff;
+                 -23px -23px 47px #ffffff;*/
     /* padding-top: 100px; */
     /* padding: 0; */
     float: right;
@@ -32,7 +32,6 @@ body {
     float: left;
     height: 700px;
     width: 40%;
-    position: absolute;
 }
 .charts{
     margin-top: 10px;
@@ -53,7 +52,13 @@ body {
     height: 80px;
     border-radius: 5px;
     text-align: center;
+    background-color: #62bf73;
+}
+.bgabove {
     background-color: rgba(255, 0, 0, 0.4);
+}
+.bgbelow {
+    background-color: rgba(0, 0, 255, 0.4);
 }
 .innerCard {
     padding-top: 12px;
@@ -66,6 +71,9 @@ body {
     font-size: 2rem;
 }
 @media screen and (max-width: 900px) {
+    body {
+        text-align: center;
+    }
     #chartsDiv, #map {
         float: none;
         width: 100%;
@@ -75,13 +83,17 @@ body {
         height: max-content;
     }
     #map {
-        margin-top: 20px;
-        height: 200px;
+        margin-top: 100px;
+        height: 300px;
     }
     * {
         border: none;
         box-sizing: border-box;
         padding: 0;
         margin: 0;
+    }
+    .cardGroup {
+        width: 48%;
+        margin: 1%;
     }
 }

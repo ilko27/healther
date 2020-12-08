@@ -14,11 +14,14 @@ session_start();
     <title>Healther</title>
 </head>
 <body>
-        <!-- <p id="avValues"> <i class="fas fa-thermometer-half"></i> Average Temparature <span id="avTemp" class="addInfo">0.0</span> Average Humidity <span id="avHumidity" class="addInfo">0.0</span> Last added <span id="lastTemp" class="addInfo"></span><span id="lastHumidity" class="addInfo"></span> on <span id="lastTime" class="addInfo"></span></span></p> -->
+    <header>
+        <p>Welcome</p>
+    </header>
         <select id="sensorNames">
             <option value="IlkoSensor">IlkoSensor</option>
             <option value="Kuhnq">Kuhnq</option>
             <option value="Bazata">Bazata</option>
+            <option value="Terasa">Terasa</option>
         </select>
         <select id="rowsSelect">
             <option value="20">20</option>
@@ -57,7 +60,9 @@ session_start();
             </div>
         </div>    
     </div>
-    <div id="chartsAndMap" style="background-color: red">
+
+
+    <div id="chartsAndMap">
         <div id='map'></div>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -105,11 +110,11 @@ session_start();
                         humidity.push(rs[i].humidity);
                     }
                     toChart();
-                    toAverage(temp, "avTemp", "°C");
-                    toAverage(humidity, "avHumidity", "%");
-                    document.getElementById("lastTemp").innerHTML = String(temp[temp.length-1]) + "°C";
-                    document.getElementById("lastHumidity").innerHTML = String(humidity[humidity.length-1]) + "%";
-                    document.getElementById("lastTime").innerHTML = String(timestamps[timestamps.length - 1]);
+                    colorCards(toAverage(temp), toAverage(humidity), temp[temp.length-1], humidity[humidity.length - 1]);
+                    // toAverage(temp, "avTemp", "°C");
+                    // toAverage(humidity, "avHumidity", "%");
+                    // document.getElementById("lastTemp").innerHTML = String(temp[temp.length-1]) + "°C";
+                    // document.getElementById("lastHumidity").innerHTML = String(humidity[humidity.length-1]) + "%";
                 }
             };
             xmlhttp.open("POST", "php/getData.php", false);
