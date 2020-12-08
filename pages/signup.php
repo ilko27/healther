@@ -41,7 +41,7 @@
             xmlhttp.onreadystatechange = function(){
                 //alert("Response: " + this.responseText );
                 if(this.readyState == 4 && this.status == 200){
-                    if(JSON.parse(this.responseText) == "good"){
+                    if(JSON.parse(this.responseText) == "success"){
                         window.location = "../index.php";
                     } else {
                         document.getElementById("error").innerHTML = JSON.parse(this.responseText);
