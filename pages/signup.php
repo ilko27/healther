@@ -6,14 +6,15 @@
     <link rel="icon" href="../images/cut_clouds.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="../css/sign.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
-<body>
-
+<body>  
     <div id="firsthalf">
         <form class="textform">
             <input type="email" id="email" placeholder="Email" class="textplace"> <br>
             <input type="text" id="username" placeholder="Username" class="textplace"> <br>
             <input type="password" id="password" placeholder="Password" class="textplace"> <br>
+            <div class="g-recaptcha" data-sitekey="6LeUJf4ZAAAAALP-wiQtHkSNIttnWztFPTSImroI"></div>
             <input type="password" id="re_password" placeholder="Repeat Password" class="textplace"> <br>
             <input type="button" value="Sign Up" class="buttonDes" onclick="send()">
             <p>Sign in <a href="signin.php">Here</a></p>

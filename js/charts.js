@@ -1,9 +1,9 @@
-function toChart(timest, temperature, humidity){
+function toChart(){
     tChart.destroy();
     hChart.destroy();
     Chart.platform.disableCSSInjection = true;
-    tChart = makeChart(ctx, timest, temperature, 'Temperature', 'rgba(255, 115, 105, 0.5)');
-    hChart = makeChart(ctx2, timest, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
+    tChart = makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
+    hChart = makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
 }
 function toAverage(arr, spanToPlace, charToAdd){
     var sum = 0;

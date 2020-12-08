@@ -5,10 +5,11 @@ require 'dbconn.php';
 
     $inInfo = json_decode(file_get_contents("php://input"));
     $sensorName = $inInfo->sensorName;
+    $rowsLimit = $inInfo->rowsSelect;
 
-    $sql = "SELECT * FROM sensorData WHERE sensor = ?";
+    $sql = "SELECT * FROM sensorData WHERE sensor = ? ORDER BY datId DESC LIMIT ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, 's', $sensorName);
+    mysqli_stmt_bind_param($stmt, 'si', $sensorName, $rowsLimit);
     mysqli_stmt_execute($stmt);
 
     $result = mysqli_stmt_get_result($stmt);
