@@ -6,8 +6,8 @@ require 'dbconn.php';
     $inInfo = json_decode(file_get_contents("php://input"));
     $username = $inInfo->username;
     $password = $inInfo->password;
-    $repassword = $inInfo->username;
-    $email = $inInfo->username;
+    $re_password = $inInfo->re_password;
+    $email = $inInfo->email;
 
     if (empty($email) || empty($password) || empty($re_password) || empty($username)) {
         $outp = 'error_empty_fields';
@@ -21,7 +21,7 @@ require 'dbconn.php';
         $sql = "SELECT email FROM users WHERE email = ?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            $outp = 'error_sql_error';
+            $outp = 'error_sql_error1';
         } else {
             mysqli_stmt_bind_param($stmt, "s", $email);
             mysqli_stmt_execute($stmt);
@@ -31,13 +31,16 @@ require 'dbconn.php';
                 $outp = 'error_existing_email'; 
             } else {
                 // $code = rand(100000,999999);
-                $sql = "INSERT INTO users (email, password, username) VALUES (?, ?, ?)";
+                // mysqli_stmt_close($stmt);
+                // mysqli_close($conn);
+                // require 'dbconn.php';
+                $sql = "INSERT INTO users (email, pass, username) VALUES (?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    $outp = 'error_sql_error';
+                    $outp = 'error_sql_error2';
                 } else {
                     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
-                    mysqli_stmt_bind_param($stmt, "sss", $email, $hash_pass, $name);
+                    mysqli_stmt_bind_param($stmt, "sss", $email, $hash_pass, $username);
                     mysqli_stmt_execute($stmt);
 
                     // $message = 
@@ -61,7 +64,7 @@ require 'dbconn.php';
     // mysqli_stmt_execute($stmt);
 
     // $result = mysqli_stmt_get_result($stmt);
-    $outp = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // $outp = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     echo json_encode($outp);
 
