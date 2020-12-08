@@ -1,11 +1,5 @@
 <?php
-
-$servername = "localhost";
-
-
-$dbname = "health645_healther";
-$username = "health645_samuil";
-$password = "Samuil_2003";
+require 'dbconn.php';
 
 
 
@@ -19,14 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sensor = test_input($_POST["sensor"]);
         $temp = test_input($_POST["temp"]);
         $pressure = test_input($_POST["pressure"]);
-        $humidty = test_input($_POST["humidty"]);
+        $humidity = test_input($_POST["humidity"]);
         
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } 
         
         $sql = "INSERT INTO `sensorData`(`sensor`, `temperatureC`, `pressure`, `humidity`) VALUES ('$sensor', '$temp', '$pressure', '$humidity')";
         

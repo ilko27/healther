@@ -19,6 +19,11 @@ session_start();
             <option value="Kuhnq">Kuhnq</option>
             <option value="Bazata">Bazata</option>
         </select>
+        <select id="timeSelect">
+            <option value="86400000">1 Day</option>
+            <option value="604800000">1 Week</option>
+            <option value="2419200000">1 Month</option>
+        </select>
         <button onclick="selectData()">Get Data</button>
     </header>
 
@@ -40,15 +45,28 @@ session_start();
 
     <script>
         function selectData(){
-            var e = document.getElementById("sensorNames");
-            var strUser = e.value;
-            getData(strUser);
+            var strUser = document.getElementById("sensorNames").value;
+            var timeSelect = document.getElementById("timeSelect").value;
+            console.log(timeSelect);
+            getData(strUser, timeSelect);
         }
         let temp = new Array();
         let humidity = new Array();
         let timestamps = new Array();
+        let newTimes = new Array();
 
-        function getData(sensorn){
+        function deductTime(timeSelect){
+            newTimes = [];
+            let desiredTime = Date.now() - timeSelect;
+            for(let i = 0; i <= timestamps.length; i++){
+                let timestampMilis = Date.parse(timestamps[i]);
+                if(desiredTime < timestampMilis){
+                    newTimes.push(timestamps[i]);
+                }
+            }
+        }
+
+        function getData(sensorn, timeSelect){
             
             temp = [];
             humidity = [];
@@ -66,7 +84,8 @@ session_start();
                         temp.push(rs[i].temperatureC);
                         humidity.push(rs[i].humidity);
                     }
-                    toChart();
+                    deductTime(timeSelect);
+                    toChart(newTimes, temp, humidity);
                     toAverage(temp, "avTemp", "°C");
                     toAverage(humidity, "avHumidity", "%");
                     document.getElementById("lastTemp").innerHTML = String(temp[temp.length-1]) + "°C";
@@ -78,6 +97,10 @@ session_start();
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send(toSend);
         }
+        var ctx = document.getElementById('tempChart').getContext('2d');
+        var ctx2 = document.getElementById('humidityChart').getContext('2d');
+        let tChart = makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
+        let hChart = makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
     </script>
 </body>
 </html>
