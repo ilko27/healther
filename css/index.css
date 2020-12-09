@@ -78,6 +78,9 @@ header {
         float: none;
         width: 100%;
     }
+    #map {
+        width: 0%;
+    }
     .charts {
         margin-top: 20px;
         height: max-content;
