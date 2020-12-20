@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+$url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
+$getWeather = simplexml_load_file($url);
+$getTemp = $getWeather->list->item->temperature['value'];
+$getHumidity = $getWeather->list->item->humidity['value']
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,18 +63,28 @@ session_start();
                     <p id="lastHumidity" class="text2">0.0</p>
                 </div>
             </div>
-        </div>    
+        </div>
+        <div class="cardGroup excessGroup">
+            <div class="card excessCards">
+                <div class="innerCard">
+                    <p class="text1">Temperature outside</p>
+                    <p class="text2"><?php echo $getTemp?>&deg;C</p>
+                </div>
+            </div>
+            <div class="card excessCards">
+                <div class="innerCard">
+                    <p class="text1">Humidity outside</p>
+                    <p class="text2"><?php echo $getHumidity?>%</p>
+                </div>
+            </div>
+        </div> 
     </div>
-
-
-    <div id="chartsAndMap">
         <div id='map'></div>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <div id='chartsDiv'>
-            <div class="charts"><canvas id="tempChart"></canvas></div>
-            <div class="charts" style="margin-top: 20px"><canvas id="humidityChart"></canvas></div>
-        </div>
+    <div id='chartsDiv'>
+        <div class="charts"><canvas id="tempChart"></canvas></div>
+        <div class="charts" style="margin-top: 20px"><canvas id="humidityChart"></canvas></div>
     </div>
 
     

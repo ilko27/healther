@@ -12,7 +12,7 @@ function toAverage(arr){
     }
 
     var avg = sum/arr.length;
-    return avg;
+    return avg.toFixed(2);;
 }
 function makeChart(ctxi, timestampsarr, dataarr, label, color){
     var graph = new Chart(ctxi, {
