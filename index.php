@@ -79,9 +79,9 @@ $getHumidity = $getWeather->list->item->humidity['value']
             </div>
         </div> 
     </div>
-        <div id='map'></div>
+        <!-- <div id='map'></div>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
     <div id='chartsDiv'>
         <div class="charts"><canvas id="tempChart"></canvas></div>
         <div class="charts" style="margin-top: 20px"><canvas id="humidityChart"></canvas></div>
