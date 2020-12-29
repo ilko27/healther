@@ -30,7 +30,8 @@ require 'dbconn.php';
             if ($resultCheck > 0) {
                 $outp = 'error_existing_email'; 
             } else {
-                $hash_code = md5(rand(666,69420));
+                $code = rand(666,69420112); //easter egg, kind of
+                $hash_code = md5($code);
                 // mysqli_stmt_close($stmt);
                 // mysqli_close($conn);
                 // require 'dbconn.php';
@@ -40,7 +41,7 @@ require 'dbconn.php';
                     $outp = 'error_sql_error2';
                 } else {
                     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
-                    mysqli_stmt_bind_param($stmt, "ssss", $email, $hash_pass, $username, $hash_code);
+                    mysqli_stmt_bind_param($stmt, "sssi", $email, $hash_pass, $username, $code);
                     mysqli_stmt_execute($stmt);
 
                     // $confirm_link = "http://www.healther.online/pages/confirm.php?email=$email&code=$hash_code";
@@ -56,7 +57,7 @@ require 'dbconn.php';
 
 
                         If it was not you who registered, <br/>
-                        please inform us by clicking <a href='ttps://www.healther.online/pages/false_email.php?email=$email'>here</a>.
+                        please inform us by clicking <a href='https://www.healther.online/pages/false_email.php?email=$email'>here</a>.
                         ";
 
                     $headers  = 'MIME-Version: 1.0' . "\r\n";

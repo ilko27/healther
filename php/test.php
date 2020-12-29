@@ -1,28 +1,32 @@
 <?php
 
+$hash_code = md5(rand(666,69420));
+echo $hash_code;
+
+
 // $servername = "localhost";
 // $username = "health645_samuil";
 // $password = "Samuil_2003";
 // $db = "health645_healther";
 
-$email = "ilko.petrov27@gmail.com";
-$message = 
-                        "
-                        oooooo <br/>
-                        it's working, mate <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        evet got some html magic <br/>
-                        to see the best site ever(dont't check if it's true), click <a href='https://www.healther.online'>here</a>.
-                        ";
+// $email = "ilko.petrov27@gmail.com";
+// $message = 
+//                         "
+//                         oooooo <br/>
+//                         it's working, mate <br/>
+//                         <br/>
+//                         <br/>
+//                         <br/>
+//                         evet got some html magic <br/>
+//                         to see the best site ever(dont't check if it's true), click <a href='https://www.healther.online'>here</a>.
+//                         ";
 
-                    $headers  = 'MIME-Version: 1.0' . "\r\n";
-                    $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-                    $headers .= 'To: '.$email. "\r\n";
-                    $headers .= 'From: Healther <confirm_no_reply@healther.online>' . "\r\n";
+//                     $headers  = 'MIME-Version: 1.0' . "\r\n";
+//                     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+//                     $headers .= 'To: '.$email. "\r\n";
+//                     $headers .= 'From: Healther <confirm_no_reply@healther.online>' . "\r\n";
 
-                    mail($email,"Healther Registration",$message,$headers);
+//                     mail($email,"Healther Registration",$message,$headers);
 // echo rand(100000,999999);
 
 
