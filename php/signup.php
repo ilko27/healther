@@ -30,8 +30,7 @@ require 'dbconn.php';
             if ($resultCheck > 0) {
                 $outp = 'error_existing_email'; 
             } else {
-                $code = rand(666,69420112); //easter egg, kind of
-                $hash_code = md5($code);
+                $hash_code = md5(rand(666,69420)); //easter egg, kind of
                 // mysqli_stmt_close($stmt);
                 // mysqli_close($conn);
                 // require 'dbconn.php';
@@ -41,7 +40,7 @@ require 'dbconn.php';
                     $outp = 'error_sql_error2';
                 } else {
                     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
-                    mysqli_stmt_bind_param($stmt, "sssi", $email, $hash_pass, $username, $code);
+                    mysqli_stmt_bind_param($stmt, "ssss", $email, $hash_pass, $username, $hash_code);
                     mysqli_stmt_execute($stmt);
 
                     // $confirm_link = "http://www.healther.online/pages/confirm.php?email=$email&code=$hash_code";
@@ -52,7 +51,7 @@ require 'dbconn.php';
                         This email address has been used as a registration email for Healther. <br/>
                         If it was you who registered, <br/>
                         go ahead and verify your account by clicking the link below. <br/>
-                        http://www.healther.online/pages/confirm.php?email=$email&code=$hash_code <br/>
+                        https://www.healther.online/pages/confirm.php?email=$email&code=$hash_code <br/>
 
 
 

@@ -1,12 +1,12 @@
 <?php
-if (isset($_GET["email"]) && isset($_GET["code"])) {
+if (isset($_GET["email"]) && isset($_GET["code"])) {    //check url for relevant data
     $email = $_GET["email"];
-    $hash_code =  $_GET["code"];
+    $code =  $_GET["code"];
 
     require '../php/dbconn.php';
 
     
-    $sql = "SELECT email FROM users WHERE email=? AND code = ?";
+    $sql = "UPDATE users SET status = 1 WHERE email = ? AND status = ?;";  // activate user if email and code concur
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header( "Location: ../index.php?error=sqlerror");
@@ -14,24 +14,12 @@ if (isset($_GET["email"]) && isset($_GET["code"])) {
     } else {
         mysqli_stmt_bind_param($stmt, "ss", $email, $code);
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_store_result($stmt);
-        $resultCheck = mysqli_stmt_num_rows($stmt);
-        if ($resultCheck == 1) {
-            $sql = "UPDATE users SET active = 1, code = 20030815 WHERE email = ? AND code = ?;";
-            $stmt = mysqli_stmt_init($conn);
-            if (!mysqli_stmt_prepare($stmt, $sql)) {
-                header( "Location: ../index.php?error=sqlerror");
-                exit();
-            } else {
-                mysqli_stmt_bind_param($stmt, "si", $email, $code);
-                mysqli_stmt_execute($stmt);
-
-                echo '<br><br><br><p style="text-align: center;">Акаунтът Ви беше успешно активиран.</p>';
-            }
+        if (mysqli_affected_rows($conn)!=0) {   //check if changes have been made
+            $out = true;
         } else {
-            header("Location: ../index.php?error");
-            exit();
+            $out = false;
         }
+        header('Refresh: 5; URL=https://www.healther.online/');
     }    
 } else {
     header("Location: ../index.php");
@@ -43,10 +31,21 @@ if (isset($_GET["email"]) && isset($_GET["code"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="../images/healther_clean.png" type="image/gif" sizes="16x16">
 </head>
 <body>  
-    <div></div>
+    <div>
+        <p>
+            <?php
+                if ($out == true) {
+                    echo "Your account is now active.";
+                } else {
+                    echo "Unable to verify email.";
+                }
+            ?>
+        </p>
+        <p>We will automatically redirected you in a moment.</p>
+    </div>
 
 
     <script></script>
