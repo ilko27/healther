@@ -17,7 +17,7 @@
             <div class="g-recaptcha" data-sitekey="6LeUJf4ZAAAAALP-wiQtHkSNIttnWztFPTSImroI"></div>
             <input type="password" id="re_password" placeholder="Repeat Password" class="textplace"> <br>
             <input type="button" value="Sign Up" class="buttonDes" onclick="send()">
-            <p>Sign in <a href="signin.php">Here</a></p>
+            <p>Sign in <a href="login.php">Here</a></p>
         </form>
     </div>
 
