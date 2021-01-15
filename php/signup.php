@@ -49,8 +49,7 @@ if (empty($email) || empty($password) || empty($re_password) || empty($username)
                     "
                     This email address has been used as a registration email for Healther. <br/>
                     If it was you who registered, <br/>
-                    go ahead and verify your account by clicking the link below. <br/>
-                    https://www.healther.online/pages/confirm.php?email=$email&code=$hash_code <br/>
+                    go ahead and verify your account by clicking <a href='https://www.healther.online/pages/confirm.php?email=$email&code=$hash_code'>here</a>. <br/>
 
 
 
