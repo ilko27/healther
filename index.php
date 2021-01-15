@@ -1,10 +1,14 @@
 <?php
 session_start();
-
-$url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
-$getWeather = simplexml_load_file($url);
-$getTemp = $getWeather->list->item->temperature['value'];
-$getHumidity = $getWeather->list->item->humidity['value']
+if(!isset($_SESSION['userSession'])){
+    header("Location: pages/signin.php");
+    exit();
+} else {
+    $url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
+    $getWeather = simplexml_load_file($url);
+    $getTemp = $getWeather->list->item->temperature['value'];
+    $getHumidity = $getWeather->list->item->humidity['value'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
