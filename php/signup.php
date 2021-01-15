@@ -37,7 +37,8 @@ if (empty($email) || empty($password) || empty($re_password) || empty($username)
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 $outp = 'error_sql_error2';
             } else {
-                $hash_pass = password_hash($password, PASSWORD_DEFAULT);
+                $hash_pass = md5($password);
+                // $hash_pass = password_hash($password, PASSWORD_DEFAULT);
                 mysqli_stmt_bind_param($stmt, "ssss", $email, $hash_pass, $username, $hash_code);
                 mysqli_stmt_execute($stmt);
 

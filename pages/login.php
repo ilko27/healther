@@ -6,6 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/healther_clean.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="../css/sign.css">
 </head>
 <body>
@@ -13,7 +14,7 @@ session_start();
         <p id='message'></p>
         <input type="email" id="email" placeholder="email" class="textplace"> <br>
         <input type="password" id="password" placeholder="Password" class="textplace"> <br>
-        <input type="button" onclick="send()" value="Sign Up" class="buttonDes">
+        <input type="button" onclick="send()" value="Log In" class="buttonDes">
         <p>Sign up <a href="signup.php">Here</a></p>
     </form>
     <script>
