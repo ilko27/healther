@@ -1,15 +1,20 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/healther_clean.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="../css/sign.css">
 </head>
 <body>
     <form style="text-align: center;">
-        <input type="text" id="email" placeholder="email" class="textplace"> <br>
+        <p id='message'></p>
+        <input type="email" id="email" placeholder="email" class="textplace"> <br>
         <input type="password" id="password" placeholder="Password" class="textplace"> <br>
-        <input type="button" onClick="send()" value="Sign Up" class="buttonDes">
+        <input type="button" onclick="send()" value="Log In" class="buttonDes">
         <p>Sign up <a href="signup.php">Here</a></p>
     </form>
     <script>
@@ -26,13 +31,13 @@
                 //alert("Response: " + this.responseText );
                 if(this.readyState == 4 && this.status == 200){
                     if(JSON.parse(this.responseText) == "success"){
-                        window.location = "../index.php";
+                        document.getElementById("message").innerHTML = JSON.parse(this.responseText);
                     } else {
                         document.getElementById("message").innerHTML = JSON.parse(this.responseText);
                     }
                 }
             };
-            xmlhttp.open("POST", "../php/signin.php", false);
+            xmlhttp.open("POST", "../php/login.php", false);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             //alert("Request: " + toSend);
             xmlhttp.send(toSend);

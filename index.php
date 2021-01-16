@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['userSession'])){
-    header("Location: pages/signin.php");
+    header("Location: pages/login.php");
     exit();
 } else {
     $url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
