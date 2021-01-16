@@ -98,27 +98,28 @@ function colorCards(avTemp, avHumidity, lastTemp, lastHumidity) {    // info car
     let minTemp = 20;
     let maxHumidity = 50;
     let minHumidity = 30;
-    let avTempCard = document.getElementsByClassName("card")[0];
-    avTempCard.classList = "";
-    avTempCard.classList.add("card");
-    document.getElementById("avTemp").innerHTML = avTemp + "°C";
-    if(avTemp > maxTemp){
-        avTempCard.classList.add("bgabove");
-    } else if (avTemp < minTemp){
-        avTempCard.classList.add("bgbelow");
-    }
 
-    let avHumidityCard = document.getElementsByClassName("card")[1];
-    avHumidityCard.classList = "";
-    avHumidityCard.classList.add("card");
-    document.getElementById("avHumidity").innerHTML = avHumidity + "%";
-    if(avHumidity > maxHumidity){
-        avHumidityCard.classList.add("bgabove");
-    } else if (avHumidity < minHumidity){
-        avHumidityCard.classList.add("bgbelow");
-    }
+    // let avTempCard = document.getElementsByClassName("card")[0]; // 0 is first card
+    // avTempCard.classList = "";
+    // avTempCard.classList.add("card");
+    // document.getElementById("avTemp").innerHTML = avTemp + "°C";
+    // if(avTemp > maxTemp){
+    //     avTempCard.classList.add("bgabove");
+    // } else if (avTemp < minTemp){
+    //     avTempCard.classList.add("bgbelow");
+    // }
 
-    let lastTempCard = document.getElementsByClassName("card")[2];
+    // let avHumidityCard = document.getElementsByClassName("card")[1];  // 1 is 2nd card
+    // avHumidityCard.classList = "";
+    // avHumidityCard.classList.add("card");
+    // document.getElementById("avHumidity").innerHTML = avHumidity + "%";
+    // if(avHumidity > maxHumidity){
+    //     avHumidityCard.classList.add("bgabove");
+    // } else if (avHumidity < minHumidity){
+    //     avHumidityCard.classList.add("bgbelow");
+    // }
+
+    let lastTempCard = document.getElementsByClassName("card")[0];  // 0 is first card
     lastTempCard.classList = "";
     lastTempCard.classList.add("card");
     document.getElementById("lastTemp").innerHTML = lastTemp + "°C";
@@ -128,7 +129,7 @@ function colorCards(avTemp, avHumidity, lastTemp, lastHumidity) {    // info car
         lastTempCard.classList.add("bgbelow");
     }
 
-    let lastHumidityCard = document.getElementsByClassName("card")[3];
+    let lastHumidityCard = document.getElementsByClassName("card")[1];  // 1 is 2nd card
     lastHumidityCard.classList = "";
     lastHumidityCard.classList.add("card");
     document.getElementById("lastHumidity").innerHTML = lastHumidity + "%";

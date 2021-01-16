@@ -42,14 +42,14 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
         <div class="cardGroup">
             <div class="card" onclick="toChart('temp')">
                 <div class="innerCard">
-                    <p class="text1">Average Temperature <i class="fas fa-thermometer-half"></i></p>
-                    <p id="avTemp" class="text2">0.0</p>
+                    <p class="text1">Temperature <i class="fas fa-thermometer-half"></i></p>
+                    <p id="lastTemp" class="text2">0.0</p>
                 </div>
             </div>
             <div class="card" onclick="toChart('humidity')">
                 <div class="innerCard">
-                    <p class="text1">Average Humidity <i class="fas fa-tint"></i></p>
-                    <p id="avHumidity" class="text2">0.0</p>
+                    <p class="text1">Humidity <i class="fas fa-tint"></i></p>
+                    <p id="lastHumidity" class="text2">0.0</p>
                 </div>
             </div>
         <!-- </div> -->
@@ -84,7 +84,7 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
     </div>
 
     
-    <script src="js/index.js"></script>
+    <script src="js/index_beta.js"></script>
     <script src="js/charts_beta.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
