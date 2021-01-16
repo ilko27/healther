@@ -32,6 +32,7 @@ session_start();
                 if(this.readyState == 4 && this.status == 200){
                     if(JSON.parse(this.responseText) == "success"){
                         document.getElementById("message").innerHTML = JSON.parse(this.responseText);
+                        window.location.href = "../";
                     } else {
                         document.getElementById("message").innerHTML = JSON.parse(this.responseText);
                     }
