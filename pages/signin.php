@@ -10,7 +10,7 @@
         <input type="text" id="email" placeholder="email" class="textplace"> <br>
         <input type="password" id="password" placeholder="Password" class="textplace"> <br>
         <input type="button" onClick="send()" value="Sign Up" class="buttonDes">
-        <p>Sign up <a href="signup.html">Here</a></p>
+        <p>Sign up <a href="signup.php">Here</a></p>
     </form>
     <script>
         function send(){
