@@ -1,6 +1,6 @@
-let error_map;
+let error_map;  // the name says it all
 
-function getLocation() {
+function getLocation() {    // map
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getPosition, onError);
     } else { 
@@ -11,7 +11,7 @@ function getLocation() {
 }
 getLocation();
 
-function onError(error) {
+function onError(error) {   // map errors
     // switch(error.code) {
     //     case error.PERMISSION_DENIED || error.POSITION_UNAVAILABLE || error.TIMEOUT || error.UNKNOWN_ERROR:
     //     defaltPosition();
@@ -38,7 +38,7 @@ function onError(error) {
     alert(error_map);
 }
 
-function getPosition(position) {
+function getPosition(position) {    // map
     let x = position.coords.latitude.toFixed(6);
     let y = position.coords.longitude.toFixed(6);
     let accuracy = position.coords.accuracy;
@@ -46,14 +46,14 @@ function getPosition(position) {
     runPosition(x, y, z, accuracy);
 }
 
-function defaltPosition(){
+function defaltPosition(){  // map
     let x = 42.703;
     let y = 23.30;
     let z = 6;
     runDefaltPosition(x, y, z);
 }
 
-function runPosition(x, y, z, accuracy) {
+function runPosition(x, y, z, accuracy) {   // map
 
     console.log(x + "||" + y);
     let OSM_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
@@ -78,7 +78,7 @@ function runPosition(x, y, z, accuracy) {
 
 }
 
-function runDefaltPosition(x, y, z) {
+function runDefaltPosition(x, y, z) {   // map
 
     let  OSM_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
     let  OSM_ATTRIB = '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
@@ -93,7 +93,7 @@ function runDefaltPosition(x, y, z) {
 
 }
 
-function colorCards(avTemp, avHumidity, lastTemp, lastHumidity){
+function colorCards(avTemp, avHumidity, lastTemp, lastHumidity) {    // info cards
     let maxTemp = 25;
     let minTemp = 20;
     let maxHumidity = 50;
