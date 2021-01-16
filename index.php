@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['userSession'])){
+if($_SESSION["userSession"] != "Hello Mr. User"){
     header("Location: pages/login.php");
     exit();
 } else {
