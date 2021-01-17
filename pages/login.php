@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION["userSession"] == "Hello Mr. User") {
+if (isset($_SESSION["healtherSession"])) {
    header("Location: ../");
    exit();
 }

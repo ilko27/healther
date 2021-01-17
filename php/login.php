@@ -22,7 +22,7 @@ if (mysqli_stmt_fetch($stmt)) {
         // 
     // } else {
         $outp = "success";
-        $_SESSION['userSession'] = "Hello Mr. User";
+        $_SESSION['healtherSession'] = "Hello Mr. User";
         $_SESSION['email'] = $email;
         $_SESSION['userId'] = $user_id;
         $_SESSION['username'] = $username;
