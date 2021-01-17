@@ -18,13 +18,13 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index_beta.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
     <title>Healther</title>
 </head>
 <body>
     <header>
-        <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p>
+        <p>Welcome! Click on the card that you want to know more about.</p>
     </header>
         <select id="sensorNames">
             <option value="IlkoSensor">IlkoSensor</option>
@@ -40,45 +40,31 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
         <button onclick="selectData()">Get Data</button>
     <div id="quickInfo">
         <div class="cardGroup">
-            <div class="card">
-                <div class="innerCard">
-                    <p class="text1">Average Temperature <i class="fas fa-thermometer-half"></i></p>
-                    <p id="avTemp" class="text2">0.0</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="innerCard">
-                    <p class="text1">Average Humidity <i class="fas fa-tint"></i></p>
-                    <p id="avHumidity" class="text2">0.0</p>
-                </div>
-            </div>
-        </div>
-        <div class="cardGroup">
-            <div class="card">
+            <div id="" class="card" onclick="toChart('temp')">
                 <div class="innerCard">
                     <p class="text1">Temperature <i class="fas fa-thermometer-half"></i></p>
                     <p id="lastTemp" class="text2">0.0</p>
                 </div>
             </div>
-
-            <div class="card">
+            <div id="" class="card" onclick="toChart('humidity')">
                 <div class="innerCard">
                     <p class="text1">Humidity <i class="fas fa-tint"></i></p>
                     <p id="lastHumidity" class="text2">0.0</p>
                 </div>
             </div>
-        </div>
-        <div class="cardGroup excessGroup">
-            <div class="card excessCards">
+        <!-- </div> -->
+        
+        <!-- <div class="cardGroup excessGroup"> -->
+            <div id="" class="card" onclick="toChart('airQI')">
                 <div class="innerCard">
-                    <p class="text1">Temperature outside</p>
-                    <p class="text2"><?php echo $getTemp?>&deg;C</p>
+                    <p class="text1">AQI <i class="fas fa-cloud"></i></p>
+                    <p class="text2">69</p>
                 </div>
             </div>
-            <div class="card excessCards">
+            <div id="" class="card" onclick="toChart('pressure')">
                 <div class="innerCard">
-                    <p class="text1">Humidity outside</p>
-                    <p class="text2"><?php echo $getHumidity?>%</p>
+                    <p class="text1">Air Pressure <i class="fab fa-cloudscale"></i></p>
+                    <p class="text2">420</p>
                 </div>
             </div>
         </div> 
@@ -87,13 +73,19 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
     <div id='chartsDiv'>
-        <div class="charts"><canvas id="tempChart"></canvas></div>
-        <div class="charts" style="margin-top: 20px"><canvas id="humidityChart"></canvas></div>
+        <div class="charts">
+            <canvas id="bigChart">
+                
+            </canvas>
+            <!-- <canvas id="humidityChart">
+
+            </canvas> -->
+        </div>
     </div>
 
     
-    <script src="js/index.js"></script>
-    <script src="js/charts.js"></script>
+    <script src="js/index_beta.js"></script>
+    <script src="js/charts_beta.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -128,7 +120,7 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
                         temp.push(rs[i].temperatureC);
                         humidity.push(rs[i].humidity);
                     }
-                    toChart();
+                    toChart('temp');
                     colorCards(toAverage(temp), toAverage(humidity), temp[temp.length-1], humidity[humidity.length - 1]);
                     // toAverage(temp, "avTemp", "°C");
                     // toAverage(humidity, "avHumidity", "%");
@@ -140,10 +132,11 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send(toSend);
         }
-        var ctx = document.getElementById('tempChart').getContext('2d');
-        var ctx2 = document.getElementById('humidityChart').getContext('2d');
-        let tChart = makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
-        let hChart = makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
+
+        var ctx = document.getElementById('bigChart').getContext('2d');
+        // var ctx2 = document.getElementById('humidityChart').getContext('2d');
+        let bChart = makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
+        // let hChart = makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
 
         window.onload = selectData();
     </script>
