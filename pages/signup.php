@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (isset($_SESSION["healtherSession"])) {
-   header("Location: ../");
-   exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +10,11 @@ if (isset($_SESSION["healtherSession"])) {
 <body>  
     <div id="firsthalf">
         <form class="textform">
-            <img class="healtherlogo" src="../images/healther.png"/>
             <p id='message'></p>
             <input type="email" id="email" placeholder="Email" class="textplace"> <br>
             <input type="text" id="username" placeholder="Username" class="textplace"> <br>
             <input type="password" id="password" placeholder="Password" class="textplace"> <br>
-            <!-- <div class="g-recaptcha" data-sitekey="6LeUJf4ZAAAAALP-wiQtHkSNIttnWztFPTSImroI"></div> -->
+            <div class="g-recaptcha" data-sitekey="6LeUJf4ZAAAAALP-wiQtHkSNIttnWztFPTSImroI"></div>
             <input type="password" id="re_password" placeholder="Repeat Password" class="textplace"> <br>
             <input type="button" value="Sign Up" class="buttonDes" onclick="send()">
             <p>Sign in <a href="login.php">Here</a></p>
