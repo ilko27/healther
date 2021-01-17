@@ -1,3 +1,10 @@
+<?php
+session_start();
+if ($_SESSION["userSession"] == "Hello Mr. User") {
+   header("Location: ../");
+   exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
