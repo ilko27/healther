@@ -24,7 +24,7 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
 </head>
 <body>
     <header>
-        <p>Welcome</p>
+        <p>Welcome! Click on the card that you want to know more about.</p>
     </header>
         <select id="sensorNames">
             <option value="IlkoSensor">IlkoSensor</option>
@@ -40,13 +40,13 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
         <button onclick="selectData()">Get Data</button>
     <div id="quickInfo">
         <div class="cardGroup">
-            <div class="card" onclick="toChart('temp')">
+            <div id="" class="card" onclick="toChart('temp')">
                 <div class="innerCard">
                     <p class="text1">Temperature <i class="fas fa-thermometer-half"></i></p>
                     <p id="lastTemp" class="text2">0.0</p>
                 </div>
             </div>
-            <div class="card" onclick="toChart('humidity')">
+            <div id="" class="card" onclick="toChart('humidity')">
                 <div class="innerCard">
                     <p class="text1">Humidity <i class="fas fa-tint"></i></p>
                     <p id="lastHumidity" class="text2">0.0</p>
@@ -55,16 +55,16 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
         <!-- </div> -->
         
         <!-- <div class="cardGroup excessGroup"> -->
-            <div class="card" onclick="toChart('airQI')">
+            <div id="" class="card" onclick="toChart('airQI')">
                 <div class="innerCard">
-                    <p class="text1">Air Quality Index <i class="fas fa-cloud"></i></p>
-                    <p class="text2">out of order</p>
+                    <p class="text1">AQI <i class="fas fa-cloud"></i></p>
+                    <p class="text2">69</p>
                 </div>
             </div>
-            <div class="card" onclick="toChart('pressure')">
+            <div id="" class="card" onclick="toChart('pressure')">
                 <div class="innerCard">
-                    <p class="text1">Average Air Pressure <i class="fab fa-cloudscale"></i></p>
-                    <p class="text2">nope</p>
+                    <p class="text1">Air Pressure <i class="fab fa-cloudscale"></i></p>
+                    <p class="text2">420</p>
                 </div>
             </div>
         </div> 

@@ -9,6 +9,7 @@
 
 body {
     background-color: #d6d6d6;
+    text-align: center;
 }
 
 header {
@@ -27,24 +28,18 @@ header {
     width: 50%;
     margin-top: 30px;
 }
-#chartsDiv {
-    margin-top: 30px;
-    /* float: left; */
-    height: 700px;
-    width: 40%;
-}
 .charts{
-    margin-top: 10px;
-    /*border-radius: 50px;
-    background: #d6d6d6;
-    box-shadow:  23px 23px 47px #a1a1a1, 
-                 -23px -23px 47px #ffffff;*/
+    margin: 0 auto;
+    margin-top: 50px;
+    height: 350px;
+    max-width: 50%;
 }
 .cardGroup {
     display: flex;
     justify-content: center;
 }
 .card {
+    cursor: pointer;
     margin: 10px;
     width:  20%;
     max-width: 250px;
@@ -70,36 +65,31 @@ header {
     font-size: 2rem;
 }
 @media screen and (max-width: 900px) {
-    body {
-        text-align: center;
-    }
-    #chartsDiv, #map {
+    #map {
         float: none;
         width: 100%;
     }
+    /* what the map??? */
     #map {
         width: 0%;
     }
-    .charts {
-        margin-top: 20px;
-        height: max-content;
-    }
+    /* what the map??? */
     #map {
         margin-top: 100px;
         height: 300px;
     }
-    * {
-        border: none;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
+    .charts{
+        margin-top: 25px;
+        height: 250px;
+        max-width: 100%;
     }
-    .cardGroup {
-        width: 48%;
-        margin: 1%;
-        float: left;
+    .card {
+        height: 50px;
     }
-    .excessGroup {
-        width: 98%;
+    .text1 {
+        font-size: x-small;
+    }
+    .text2 {
+        font-size: 1rem;
     }
 }

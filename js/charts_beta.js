@@ -39,6 +39,8 @@ function makeChart(ctxi, timestampsarr, dataarr, label, color) {
 
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 yAxes: [{
                     ticks: {

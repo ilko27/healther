@@ -24,7 +24,7 @@ if($_SESSION["userSession"] != "Hello Mr. User"){
 </head>
 <body>
     <header>
-        <p>Welcome</p>
+        <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p>
     </header>
         <select id="sensorNames">
             <option value="IlkoSensor">IlkoSensor</option>
