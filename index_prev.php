@@ -27,33 +27,82 @@ require 'php/dbconn.php';
     <header>
         <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p>
     </header>
-    
-
-    <div id="leftHalf">
-    <?php
-    $_SESSION['sensors'] = [];
-    $userId = $_SESSION['userId'];
-    $sqlQuery = "SELECT * FROM `sensors` WHERE user_id = ".$userId;
-    $result = $conn -> query($sqlQuery);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<table class='sensorCard'>
-            <tr><td>".$row['sensor_name']."</td><td></td></tr>
-            <tr><td>PM2.5</td><td>23</td></tr>
-            <tr><td>Temperature</td><td>20.4</td></tr>
-            <tr><td>Humidity</td><td>70%</td></tr>
-            <tr><td>Pressure</td><td>9321</td></tr>
-            </table>";
-            if(!in_array($row['sensor_id'], $_SESSION['sensors'])){
-                array_push($_SESSION['sensors'][], $row['sensor_id']);
+        <select id="sensorNames">
+        <?php
+        $userId = $_SESSION['userId'];
+        $sqlQuery = "SELECT * FROM `sensors` WHERE user_id = ".$userId;
+        $result = $conn -> query($sqlQuery);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+              echo "<option value=".$row['sensor_id'].">".$row['sensor_name']."</option>";
             }
-        }
-        } else {
-        echo "You don't have any sensors";
-        }
-    ?>
+          } else {
+            echo "0 results";
+          }
+        ?>
+            <!-- <option value="69420">IlkoSensor</option>
+            <option value="Kuhnq">Kuhnq</option>
+            <option value="Bazata2021">Bazata2021</option>
+            <option value="Terasa">Terasa</option> -->
+        </select>
+        <select id="rowsSelect">
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        <button onclick="selectData()">Get Data</button>
+    <div id="quickInfo">
+        <div class="cardGroup">
+            <div class="card">
+                <div class="innerCard">
+                    <p class="text1">Average Temperature <i class="fas fa-thermometer-half"></i></p>
+                    <p id="avTemp" class="text2">0.0</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="innerCard">
+                    <p class="text1">Average Humidity <i class="fas fa-tint"></i></p>
+                    <p id="avHumidity" class="text2">0.0</p>
+                </div>
+            </div>
+        </div>
+        <div class="cardGroup">
+            <div class="card">
+                <div class="innerCard">
+                    <p class="text1">Temperature <i class="fas fa-thermometer-half"></i></p>
+                    <p id="lastTemp" class="text2">0.0</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="innerCard">
+                    <p class="text1">Humidity <i class="fas fa-tint"></i></p>
+                    <p id="lastHumidity" class="text2">0.0</p>
+                </div>
+            </div>
+        </div>
+        <div class="cardGroup excessGroup">
+            <div class="card excessCards">
+                <div class="innerCard">
+                    <p class="text1">Temperature outside</p>
+                    <p class="text2"><?php echo $getTemp?>&deg;C</p>
+                </div>
+            </div>
+            <div class="card excessCards">
+                <div class="innerCard">
+                    <p class="text1">Humidity outside</p>
+                    <p class="text2"><?php echo $getHumidity?>%</p>
+                </div>
+            </div>
+        </div> 
     </div>
-    <div id="rightHalf"></div>
+        <!-- <div id='map'></div>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
+    <div id='chartsDiv'>
+        <div class="charts"><canvas id="tempChart"></canvas></div>
+        <div class="charts" style="margin-top: 20px"><canvas id="humidityChart"></canvas></div>
+    </div>
 
     
     <script src="js/index.js"></script>
@@ -64,7 +113,7 @@ require 'php/dbconn.php';
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
 
     <script>
-        /*function selectData(){
+        function selectData(){
             var strUser = document.getElementById("sensorNames").value;
             var rowsSelect = document.getElementById("rowsSelect").value;
             getData(strUser, rowsSelect);
@@ -109,7 +158,7 @@ require 'php/dbconn.php';
         let tChart = makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
         let hChart = makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
 
-        window.onload = selectData();*/
+        window.onload = selectData();
     </script>
 </body>
 </html>

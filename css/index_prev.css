@@ -15,21 +15,18 @@ header {
     background-color: #d6d6d6;
 }
 
-
-#leftHalf {
-    float:left;
+#map {
+    /*border-radius: 50px;
+    background: #d6d6d6;
+    box-shadow:  23px 23px 47px #a1a1a1, 
+                 -23px -23px 47px #ffffff;*/
+    /* padding-top: 100px; */
+    /* padding: 0; */
+    float: right;
+    height:380px;
     width: 50%;
-    background-color: red;
-    height: 100px;
-    text-align: center;
+    margin-top: 30px;
 }
-#rightHalf {
-    float:right;
-    width: 50%;
-    background-color: blue;
-    height: 100px;
-}
-
 #chartsDiv {
     margin-top: 30px;
     /* float: left; */
@@ -43,15 +40,35 @@ header {
     box-shadow:  23px 23px 47px #a1a1a1, 
                  -23px -23px 47px #ffffff;*/
 }
-.sensorCard {
-    border: 1px solid black;
-    border-collapse: separate;
-    margin: auto;
-    width: 50%;
-    margin-top: 25px;
+.cardGroup {
+    float: left;
+    width: 13.3333%;
+    margin-right: 10px;
 }
-tr {
-    margin-top: 30px;
+.card {
+    /*float: left;*/
+    margin-top: 10px;
+    width:  100%;
+    height: 80px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #62bf73;
+}
+.bgabove {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+.bgbelow {
+    background-color: rgba(0, 0, 255, 0.4);
+}
+.innerCard {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.text1 {
+    font-size: 1rem;
+}
+.text2 {
+    font-size: 2rem;
 }
 @media screen and (max-width: 900px) {
     body {
