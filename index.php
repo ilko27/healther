@@ -29,7 +29,7 @@ if(!isset($_SESSION['userSession'])){
         <select id="sensorNames">
             <option value="IlkoSensor">IlkoSensor</option>
             <option value="Kuhnq">Kuhnq</option>
-            <option value="Bazata">Bazata</option>
+            <option value="Bazata">Bazata2021</option>
             <option value="Terasa">Terasa</option>
         </select>
         <select id="rowsSelect">
