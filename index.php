@@ -31,6 +31,26 @@ if (screen.width <= 1500) {
 <body>
     <header>
         <!-- <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p> -->
+        <div id="header_left">
+            <a href="">
+                <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
+            </a>
+        </div>
+        <div id='header_right'>
+            <div id='map_path'>
+                
+                <p><i class="fas fa-map-marked-alt"></i> Map</p>
+            </div>
+            <div id='account_path'>
+                
+                <p><i class="fas fa-user-circle"></i> Account</p>
+            </div>
+            <div id='logout_path'>
+                
+                <p><i class="fas fa-sign-out-alt"></i> Logout</p>
+            </div>
+
+        </div>
     </header>
     
 

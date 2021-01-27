@@ -9,12 +9,42 @@
 
 body {
     background-color: #d6d6d6;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-    background-color: #d6d6d6;
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    border-style: none none outset none;
 }
 
+#header_left {
+    width: 50%;
+    float: left;
+}
+
+
+#header_right {
+    width: 50%;
+    float: right;
+    display: flex;
+    justify-content: center;
+}
+
+#header_right div {
+    font-size: 30px;
+    padding: 30px;
+}
+
+#header_img {
+    max-height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* object-fit: scale-down; */
+}
 
 #leftHalf {
     float:left;
