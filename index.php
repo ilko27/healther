@@ -11,6 +11,11 @@ if(!isset($_SESSION['userSession'])){
 }
 require 'php/dbconn.php';
 ?>
+<script>
+if (screen.width <= 1500) {
+    location.href = "https://m.healther.online";
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,6 +75,8 @@ require 'php/dbconn.php';
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
 
     <script>
+
+        
         
         let temp = new Array();
         let humidity = new Array();
