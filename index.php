@@ -12,7 +12,7 @@ if(!isset($_SESSION['userSession'])){
 require 'php/dbconn.php';
 ?>
 <script>
-if (screen.width <= 1500) {
+if (screen.width <= 1100) {
     location.href = "https://m.healther.online";
 }
 </script>
@@ -38,16 +38,19 @@ if (screen.width <= 1500) {
         </div>
         <div id='header_right'>
             <div id='map_path'>
-                
-                <p><i class="fas fa-map-marked-alt"></i> Map</p>
+                <a href="">
+                    <p><i class="fas fa-map-marked-alt"></i> Map</p>
+                </a>
             </div>
             <div id='account_path'>
-                
-                <p><i class="fas fa-user-circle"></i> Account</p>
+                <a href="">
+                    <p><i class="fas fa-user-circle"></i> Account</p>
+                </a>
             </div>
             <div id='logout_path'>
-                
-                <p><i class="fas fa-sign-out-alt"></i> Logout</p>
+                <a href="">
+                    <p><i class="fas fa-sign-out-alt"></i> Logout</p>
+                </a>
             </div>
 
         </div>
@@ -65,13 +68,13 @@ if (screen.width <= 1500) {
             $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
             $sensorReading= $conn -> query($sensorQuery);
             $sensData = $sensorReading->fetch_assoc();
-            echo "<table class='sensorCard' onclick='getData(".$row['sensor_id'].", 20)'>
-            <tr><td class='nameTd'>".$row['sensor_name']."</td><td></td></tr>
+            echo "<div class='card_div'><p class='nameTd'>".$row['sensor_name']."</p>
+            <table class='sensorCard' onclick='getData(".$row['sensor_id'].", 20)'>
             <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
             <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
             <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
             <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td><td><button onclick='editSensor(".$sensorId.")'><i class='fas fa-cog'></i> Options</td></button></tr>
-            </table>";
+            </table></div>";
         }
         } else {
         echo "Your id is ".$userId.$_SESSION['userSession'];

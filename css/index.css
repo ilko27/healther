@@ -13,11 +13,18 @@ body {
     padding: 0;
 }
 
+/* header view */
+
 header {
     width: 100%;
-    height: 100px;
+    height: 56px;
     background-color: #ffffff;
     border-style: none none outset none;
+}
+
+header a{
+    color: black;
+    text-decoration: none;
 }
 
 #header_left {
@@ -34,22 +41,23 @@ header {
 }
 
 #header_right div {
-    font-size: 30px;
-    padding: 30px;
+    font-size: 26px;
+    padding: 13px;
 }
 
 #header_img {
-    max-height: 100px;
+    max-height: 56px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     /* object-fit: scale-down; */
 }
 
+/* main view */
+
 #leftHalf {
     float:left;
     width: 50%;
-    height: 100px;
     text-align: center;
 }
 #rightHalf {
@@ -60,42 +68,50 @@ header {
 
 #chartsDiv {
     margin-top: 20px;
-    /* float: left; */
     height: 100%;
     width: 75%;
 }
 .charts{
     margin-top: 20px;
-    /*border-radius: 50px;
-    background: #d6d6d6;
-    box-shadow:  23px 23px 47px #a1a1a1, 
-                 -23px -23px 47px #ffffff;*/
 }
 
 /*sensor card and table*/
-.sensorCard {
+.card_div {
     border: 1px solid black;
     border-collapse: separate;
     border-radius: 10px;
     margin: auto;
     width: 50%;
+    /* padding: 15px; */
     margin-top: 25px;
 }
 
-td {
+.sensorCard {
+    width: 100%;
+    padding: 15px;
+}
+
+/* td {
     padding-bottom:20px;
     padding-right:20px;   
-  }
+} */
 
-.numberTd, .labelTd {
+/* .numberTd, .labelTd {
     text-align: left;
-}
+} */
 .nameTd {
-    padding-right: 10%;
+    float: left;
     padding-top: 20px;
+    padding-left: 25px;
+    /* padding-top: 20px; */
     font-size: 1.5em;
 }
-@media screen and (max-width: 900px) {
+.labelTd {
+    padding: 10px;
+}
+
+
+/* @media screen and (max-width: 900px) {
     body {
         text-align: center;
     }
@@ -128,4 +144,4 @@ td {
     .excessGroup {
         width: 98%;
     }
-}
+} */
