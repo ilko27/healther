@@ -33,6 +33,7 @@ if (isset($_GET["email"])) {    //check url for relevant data
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/healther_clean.png" type="image/gif" sizes="16x16">
+    <title>Healther</title>
 </head>
 <body>  
     <div>

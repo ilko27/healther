@@ -29,13 +29,13 @@ header {
 }
 
 #chartsDiv {
-    margin-top: 30px;
+    margin-top: 20px;
     /* float: left; */
-    height: 700px;
-    width: 100%;
+    height: 100%;
+    width: 75%;
 }
 .charts{
-    margin-top: 10px;
+    margin-top: 20px;
     /*border-radius: 50px;
     background: #d6d6d6;
     box-shadow:  23px 23px 47px #a1a1a1, 
