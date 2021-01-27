@@ -31,29 +31,35 @@ require 'php/dbconn.php';
 
     <div id="leftHalf">
     <?php
-    $_SESSION['sensors'] = [];
     $userId = $_SESSION['userId'];
     $sqlQuery = "SELECT * FROM `sensors` WHERE user_id = ".$userId;
     $result = $conn -> query($sqlQuery);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo "<table class='sensorCard'>
-            <tr><td>".$row['sensor_name']."</td><td></td></tr>
-            <tr><td>PM2.5</td><td>23</td></tr>
-            <tr><td>Temperature</td><td>20.4</td></tr>
-            <tr><td>Humidity</td><td>70%</td></tr>
-            <tr><td>Pressure</td><td>9321</td></tr>
+            $sensorId = $row['sensor_id'];
+            $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
+            $sensorReading= $conn -> query($sensorQuery);
+            $sensData = $sensorReading->fetch_assoc();
+            echo "<table class='sensorCard' onclick='getData(".$row[sensor_id].", 20)'>
+            <tr><td class='nameTd'>".$row['sensor_name']."</td><td></td></tr>
+            <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
+            <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
+            <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
+            <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td><td><button><i class='fas fa-cog'></i> Options</td></button></tr>
             </table>";
-            if(!in_array($row['sensor_id'], $_SESSION['sensors'])){
-                array_push($_SESSION['sensors'][], $row['sensor_id']);
-            }
         }
         } else {
-        echo "You don't have any sensors";
+        echo "Your id is ".$userId.$_SESSION['userSession'];
         }
     ?>
     </div>
-    <div id="rightHalf"></div>
+    
+    <div id="rightHalf">
+        <div id='chartsDiv'>
+            <div class="charts"><canvas id="tempChart"></canvas></div>
+            <div class="charts" style="margin-top: 20px"><canvas id="humidityChart"></canvas></div>
+        </div>
+    </div>
 
     
     <script src="js/index.js"></script>
@@ -64,11 +70,7 @@ require 'php/dbconn.php';
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
 
     <script>
-        /*function selectData(){
-            var strUser = document.getElementById("sensorNames").value;
-            var rowsSelect = document.getElementById("rowsSelect").value;
-            getData(strUser, rowsSelect);
-        }
+        
         let temp = new Array();
         let humidity = new Array();
         let timestamps = new Array();
@@ -109,7 +111,7 @@ require 'php/dbconn.php';
         let tChart = makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
         let hChart = makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
 
-        window.onload = selectData();*/
+        window.onload = selectData();
     </script>
 </body>
 </html>

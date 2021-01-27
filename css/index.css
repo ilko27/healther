@@ -19,22 +19,20 @@ header {
 #leftHalf {
     float:left;
     width: 50%;
-    background-color: red;
     height: 100px;
     text-align: center;
 }
 #rightHalf {
     float:right;
     width: 50%;
-    background-color: blue;
-    height: 100px;
+    text-align: center;
 }
 
 #chartsDiv {
     margin-top: 30px;
     /* float: left; */
     height: 700px;
-    width: 40%;
+    width: 100%;
 }
 .charts{
     margin-top: 10px;
@@ -43,15 +41,28 @@ header {
     box-shadow:  23px 23px 47px #a1a1a1, 
                  -23px -23px 47px #ffffff;*/
 }
+
+/*sensor card and table*/
 .sensorCard {
     border: 1px solid black;
     border-collapse: separate;
+    border-radius: 10px;
     margin: auto;
     width: 50%;
     margin-top: 25px;
 }
-tr {
-    margin-top: 30px;
+
+td {
+    padding-bottom:20px;
+    padding-right:20px;   
+  }
+
+.numberTd, .labelTd {
+    text-align: left;
+}
+.nameTd {
+    padding-top: 20px;
+    font-size: 1.5em;
 }
 @media screen and (max-width: 900px) {
     body {

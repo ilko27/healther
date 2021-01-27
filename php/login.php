@@ -9,7 +9,7 @@ $hash_pass = md5($password);
 // $hash_pass = password_hash($password, PASSWORD_DEFAULT);
 // $hash_pass = '$2y$10$XQH.viN04JTcVf2aVffgPOR3GRVav/rxh4bb/vSPh4Jx2F97Ot25K';
 
-$sql = "SELECT * FROM users WHERE email = ? AND pass = ? AND status = 1";
+$sql = "SELECT user_id, username FROM users WHERE email = ? AND pass = ? AND status = 1";
 $stmt = mysqli_stmt_init($conn); 
 mysqli_stmt_prepare($stmt, $sql);
 mysqli_stmt_bind_param($stmt, "ss", $email, $hash_pass);
