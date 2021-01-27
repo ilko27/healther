@@ -50,7 +50,7 @@ if (screen.width <= 1500) {
             <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
             <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
             <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
-            <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td><td><button><i class='fas fa-cog'></i> Options</td></button></tr>
+            <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td><td><button onclick='editSensor(".$sensorId.")'><i class='fas fa-cog'></i> Options</td></button></tr>
             </table>";
         }
         } else {
@@ -75,8 +75,9 @@ if (screen.width <= 1500) {
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
 
     <script>
-
-        
+        function editSensor(sensorId) {
+            window.location = "https://www.healther.online/settings.php?sensorId=" + sensorId;
+        }
         
         let temp = new Array();
         let humidity = new Array();
