@@ -25,7 +25,7 @@ require 'php/dbconn.php';
 </head>
 <body>
     <header>
-        <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p>
+        <!-- <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p> -->
     </header>
     
 
@@ -40,7 +40,7 @@ require 'php/dbconn.php';
             $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
             $sensorReading= $conn -> query($sensorQuery);
             $sensData = $sensorReading->fetch_assoc();
-            echo "<table class='sensorCard' onclick='getData(".$row[sensor_id].", 20)'>
+            echo "<table class='sensorCard' onclick='getData(".$row['sensor_id'].", 20)'>
             <tr><td class='nameTd'>".$row['sensor_name']."</td><td></td></tr>
             <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
             <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
@@ -57,12 +57,12 @@ require 'php/dbconn.php';
     <div id="rightHalf">
         <div id='chartsDiv'>
             <div class="charts"><canvas id="tempChart"></canvas></div>
-            <div class="charts" style="margin-top: 20px"><canvas id="humidityChart"></canvas></div>
+            <div class="charts"><canvas id="humidityChart"></canvas></div>
         </div>
     </div>
 
     
-    <script src="js/index.js"></script>
+    <!-- <script src="js/index.js"></script> -->
     <script src="js/charts.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -95,7 +95,7 @@ require 'php/dbconn.php';
                         humidity.push(rs[i].humidity);
                     }
                     toChart();
-                    colorCards(toAverage(temp), toAverage(humidity), temp[temp.length-1], humidity[humidity.length - 1]);
+                    // colorCards(toAverage(temp), toAverage(humidity), temp[temp.length-1], humidity[humidity.length - 1]);
                     // toAverage(temp, "avTemp", "°C");
                     // toAverage(humidity, "avHumidity", "%");
                     // document.getElementById("lastTemp").innerHTML = String(temp[temp.length-1]) + "°C";
@@ -106,12 +106,12 @@ require 'php/dbconn.php';
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send(toSend);
         }
-        var ctx = document.getElementById('tempChart').getContext('2d');
-        var ctx2 = document.getElementById('humidityChart').getContext('2d');
+        let ctx = document.getElementById('tempChart').getContext('2d');
+        let ctx2 = document.getElementById('humidityChart').getContext('2d');
         let tChart = makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
         let hChart = makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
 
-        window.onload = selectData();
+        // window.onload = selectData();
     </script>
 </body>
 </html>

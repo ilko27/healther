@@ -32,6 +32,7 @@ if (isset($_GET["email"]) && isset($_GET["code"])) {    //check url for relevant
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/healther_clean.png" type="image/gif" sizes="16x16">
+    <title>Healther Confirmation</title>
 </head>
 <body>  
     <div>
