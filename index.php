@@ -8,26 +8,39 @@ if(!isset($_SESSION['userSession'])){
     $getWeather = simplexml_load_file($url);
     $getTemp = $getWeather->list->item->temperature['value'];
     $getHumidity = $getWeather->list->item->humidity['value'];
+
+    require 'php/dbconn.php';
 }
-require 'php/dbconn.php';
 ?>
 <script>
 if (screen.width <= 1100) {
     location.href = "https://m.healther.online";
 }
 </script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Healther</title>
+    <meta name="description" content="Official home of Healther">
+    <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
+
+    <meta property="og:image" content="https://healther.online/images/healther_clean.png" />
+    <meta name="keywords" content="health, air, aqi, temp, well-being, home">
+
     <script src="https://kit.fontawesome.com/3186fbbd0c.js" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
+
+
+    <meta name="author" content="Iliyan Petrov, Samuil Georgiev">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
+    
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
-    <title>Healther</title>
+    
 </head>
+
 <body>
     <header>
         <!-- <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p> -->
@@ -68,8 +81,9 @@ if (screen.width <= 1100) {
             $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
             $sensorReading= $conn -> query($sensorQuery);
             $sensData = $sensorReading->fetch_assoc();
-            echo "<div class='card_div'><p class='nameTd'>".$row['sensor_name']."</p>
-            <table class='sensorCard' onclick='getData(".$row['sensor_id'].", 20)'>
+            echo "<div class='card_div'  onclick='getData(".$row['sensor_id'].", 20)'>
+            <p class='nameTd'>".$row['sensor_name']."</p>
+            <table class='sensorCard'>
             <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
             <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
             <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
