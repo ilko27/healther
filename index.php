@@ -12,11 +12,11 @@ if(!isset($_SESSION['userSession'])){
     require 'php/dbconn.php';
 }
 ?>
-<script>
+<!-- <script>
 if (screen.width <= 1100) {
     location.href = "https://m.healther.online";
 }
-</script>
+</script> -->
 
 <!DOCTYPE html>
 <html lang="en">
