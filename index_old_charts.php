@@ -30,19 +30,13 @@ if (screen.width <= 1100) {
 
     <script src="https://kit.fontawesome.com/3186fbbd0c.js" crossorigin="anonymous"></script>
 
-    <!-- charts resources  -->
-    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script> <!-- chart theme -->
-    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-
     <meta charset="UTF-8">
 
 
     <meta name="author" content="Iliyan Petrov, Samuil Georgiev">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index_old_charts.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
     
 </head>
@@ -104,20 +98,18 @@ if (screen.width <= 1100) {
     
     <div id="rightHalf">
         <div id='chartsDiv'>
-            <div class="charts">
-                <div id="chartdiv"></div>
-            </div>
+            <div class="charts"><canvas id="tempChart"></canvas></div>
             <div class="charts"><canvas id="humidityChart"></canvas></div>
         </div>
     </div>
 
     
     <!-- <script src="js/index.js"></script> -->
-    <script src="js/charts.js"></script>
+    <script src="js/old_charts.js"></script>
     
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
 
     <script>
         function editSensor(sensorId) {
