@@ -33,7 +33,7 @@ if (screen.width <= 1100) {
     <!-- charts resources  -->
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script> <!-- chart theme -->
+    <script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 
     <meta charset="UTF-8">
@@ -87,7 +87,7 @@ if (screen.width <= 1100) {
             $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
             $sensorReading= $conn -> query($sensorQuery);
             $sensData = $sensorReading->fetch_assoc();
-            echo "<div class='card_div'  onclick='getData(".$row['sensor_id'].", 20)'>
+            echo "<div class='card_div'  onclick='getData(".$row['sensor_id'].")'>
             <p class='nameTd'>".$row['sensor_name']."</p>
             <table class='sensorCard'>
             <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
@@ -107,7 +107,7 @@ if (screen.width <= 1100) {
             <div class="charts">
                 <div id="chartdiv"></div>
             </div>
-            <div class="charts"><canvas id="humidityChart"></canvas></div>
+            <!-- <div class="charts"><canvas id="humidityChart"></canvas></div> -->
         </div>
     </div>
 
@@ -124,45 +124,7 @@ if (screen.width <= 1100) {
             window.location = "https://www.healther.online/settings.php?sensorId=" + sensorId;
         }
         
-        let temp = new Array();
-        let humidity = new Array();
-        let timestamps = new Array();
-
-        function getData(sensorn, rowsSelect){
-            
-            temp = [];
-            humidity = [];
-            timestamps = [];
-            var toSend = JSON.stringify({
-                sensorName: sensorn,
-                rowsSelect: rowsSelect
-            });
-            var xmlhttp = new XMLHttpRequest();
-            let readingsData = [];
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    rs = JSON.parse(this.responseText);
-                    for(let i = rs.length - 1; i >= 0; i--){
-                        timestamps.push(rs[i].readingTime);
-                        temp.push(rs[i].temperatureC);
-                        humidity.push(rs[i].humidity);
-                    }
-                    toChart();
-                    // colorCards(toAverage(temp), toAverage(humidity), temp[temp.length-1], humidity[humidity.length - 1]);
-                    // toAverage(temp, "avTemp", "°C");
-                    // toAverage(humidity, "avHumidity", "%");
-                    // document.getElementById("lastTemp").innerHTML = String(temp[temp.length-1]) + "°C";
-                    // document.getElementById("lastHumidity").innerHTML = String(humidity[humidity.length-1]) + "%";
-                }
-            };
-            xmlhttp.open("POST", "php/getData.php", false);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send(toSend);
-        }
-        let ctx = document.getElementById('tempChart').getContext('2d');
-        let ctx2 = document.getElementById('humidityChart').getContext('2d');
-        let tChart = makeChart(ctx, timestamps, temp, 'Temperature', 'rgba(255, 115, 105, 0.5)');
-        let hChart = makeChart(ctx2, timestamps, humidity, 'Humidity', 'rgba(38, 71, 255, 0.5)');
+        
 
         // window.onload = selectData();
     </script>
