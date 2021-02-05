@@ -67,8 +67,8 @@ function loadChart() {
     
     var series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.dateX = "date";
-    series.dataFields.valueY = "visits";
-    series.tooltipText = "Visits: [bold]{valueY}[/]";
+    series.dataFields.valueY = "Temperatue";
+    series.tooltipText = "Temperature: [bold]{valueY}[/]";
     series.fillOpacity = 0.3;
     
     
