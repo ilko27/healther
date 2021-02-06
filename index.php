@@ -67,7 +67,7 @@ if (screen.width <= 1100) {
                 </a>
             </div>
             <div id='logout_path'>
-                <a href="">
+                <a href="php/logout.php">
                     <p><i class="fas fa-sign-out-alt"></i> Logout</p>
                 </a>
             </div>

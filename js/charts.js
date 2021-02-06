@@ -1,16 +1,16 @@
-// Themes begin
-am4core.useTheme(am4themes_material);
-am4core.useTheme(am4themes_animated);
-// Create chart instance
-let chart = am4core.create("chartdiv", am4charts.XYChart);
-chart.paddingRight = 20;
+// // Themes begin
+// am4core.useTheme(am4themes_material);
+// am4core.useTheme(am4themes_animated);
+// // Create chart instance
+// let chart = am4core.create("chartdiv", am4charts.XYChart);
+// chart.paddingRight = 20;
 
 // am4core.ready(getData(69420));
 
+let data = new Array();
 
 function getData(sensorn){
 
-    // chart.clear();
     
     let toSend = JSON.stringify({
         sensorName: sensorn
@@ -22,7 +22,7 @@ function getData(sensorn){
             rs = JSON.parse(this.responseText);
             for(let i = rs.length - 1; i >= 0; i--){
 
-                chart.data.push(
+                data.push(
                     {
                         date: new Date(rs[i].readingTime),
                         visits: rs[i].temperatureC
@@ -30,7 +30,8 @@ function getData(sensorn){
                 )
                 
             }
-                loadChart();
+            loadChart();
+            // refreshChart();
             console.log(chart.data);
         }
     };
@@ -38,16 +39,53 @@ function getData(sensorn){
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(toSend);
 }
+
+function refreshChart() {
+
+    let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+    dateAxis.baseInterval = {
+      "timeUnit": "minute",
+      "count": 5
+    };
+    dateAxis.tooltipDateFormat = "yyyy.MM.dd 'at' HH:mm";
+
+    let series = chart.series.push(new am4charts.LineSeries());
+    series.dataFields.dateX = "date";
+    series.dataFields.valueY = "visits";
+    series.tooltipText = "[bold]{valueY}[/]°C";
+    series.fillOpacity = 0.3;
+
     
+    chart.cursor = new am4charts.XYCursor();
+    chart.cursor.lineY.opacity = 0;
+    chart.scrollbarX = new am4charts.XYChartScrollbar();
+    chart.scrollbarX.series.push(series);
+
+    dateAxis.start = 0.8;
+    dateAxis.keepSelection = true;
+}
+
+am4core.ready(loadChart()); 
 function loadChart() {
 
+    // Themes begin
+    am4core.useTheme(am4themes_material);
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+    
+    // Create chart
+    let chart = am4core.create("chartdiv", am4charts.XYChart);
+    chart.paddingRight = 20;
+    
+    chart.data = [];
+    chart.data = data;
     
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.baseInterval = {
       "timeUnit": "minute",
-      "count": 1
+      "count": 5
     };
-    dateAxis.tooltipDateFormat = "yyyy.MM.dd 'at' HH:mm:ss";
+    dateAxis.tooltipDateFormat = "yyyy.MM.dd 'at' HH:mm";
     
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxis.tooltip.disabled = true;
@@ -56,7 +94,7 @@ function loadChart() {
     let series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.dateX = "date";
     series.dataFields.valueY = "visits";
-    series.tooltipText = "Visits: [bold]{valueY}[/]";
+    series.tooltipText = "[bold]{valueY}[/]°C";
     series.fillOpacity = 0.3;
 
     
@@ -69,6 +107,6 @@ function loadChart() {
     dateAxis.start = 0.8;
     dateAxis.keepSelection = true;
 
-
+    
     
 }; // end am4core.ready()
