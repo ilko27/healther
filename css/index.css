@@ -40,9 +40,18 @@ header a{
     justify-content: center;
 }
 
-#header_right div {
+.headerSec button {
+    width: 43px;
+    height: 43px;
+    font-size: 20PX;
+}
+
+.headerSec {
     font-size: 26px;
-    padding: 13px;
+    padding-right: 13px;
+    padding-left: 13px;
+    padding-top: 5.5px;
+    padding-bottom: 5.5px;
 }
 
 #header_img {

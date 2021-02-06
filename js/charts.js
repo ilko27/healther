@@ -54,11 +54,13 @@ function getData(sensorn){
                 )
             }
             tChart.data = [];
-            tChart.data = storeTData;
+            tChart.data = storeTData.reverse();
             hChart.data = [];
-            hChart.data = storeHData;
+            hChart.data = storeHData.reverse();
             aqiChart.data = [];
-            aqiChart.data = storeAQIData;
+            aqiChart.data = storeAQIData.reverse();
+            
+            console.log(tChart.data);
         }
     };
     xmlhttp.open("POST", "php/getData.php", false);
@@ -67,6 +69,7 @@ function getData(sensorn){
 }
 
 function loadChart(chart, n) {
+
 
     let title_text;
     let dataFields_valueY;
@@ -90,6 +93,7 @@ function loadChart(chart, n) {
     }
 
     console.log(title_text);
+
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.baseInterval = {
       "timeUnit": "second",
@@ -98,14 +102,21 @@ function loadChart(chart, n) {
     dateAxis.tooltipDateFormat = "yyyy.MM.dd 'at' HH:mm:ss";
     
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.tooltip.disabled = true;
+    // valueAxis.tooltip.disabled = true;
     valueAxis.title.text = title_text;
+
+    // valueAxis.min = 20;
+    // valueAxis.max = 22;
+    // valueAxis.strictMinMax = true;
+
+    // chart.autoMargins = false; 
     
     let series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.dateX = "date";
     series.dataFields.valueY = dataFields_valueY;
     series.tooltipText = tooltip_Text;
     series.fillOpacity = 0.3;
+    // series.events.off("selectionextremeschanged", valueAxis.handleSelectionExtremesChange, valueAxis, false)
 
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.lineY.opacity = 0;
@@ -113,5 +124,6 @@ function loadChart(chart, n) {
     chart.scrollbarX.series.push(series);
 
     dateAxis.start = 0.8;
-    dateAxis.keepSelection = true;  
+    dateAxis.keepSelection = true;
+
 };

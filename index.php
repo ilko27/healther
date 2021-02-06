@@ -60,21 +60,21 @@ if (screen.width <= 1100) {
         </div>
         <div id='header_right'>
             <div class="headerSec">
-                <button class="btn-floating btn-large waves-effect waves-light red" onclick="addSensor()"><i class="fas fa-plus"></i></button>
+                <button class="btn-floating waves-effect waves-light red" onclick="addSensor()"><i class="fas fa-plus"></i></button>
             </div>
             <div class="headerSec">
                 <a href="">
-                    <p><i class="fas fa-map-marked-alt"></i> Map</p>
+                    <p class='menu_option'><i class="fas fa-map-marked-alt"></i> Map</p>
                 </a>
             </div>
             <div class="headerSec">
                 <a href="">
-                    <p><i class="fas fa-user-circle"></i> Account</p>
+                    <p class='menu_option'><i class="fas fa-user-circle"></i> Account</p>
                 </a>
             </div>
-            <div id='logout_path'>
+            <div class="headerSec">
                 <a href="php/logout.php">
-                    <p><i class="fas fa-sign-out-alt"></i> Logout</p>
+                    <p class='menu_option'><i class="fas fa-sign-out-alt"></i> Logout</p>
                 </a>
             </div>
 
