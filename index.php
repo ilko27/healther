@@ -105,7 +105,13 @@ if (screen.width <= 1100) {
     <div id="rightHalf">
         <div id='chartsDiv'>
             <div class="charts">
-                <div id="chartdiv"></div>
+                <div class="chartdiv" id="aqi_chartdiv"></div>
+            </div>
+            <div class="charts">
+                <div class="chartdiv" id="t_chartdiv"></div>
+            </div>
+            <div class="charts">
+                <div class="chartdiv" id="h_chartdiv"></div>
             </div>
             <!-- <div class="charts"><canvas id="humidityChart"></canvas></div> -->
         </div>

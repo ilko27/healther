@@ -3,12 +3,22 @@
 am4core.useTheme(am4themes_material);
 am4core.useTheme(am4themes_animated);
 // Create chart instance
-let chart = am4core.create("chartdiv", am4charts.XYChart);
-chart.paddingRight = 20;
-// Initiate chart
-am4core.ready(loadChart());
+let tChart = am4core.create("t_chartdiv", am4charts.XYChart);
+tChart.paddingRight = 20;
+let hChart = am4core.create("h_chartdiv", am4charts.XYChart);
+hChart.paddingRight = 20;
+let aqiChart = am4core.create("aqi_chartdiv", am4charts.XYChart);
+aqiChart.paddingRight = 20;
+// Initiate charts
+am4core.ready(
+    loadChart(aqiChart, 1),
+    loadChart(tChart, 2),
+    loadChart(hChart, 3)
+);
 
-let storeData = new Array();
+let storeTData = new Array();
+let storeHData = new Array();
+let storeAQIData = new Array();
 
 function getData(sensorn){
 
@@ -17,21 +27,38 @@ function getData(sensorn){
         sensorName: sensorn
     });
     let xmlhttp = new XMLHttpRequest();
-    let readingsData = [];
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             rs = JSON.parse(this.responseText);
-            storeData = [];
+            storeTData = [];
+            storeHData = [];
+            storeAQIData = [];
             for(let i = rs.length - 1; i >= 0; i--){
-                storeData.push(
+                storeTData.push(
                     {
                         date: new Date(rs[i].readingTime),
                         temp: rs[i].temperatureC
                     }
                 )
+                storeHData.push(
+                    {
+                        date: new Date(rs[i].readingTime),
+                        hum: rs[i].humidity
+                    }
+                )
+                storeAQIData.push(
+                    {
+                        date: new Date(rs[i].readingTime),
+                        aqi: rs[i].aqi
+                    }
+                )
             }
-            chart.data = [];
-            chart.data = storeData;
+            tChart.data = [];
+            tChart.data = storeTData;
+            hChart.data = [];
+            hChart.data = storeHData;
+            aqiChart.data = [];
+            aqiChart.data = storeAQIData;
         }
     };
     xmlhttp.open("POST", "php/getData.php", false);
@@ -39,22 +66,45 @@ function getData(sensorn){
     xmlhttp.send(toSend);
 }
 
-function loadChart() {
+function loadChart(chart, n) {
+
+    let title_text;
+    let dataFields_valueY;
+    let tooltip_Text;
+
+    if (n == 1) {
+        console.log(1);
+        title_text = 'AQI';
+        dataFields_valueY = 'aqi';
+        tooltip_Text = '[bold]{valueY}[/]';
+    } else if (n == 2) {
+        console.log(2);
+        title_text = 'Temperature';
+        dataFields_valueY = 'temp';
+        tooltip_Text = '[bold]{valueY}[/]°C';
+    } else {
+        console.log(3);
+        title_text = 'Humidity';
+        dataFields_valueY = 'hum';
+        tooltip_Text = '[bold]{valueY}[/]';
+    }
+
+    console.log(title_text);
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.baseInterval = {
-      "timeUnit": "minute",
-      "count": 5
+      "timeUnit": "second",
+      "count": 1
     };
-    dateAxis.tooltipDateFormat = "yyyy.MM.dd 'at' HH:mm";
+    dateAxis.tooltipDateFormat = "yyyy.MM.dd 'at' HH:mm:ss";
     
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxis.tooltip.disabled = true;
-    valueAxis.title.text = "Temperature";
+    valueAxis.title.text = title_text;
     
     let series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.dateX = "date";
-    series.dataFields.valueY = "temp";
-    series.tooltipText = "[bold]{valueY}[/]°C";
+    series.dataFields.valueY = dataFields_valueY;
+    series.tooltipText = tooltip_Text;
     series.fillOpacity = 0.3;
 
     chart.cursor = new am4charts.XYCursor();
