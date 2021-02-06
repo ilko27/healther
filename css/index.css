@@ -66,10 +66,10 @@ header a{
     text-align: center;
 }
 
-#chartdiv {
+.chartdiv {
     width: 100%;
     height: 500px;
-  }
+}
   
 /* #chartsDiv {
     margin-top: 20px;
