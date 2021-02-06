@@ -38,6 +38,9 @@ if (screen.width <= 1100) {
 
     <meta charset="UTF-8">
 
+    <!-- materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <meta name="author" content="Iliyan Petrov, Samuil Georgiev">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,17 +59,20 @@ if (screen.width <= 1100) {
             </a>
         </div>
         <div id='header_right'>
-            <div id='map_path'>
+            <div class="headerSec">
+                <button class="btn-floating btn-large waves-effect waves-light red" onclick="addSensor()"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="headerSec">
                 <a href="">
                     <p><i class="fas fa-map-marked-alt"></i> Map</p>
                 </a>
             </div>
-            <div id='account_path'>
+            <div class="headerSec">
                 <a href="">
                     <p><i class="fas fa-user-circle"></i> Account</p>
                 </a>
             </div>
-            <div id='logout_path'>
+            <div class="headerSec">
                 <a href="">
                     <p><i class="fas fa-sign-out-alt"></i> Logout</p>
                 </a>
@@ -123,10 +129,31 @@ if (screen.width <= 1100) {
         function editSensor(sensorId) {
             window.location = "https://www.healther.online/settings.php?sensorId=" + sensorId;
         }
-        
-        
 
-        // window.onload = selectData();
+        function addSensor(){
+            var sensorId = prompt("Enter sensor id", "");
+
+            if (sensorId == null || sensorId == "") {
+            txt = "User cancelled the prompt.";
+            } else {
+                addInDB(sensorId);
+            }
+        }
+
+        function addInDB(sensorId){
+            let idToSend = JSON.stringify({
+                sensorId: sensorId
+            });
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(sensorId);
+                }
+            };
+            xmlhttp.open("POST", "php/addSensor.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(idToSend);
+        }
     </script>
 </body>
 </html>
