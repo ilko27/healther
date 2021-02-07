@@ -26,7 +26,7 @@ if (screen.width <= 1100) {
     <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
 
     <meta property="og:image" content="https://healther.online/images/healther_clean.png" />
-    <meta name="keywords" content="health, air, aqi, temp, well-being, home">
+    <meta name="keywords" content="health, air, aqi, temp, well-being, home, healther">
 
     <script src="https://kit.fontawesome.com/3186fbbd0c.js" crossorigin="anonymous"></script>
 
@@ -98,12 +98,12 @@ if (screen.width <= 1100) {
             <table class='sensorCard'>
             <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
             <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
-            <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
-            <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td><td><button onclick='editSensor(".$sensorId.")'><i class='fas fa-cog'></i> Options</td></button></tr>
+            <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td><td class='tdBtn'><button class='cardBtn' onclick='editSensor($sensorId)'><i class='fas fa-cog'></i> Options</button></td></tr>
+            <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td><td class='tdBtn'><button class='cardBtn' onclick='removeSensor($sensorId)'><i class='fas fa-trash-alt'></i> Remove</button></td></tr>
             </table></div>";
         }
         } else {
-        echo "Your id is ".$userId.$_SESSION['userSession'];
+        echo "You don't have any sensors added. You can add one by clicking <button onclick='addSensor()'>Here</button>";
         }
     ?>
     </div>
@@ -133,7 +133,7 @@ if (screen.width <= 1100) {
 
     <script>
         function editSensor(sensorId) {
-            window.location = "https://www.healther.online/settings.php?sensorId=" + sensorId;
+            window.location = "settings.php?sensorId=" + sensorId;
         }
 
         function addSensor(){
@@ -146,6 +146,21 @@ if (screen.width <= 1100) {
             }
         }
 
+        function removeSensor(sensorId) {
+            let idToSend = JSON.stringify({
+                sensorId: sensorId
+            });
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    location.reload();
+                }
+            };
+            xmlhttp.open("POST", "php/deleteSensor.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(idToSend);
+        }
+
         function addInDB(sensorId){
             let idToSend = JSON.stringify({
                 sensorId: sensorId
@@ -154,6 +169,7 @@ if (screen.width <= 1100) {
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(sensorId);
+                    location.reload();
                 }
             };
             xmlhttp.open("POST", "php/addSensor.php", false);

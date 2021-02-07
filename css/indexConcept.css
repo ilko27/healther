@@ -8,10 +8,38 @@
 }
 
 body {
-    background-color: #d6d6d6;
-    margin: 0;
-    padding: 0;
+    background-color: #e1eefd;
 }
+
+.card_div {
+    border-radius: 30px;
+    background: #e1eefd;
+    box-shadow:  24px 24px 48px #b6c1cd, 
+                -24px -24px 48px #ffffff;
+    margin: auto;
+    width: 50%;
+    /* padding: 15px; */
+    margin-top: 25px;
+}
+.cardBtn {
+    border-radius: 150px;
+    background: #d9d9d9;
+    box-shadow: inset 5px 5px 10px #8b8b8b, 
+                inset -5px -5px 10px #ffffff;
+    height: 40px;
+    width: 40px;
+}
+
+
+table, tr, td {
+    border: none;
+}
+
+.tdBtn {
+    padding: 0 !important;
+}
+
+
 
 /* header view */
 
@@ -79,40 +107,13 @@ header a{
     width: 75%;
     height: 400px;
 }
-  
-/* #chartsDiv {
-    margin-top: 20px;
-    height: 100%;
-    width: 75%;
-}
-.charts{
-    margin-top: 20px;
-} */
 
-/*sensor card and table*/
-.card_div {
-    border: 1px solid black;
-    border-collapse: separate;
-    border-radius: 10px;
-    margin: auto;
-    width: 50%;
-    /* padding: 15px; */
-    margin-top: 25px;
-}
 
 .sensorCard {
     width: 100%;
     padding: 15px;
 }
 
-/* td {
-    padding-bottom:20px;
-    padding-right:20px;   
-} */
-
-/* .numberTd, .labelTd {
-    text-align: left;
-} */
 .nameTd {
     float: left;
     padding-top: 20px;
@@ -123,38 +124,3 @@ header a{
 .labelTd {
     padding: 10px;
 }
-
-/* @media screen and (max-width: 900px) {
-    body {
-        text-align: center;
-    }
-    #chartsDiv, #map {
-        float: none;
-        width: 100%;
-    }
-    #map {
-        width: 0%;
-    }
-    .charts {
-        margin-top: 20px;
-        height: max-content;
-    }
-    #map {
-        margin-top: 100px;
-        height: 300px;
-    }
-    * {
-        border: none;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-    }
-    .cardGroup, .excessCards {
-        width: 48%;
-        margin: 1%;
-        float: left;
-    }
-    .excessGroup {
-        width: 98%;
-    }
-} */
