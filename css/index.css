@@ -46,6 +46,10 @@ header a{
     font-size: 20PX;
 }
 
+#headerSecButton {
+    padding-top: 2.5px;
+}
+
 .headerSec {
     font-size: 26px;
     padding-right: 13px;
