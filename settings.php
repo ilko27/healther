@@ -1,11 +1,13 @@
 <?php
 session_start();
+// IS COOKIE SET
 if(!isset($_SESSION['userSession'])){
     header("Location: pages/login.php");
     exit();
 }
 require 'php/dbconn.php';
 
+// CHECK IF SENSOR IS YOURS
 $sensorId = $_GET['sensorId'];
 $userId = $_SESSION['userId'];
 $sql = "SELECT * FROM sensors WHERE sensors.user_id = $userId AND sensors.sensor_id = $sensorId";

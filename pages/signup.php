@@ -13,7 +13,11 @@ if (isset($_SESSION['userSession'])) {
     <link rel="icon" href="../images/healther_clean.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="../css/sign.css">
     <title>Healther Signup</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>  
     <div id="firsthalf">
@@ -22,7 +26,6 @@ if (isset($_SESSION['userSession'])) {
             <input type="email" id="email" placeholder="Email" class="textplace"> <br>
             <input type="text" id="username" placeholder="Username" class="textplace"> <br>
             <input type="password" id="password" placeholder="Password" class="textplace"> <br>
-            <div class="g-recaptcha" data-sitekey="6LeUJf4ZAAAAALP-wiQtHkSNIttnWztFPTSImroI"></div>
             <input type="password" id="re_password" placeholder="Repeat Password" class="textplace"> <br>
             <input type="button" value="Sign Up" class="buttonDes" onclick="send()">
             <p>Sign in <a href="login.php">Here</a></p>

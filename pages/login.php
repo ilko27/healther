@@ -13,15 +13,38 @@ if (isset($_SESSION['userSession'])) {
     <link rel="icon" href="../images/healther_clean.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="../css/sign.css">
     <title>Healther Login</title>
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <form style="text-align: center;">
-        <p id='message'></p>
-        <input type="email" id="email" placeholder="email" class="textplace"> <br>
-        <input type="password" id="password" placeholder="Password" class="textplace"> <br>
-        <input type="button" onclick="send()" value="Log In" class="buttonDes">
-        <p>Sign up <a href="signup.php">Here</a></p>
-    </form>
+    <div class="leftDiv">
+        <div class="row center-align">
+            <form class="textform">
+                <p id='message'></p>
+                <!-- <input type="email" id="email" placeholder="email" class="validate"> <br>
+                <input type="password" id="password" placeholder="Password"> <br> -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="text" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <input type="button" onclick="send()" value="Log In" class="waves-effect waves-light btn" style="outline: none">
+                <p>Sign up <a href="signup.php">Here</a></p>
+            </form>
+        </div>
+    </div>
+    
     <script>
         function send(){
             let email = document.getElementById("email").value;
