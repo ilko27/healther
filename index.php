@@ -126,7 +126,7 @@ if (screen.width <= 1100) {
             </table></div>";*/
             echo "<div class='row'>
             <div class='col s12 m6'>
-              <div class='card blue-grey darken-1'>
+              <div class='card blue-grey darken-1' onclick='getData(".$row['sensor_id'].")'>
                 <div class='card-content white-text'>
                     <span class='card-title'>".$row['sensor_name']."</span>
                     <table>

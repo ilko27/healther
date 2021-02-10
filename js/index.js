@@ -92,3 +92,49 @@ function runDefaltPosition(x, y, z) {   // map
     map.addLayer(osmLayer).addLayer(waqiLayer);
 
 }
+
+function colorCards(avTemp, avHumidity, lastTemp, lastHumidity) {    // info cards
+    let maxTemp = 25;
+    let minTemp = 20;
+    let maxHumidity = 50;
+    let minHumidity = 30;
+    let avTempCard = document.getElementsByClassName("card")[0];
+    avTempCard.classList = "";
+    avTempCard.classList.add("card");
+    document.getElementById("avTemp").innerHTML = avTemp + "°C";
+    if(avTemp > maxTemp){
+        avTempCard.classList.add("bgabove");
+    } else if (avTemp < minTemp){
+        avTempCard.classList.add("bgbelow");
+    }
+
+    let avHumidityCard = document.getElementsByClassName("card")[1];
+    avHumidityCard.classList = "";
+    avHumidityCard.classList.add("card");
+    document.getElementById("avHumidity").innerHTML = avHumidity + "%";
+    if(avHumidity > maxHumidity){
+        avHumidityCard.classList.add("bgabove");
+    } else if (avHumidity < minHumidity){
+        avHumidityCard.classList.add("bgbelow");
+    }
+
+    let lastTempCard = document.getElementsByClassName("card")[2];
+    lastTempCard.classList = "";
+    lastTempCard.classList.add("card");
+    document.getElementById("lastTemp").innerHTML = lastTemp + "°C";
+    if(lastTemp > maxTemp){
+        lastTempCard.classList.add("bgabove");
+    } else if (lastTemp < minTemp){
+        lastTempCard.classList.add("bgbelow");
+    }
+
+    let lastHumidityCard = document.getElementsByClassName("card")[3];
+    lastHumidityCard.classList = "";
+    lastHumidityCard.classList.add("card");
+    document.getElementById("lastHumidity").innerHTML = lastHumidity + "%";
+    if(lastHumidity > maxHumidity){
+        lastHumidityCard.classList.add("bgabove");
+    } else if (lastHumidity < minHumidity){
+        lastHumidityCard.classList.add("bgbelow");
+    }
+}
