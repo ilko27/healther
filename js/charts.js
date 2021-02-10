@@ -10,13 +10,15 @@ hChart.paddingRight = 20;
 let aqiChart = am4core.create("aqi_chartdiv", am4charts.XYChart);
 aqiChart.paddingRight = 20;
 
-let valueAxis = tChart.yAxes.push(new am4charts.ValueAxis());
-valueAxis.min = 10;
-valueAxis.max = 40; 
+// BAD IDEA; HAHAHA
+// let valueAxis = tChart.yAxes.push(new am4charts.ValueAxis());
+// valueAxis.min = 10;
+// valueAxis.max = 40; 
 
-let valueAxis2 = hChart.yAxes.push(new am4charts.ValueAxis());
-valueAxis2.min = 30;
-valueAxis2.max = 100; 
+// let valueAxis2 = hChart.yAxes.push(new am4charts.ValueAxis());
+// valueAxis2.min = 30;
+// valueAxis2.max = 100;
+
 // Initiate charts
 am4core.ready(
     loadChart(aqiChart, 1),

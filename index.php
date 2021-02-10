@@ -59,7 +59,7 @@ if (screen.width <= 1100) {
             </a>
         </div>
         <div id='header_right'>
-            <div class="headerSec">
+            <div id='headerSecButton' class="headerSec">
                 <button class="btn-floating waves-effect waves-light red" onclick="addSensor()"><i class="fas fa-plus"></i></button>
             </div>
             <div class="headerSec">
