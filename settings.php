@@ -27,10 +27,15 @@ if($num_rows != 1){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Sensor</title>
     <link rel="stylesheet" href="css/index.css">
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <header>
-        <!-- <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p> -->
+    <!-- <header>
         <div id="header_left">
             <a href="index.php">
                 <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
@@ -54,7 +59,17 @@ if($num_rows != 1){
             </div>
 
         </div>
-    </header>
+    </header> -->
+    <nav>
+        <div class="nav-wrapper blue">
+            <a href="index.php" class="brand-logo"><img id="header_img" src="images/big_healther_clear.png" alt="Healther"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="">Map</a></li>
+                <li><a href="">Account</а></li>
+                <li><a href="php/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
     <div id="leftHalf">
     <br>
         <form>

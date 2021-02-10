@@ -27,7 +27,7 @@ if (isset($_SESSION['userSession'])) {
             <input type="text" id="username" placeholder="Username" class="textplace"> <br>
             <input type="password" id="password" placeholder="Password" class="textplace"> <br>
             <input type="password" id="re_password" placeholder="Repeat Password" class="textplace"> <br>
-            <input type="button" value="Sign Up" class="buttonDes" onclick="send()">
+            <a class="waves-effect waves-light btn" onclick="send()">Sign Up</a>
             <p>Sign in <a href="login.php">Here</a></p>
         </form>
     </div>

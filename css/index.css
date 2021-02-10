@@ -12,7 +12,10 @@ body {
     margin: 0;
     padding: 0;
 }
-
+.nav-wrapper {
+    background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
+    /*background-image: linear-gradient(rgba(13,84,138,1), rgba(51,221,225,1));*/
+}
 /* header view */
 
 header {
@@ -94,15 +97,15 @@ header a{
 } */
 
 /*sensor card and table*/
-.card_div {
+/* .card_div {
     border: 1px solid black;
     border-collapse: separate;
     border-radius: 10px;
     margin: auto;
     width: 50%;
-    /* padding: 15px; */
+    padding: 15px;
     margin-top: 25px;
-}
+} */
 
 .sensorCard {
     width: 100%;

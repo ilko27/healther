@@ -39,7 +39,8 @@ if (isset($_SESSION['userSession'])) {
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <input type="button" onclick="send()" value="Log In" class="waves-effect waves-light btn" style="outline: none">
+                <!-- <input type="button" onclick="send()" value="Log In" class="waves-effect waves-light btn subButton" > -->
+                <a class="waves-effect waves-light btn" onclick="send()">Log In</a>
                 <p>Sign up <a href="signup.php">Here</a></p>
             </form>
         </div>

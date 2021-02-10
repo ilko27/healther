@@ -51,8 +51,8 @@ if (screen.width <= 1100) {
 </head>
 
 <body>
-    <header>
-        <!-- <p>Welcome! Go to the BETA version by clicking <a href='index_beta.php'>here</a>.</p> -->
+    <!-- <header>
+        
         <div id="header_left">
             <a href="">
                 <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
@@ -79,7 +79,30 @@ if (screen.width <= 1100) {
             </div>
 
         </div>
-    </header>
+    </header> -->
+
+    <!-- <nav>
+        <div class="nav-wrapper blue">
+            <a href="" class="brand-logo"><img id="header_img" src="images/big_healther_clear.png" alt="Healther"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a>Add Sensor</a></li>
+                <li><a href="">Map</a></li>
+                <li><a href="">Account</а></li>
+                <li><a href="php/logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav> -->
+    <nav>
+        <div class="nav-wrapper">
+        <a href="" class="brand-logo"><img id="header_img" src="images/big_healther_clear.png" alt="Healther"></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a onclick="addSensor()">Add Sensor</a></li>
+            <li><a href="">Map</a></li>
+            <li><a href="php/logout.php">Logout</a></li>
+            <li><a href="">Account</а></li>
+        </ul>
+        </div>
+    </nav>
     
 
     <div id="leftHalf">
@@ -93,17 +116,36 @@ if (screen.width <= 1100) {
             $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
             $sensorReading= $conn -> query($sensorQuery);
             $sensData = $sensorReading->fetch_assoc();
-            echo "<div class='card_div'  onclick='getData(".$row['sensor_id'].")'>
+            /*echo "<div class='card_div'  onclick='getData(".$row['sensor_id'].")'>
             <p class='nameTd'>".$row['sensor_name']."</p>
             <table class='sensorCard'>
             <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
             <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
             <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td><td class='tdBtn'><button class='cardBtn' onclick='editSensor($sensorId)'><i class='fas fa-cog'></i> Options</button></td></tr>
             <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td><td class='tdBtn'><button class='cardBtn' onclick='removeSensor($sensorId)'><i class='fas fa-trash-alt'></i> Remove</button></td></tr>
-            </table></div>";
+            </table></div>";*/
+            echo "<div class='row'>
+            <div class='col s12 m6'>
+              <div class='card blue-grey darken-1'>
+                <div class='card-content white-text'>
+                    <span class='card-title'>".$row['sensor_name']."</span>
+                    <table>
+                        <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
+                        <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
+                        <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
+                        <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td></tr>        
+                    </table>
+                </div>
+                <div class='card-action'>
+                    <a onclick='editSensor($sensorId)'>Edit</a>
+                    <a onclick='removeSensor($sensorId)'>Remove</a>
+                </div>
+              </div>
+            </div>
+          </div>";
         }
         } else {
-        echo "You don't have any sensors added. You can add one by clicking <button onclick='addSensor()'>Here</button>";
+        echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
         }
     ?>
     </div>

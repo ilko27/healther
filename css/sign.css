@@ -23,8 +23,11 @@ body {
 /*  Label CSS  */
 .input-field label {
     color: #000 !important;
-  }
+}
 
+.subButton {
+    outline:none;
+}
 
 .leftDiv {
     width: 33%;
