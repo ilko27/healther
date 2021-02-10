@@ -116,14 +116,6 @@ if (screen.width <= 1100) {
             $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
             $sensorReading= $conn -> query($sensorQuery);
             $sensData = $sensorReading->fetch_assoc();
-            /*echo "<div class='card_div'  onclick='getData(".$row['sensor_id'].")'>
-            <p class='nameTd'>".$row['sensor_name']."</p>
-            <table class='sensorCard'>
-            <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
-            <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
-            <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td><td class='tdBtn'><button class='cardBtn' onclick='editSensor($sensorId)'><i class='fas fa-cog'></i> Options</button></td></tr>
-            <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td><td class='tdBtn'><button class='cardBtn' onclick='removeSensor($sensorId)'><i class='fas fa-trash-alt'></i> Remove</button></td></tr>
-            </table></div>";*/
             echo "<div class='row'>
             <div class='col s12 m6'>
               <div class='card blue-grey darken-1'>
