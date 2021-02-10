@@ -18,7 +18,7 @@ body {
 }
 /* header view */
 
-header {
+/* header {
     width: 100%;
     height: 56px;
     background-color: #ffffff;
@@ -59,10 +59,11 @@ header a{
     padding-left: 13px;
     padding-top: 5.5px;
     padding-bottom: 5.5px;
-}
+} */
 
 #header_img {
     max-height: 56px;
+    /* max-height: 64px; */
     display: block;
     margin-left: auto;
     margin-right: auto;
