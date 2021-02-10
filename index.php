@@ -25,7 +25,7 @@ if (screen.width <= 1100) {
     <meta name="description" content="Official home of Healther">
     <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
 
-    <meta property="og:image" content="https://healther.online/images/healther_clean.png" />
+    <meta property="image" content="https://healther.online/images/healther_clean.png" />
     <meta name="keywords" content="health, air, aqi, temp, well-being, home, healther">
 
     <script src="https://kit.fontawesome.com/3186fbbd0c.js" crossorigin="anonymous"></script>
@@ -37,6 +37,9 @@ if (screen.width <= 1100) {
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 
     <meta charset="UTF-8">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <!-- materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -81,27 +84,34 @@ if (screen.width <= 1100) {
         </div>
     </header> -->
 
-    <!-- <nav>
-        <div class="nav-wrapper blue">
-            <a href="" class="brand-logo"><img id="header_img" src="images/big_healther_clear.png" alt="Healther"></a>
+   
+
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="">Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="php/logout.php">Logout</а></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="" class="brand-logo">
+                <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
+            </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a>Add Sensor</a></li>
+                <li><a onclick="addSensor()">Add Sensor</a>
                 <li><a href="">Map</a></li>
-                <li><a href="">Account</а></li>
-                <li><a href="php/logout.php">Logout</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger" data-target="dropdown1">Account</a></li>
             </ul>
         </div>
-    </nav> -->
-    <nav>
+    </nav>
+
+    <script>$(".dropdown-trigger").dropdown();</script>
+
+    <!-- <nav>
         <div class="nav-wrapper">
             <a href="#" class="brand-logo">
                 <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
             </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a href="php/logout.php">Logout</а>
-                </li>
-            </ul>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     <a onclick="addSensor()">Add Sensor</a>
@@ -112,9 +122,12 @@ if (screen.width <= 1100) {
                 <li>
                     <a href="#">Account</а>
                 </li>
+                <li>
+                    <a href="php/logout.php">Logout</а>
+                </li>
             </ul>
         </div>
-    </nav>
+    </nav> -->
     
 
     <div id="leftHalf">

@@ -1,4 +1,3 @@
-
 // Chart themes
 am4core.useTheme(am4themes_material);
 am4core.useTheme(am4themes_animated);
