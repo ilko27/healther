@@ -162,10 +162,15 @@ if (screen.width <= 1100) {
                             </div>
                         </div>";
             }
+            $_SESSION['sensorId'] = $sensorId;
         } else {
             echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
         }
     ?>
+
+    <script>
+    
+    </script>
 
     </div>
     
