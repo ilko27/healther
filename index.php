@@ -49,87 +49,16 @@ if (screen.width <= 1100) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
     
 </head>
 
-<body>
-    <!-- <header>
-        
-        <div id="header_left">
-            <a href="">
-                <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
-            </a>
-        </div>
-        <div id='header_right'>
-            <div id='headerSecButton' class="headerSec">
-                <button class="btn-floating waves-effect waves-light red" onclick="addSensor()"><i class="fas fa-plus"></i></button>
-            </div>
-            <div class="headerSec">
-                <a href="">
-                    <p class='menu_option'><i class="fas fa-map-marked-alt"></i> Map</p>
-                </a>
-            </div>
-            <div class="headerSec">
-                <a href="">
-                    <p class='menu_option'><i class="fas fa-user-circle"></i> Account</p>
-                </a>
-            </div>
-            <div class="headerSec">
-                <a href="php/logout.php">
-                    <p class='menu_option'><i class="fas fa-sign-out-alt"></i> Logout</p>
-                </a>
-            </div>
+<body>   
 
-        </div>
-    </header> -->
+    <?php include 'pages/header.php';?>
 
-   
-
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="">Settings</a></li>
-        <li class="divider"></li>
-        <li><a href="php/logout.php">Logout</а></li>
-    </ul>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="" class="brand-logo">
-                <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a onclick="addSensor()">Add Sensor</a>
-                <li><a href="">Map</a></li>
-                <!-- Dropdown Trigger -->
-                <li><a class="dropdown-trigger" data-target="dropdown1">Account</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <script>$(".dropdown-trigger").dropdown();</script>
-
-    <!-- <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">
-                <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a onclick="addSensor()">Add Sensor</a>
-                </li>
-                <li>
-                    <a href="#">Map</a>
-                </li>
-                <li>
-                    <a href="#">Account</а>
-                </li>
-                <li>
-                    <a href="php/logout.php">Logout</а>
-                </li>
-            </ul>
-        </div>
-    </nav> -->
     
-
     <div id="leftHalf">
 
     <?php
@@ -143,7 +72,7 @@ if (screen.width <= 1100) {
                 $sensorReading= $conn -> query($sensorQuery);
                 $sensData = $sensorReading->fetch_assoc();
                 echo "  <div class='row'>
-                            <div class='col s12 m6'>
+                            <div class='col s12 m12'>
                                 <div class='card blue-grey darken-1' onclick='getData(".$row['sensor_id'].")'>
                                     <div class='card-content white-text'>
                                         <span class='card-title'>".$row['sensor_name']."</span>

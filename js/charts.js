@@ -137,7 +137,7 @@ function loadChart(chart, n) {
 
 };
 
-// Loading a chart on refresh and showing the most recent data 
+// Loading a chart on refresh and showing the most recent data
 function getCookie(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(';');

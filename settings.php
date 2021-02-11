@@ -26,8 +26,18 @@ if($num_rows != 1){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Sensor</title>
+    <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/header.css">
 
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <meta name="author" content="Iliyan Petrov, Samuil Georgiev">
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -35,41 +45,9 @@ if($num_rows != 1){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <!-- <header>
-        <div id="header_left">
-            <a href="index.php">
-                <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
-            </a>
-        </div>
-        <div id='header_right'>
-            <div class="headerSec">
-                <a href="">
-                    <p class='menu_option'><i class="fas fa-map-marked-alt"></i> Map</p>
-                </a>
-            </div>
-            <div class="headerSec">
-                <a href="">
-                    <p class='menu_option'><i class="fas fa-user-circle"></i> Account</p>
-                </a>
-            </div>
-            <div class="headerSec">
-                <a href="php/logout.php">
-                    <p class='menu_option'><i class="fas fa-sign-out-alt"></i> Logout</p>
-                </a>
-            </div>
+    
+    <?php include 'pages/header.php';?>
 
-        </div>
-    </header> -->
-    <nav>
-        <div class="nav-wrapper blue">
-            <a href="index.php" class="brand-logo"><img id="header_img" src="images/big_healther_clear.png" alt="Healther"></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="">Map</a></li>
-                <li><a href="">Account</а></li>
-                <li><a href="php/logout.php">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
     <div id="leftHalf">
     <br>
         <form>
