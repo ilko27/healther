@@ -73,8 +73,8 @@ if($num_rows != 1){
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    alert("Sensor updated");
-                    window.locaton = "index.php";
+                    // alert("Sensor updated");
+                    window.location.assign('index.php');
                 }
             };
             xmlhttp.open("POST", "php/updateSensor.php", false);

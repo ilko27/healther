@@ -39,11 +39,15 @@ if (screen.width <= 1100) {
     <meta charset="UTF-8">
 
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
     <!-- materialize -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <meta name="author" content="Iliyan Petrov, Samuil Georgiev">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +63,7 @@ if (screen.width <= 1100) {
     <?php include 'pages/header.php';?>
 
     
-    <div id="leftHalf">
+    <div id="leftHalf" class="half">
 
     <?php
         $userId = $_SESSION['userId'];
@@ -71,27 +75,48 @@ if (screen.width <= 1100) {
                 $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
                 $sensorReading= $conn -> query($sensorQuery);
                 $sensData = $sensorReading->fetch_assoc();
-                echo "  <div class='row'>
-                            <div class='col s12 m12'>
-                                <div class='card blue-grey darken-1' onclick='getData(".$row['sensor_id'].")'>
-                                    <div class='card-content white-text'>
-                                        <span class='card-title'>".$row['sensor_name']."</span>
-                                        <table>
-                                            <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
-                                            <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
-                                            <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
-                                            <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td></tr>        
-                                        </table>
-                                    </div>
-                                    <div class='card-action'>
-                                        <a onclick='editSensor($sensorId)'>Edit</a>
-                                        <a onclick='removeSensor($sensorId)'>Remove</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>";
+                
+                echo "
+                    <div class='card text-white bg-secondary mb-3' onclick='getData(".$row['sensor_id'].")'>
+                        <div class='card-body'>
+                            <h3 class='card-title'>".$row['sensor_name']."</h3>
+                            <br>
+                            <table class='table text-white table-borderless'>
+                                <tbody>
+                                    <tr><td class='labelTd'>AQI</td><td class='numberTd'>".$sensData['aqi']."</td></tr>
+                                    <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
+                                    <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
+                                    <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td></tr>        
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class='card-footer'>
+                            <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'>Edit</button>
+                            <button type='button' class='btn btn btn-outline-light' onclick='removeSensor($sensorId)'>Remove</button>
+                        </div>
+                    </div>
+                ";
+
+                // echo "  <div class='row'>
+                //             <div class='col s12 m12'>
+                //                 <div class='card blue-grey darken-1' onclick='getData(".$row['sensor_id'].")'>
+                //                     <div class='card-content white-text'>
+                //                         <span class='card-title'>".$row['sensor_name']."</span>
+                //                         <table>
+                //                             <tr><td class='labelTd'>PM2.5</td><td class='numberTd'>23</td></tr>
+                //                             <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
+                //                             <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
+                //                             <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td></tr>        
+                //                         </table>
+                //                     </div>
+                //                     <div class='card-action'>
+                //                         <a onclick='editSensor($sensorId)'>Edit</a>
+                //                         <a onclick='removeSensor($sensorId)'>Remove</a>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>";
             }
-            $_SESSION['sensorId'] = $sensorId;
         } else {
             echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
         }
@@ -100,7 +125,7 @@ if (screen.width <= 1100) {
 
     </div>
     
-    <div id="rightHalf">
+    <div id="rightHalf" class="half">
         <div id='chartsDiv'>
             <div class="charts">
                 <div class="chartdiv" id="aqi_chartdiv"></div>
@@ -129,7 +154,7 @@ if (screen.width <= 1100) {
         }
 
         function addSensor(){
-            var sensorId = prompt("Enter sensor id", "");
+            let sensorId = prompt("Enter sensor id", "");
 
             if (sensorId == null || sensorId == "") {
             txt = "User cancelled the prompt.";

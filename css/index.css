@@ -27,60 +27,36 @@ body {
     text-align: center;
 }
 
+#leftHalf div {
+    background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
+}
+
+
+
+.half {
+    padding: 20px;
+}
+
 .chartdiv {
     width: 100%;
     height: 400px;
 }
-  
-.card-action a {
-    cursor: pointer;
+
+.card-body {
+    padding-left: 50px;
 }
 
-
-
-
-/* #chartsDiv {
-    margin-top: 20px;
-    height: 100%;
-    width: 75%;
-}
-.charts{
-    margin-top: 20px;
-} */
-
-/*sensor card and table*/
-/* .card_div {
-    border: 1px solid black;
-    border-collapse: separate;
-    border-radius: 10px;
-    margin: auto;
-    width: 50%;
-    padding: 15px;
-    margin-top: 25px;
-} */
-
-.sensorCard {
-    width: 100%;
-    padding: 15px;
-}
-
-/* td {
-    padding-bottom:20px;
-    padding-right:20px;   
-} */
-
-/* .numberTd, .labelTd {
+td {
     text-align: left;
-} */
-.nameTd {
-    float: left;
-    padding-top: 20px;
-    padding-left: 25px;
-    /* padding-top: 20px; */
-    font-size: 1.5em;
+    font-size: 18px;
 }
+
+.numberTd {
+    width: 25%;
+}
+
 .labelTd {
-    padding: 10px;
+    width: 75%;
 }
 
 /* @media screen and (max-width: 900px) {

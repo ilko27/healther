@@ -4,11 +4,12 @@
 }
 
 #header_img {
-    max-height: 64px;
+  /* max-height: 64px; */
+  max-height: 56px;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     #header_img {
       height: 56px;
     }
-  }
+  } */

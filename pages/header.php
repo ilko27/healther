@@ -1,4 +1,5 @@
-
+<?php
+$k = '
 <ul id="dropdown1" class="dropdown-content">
     <li><a href="">Settings</a></li>
     <li class="divider"></li>
@@ -19,3 +20,13 @@
 </nav>
 
 <script>$(".dropdown-trigger").dropdown();</script>
+';
+?>
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="./">
+        <img id="header_img" src="images/big_healther_clear.png" alt="Healther">
+    </a>
+  </div>
+</nav>
