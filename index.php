@@ -83,7 +83,7 @@ if (screen.width <= 1100) {
                                             <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td></tr>        
                                         </table>
                                     </div>
-                                        <div class='card-action'>
+                                    <div class='card-action'>
                                         <a onclick='editSensor($sensorId)'>Edit</a>
                                         <a onclick='removeSensor($sensorId)'>Remove</a>
                                     </div>
@@ -163,8 +163,8 @@ if (screen.width <= 1100) {
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(sensorId);
-                    location.reload();
+                    console.log(JSON.parse(this.responseText));
+                    // location.reload();
                 }
             };
             xmlhttp.open("POST", "php/addSensor.php", false);

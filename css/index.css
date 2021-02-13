@@ -32,6 +32,13 @@ body {
     height: 400px;
 }
   
+.card-action a {
+    cursor: pointer;
+}
+
+
+
+
 /* #chartsDiv {
     margin-top: 20px;
     height: 100%;

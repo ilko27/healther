@@ -137,20 +137,21 @@ function loadChart(chart, n) {
 
 };
 
-// Loading a chart on refresh and showing the most recent data
-function getCookie(cname) {
-    let name = cname + "=";
-    let ca = document.cookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-let cookieSensorId = getCookie("sensorId");
-getData(cookieSensorId);
+// // Loading a chart on refresh and showing the most recent data
+// function getCookie(cname) {
+//     let name = cname + "=";
+//     let ca = document.cookie.split(';');
+//     for(let i = 0; i < ca.length; i++) {
+//         let c = ca[i];
+//         while (c.charAt(0) == ' ') {
+//             c = c.substring(1);
+//         }
+//         if (c.indexOf(name) == 0) {
+//             return c.substring(name.length, c.length);
+//         }
+//     }
+//     return "";
+// }
+// let cookieSensorId = getCookie("sfffensorId");
+// getData(12);
+// console.log(cookieSensorId);

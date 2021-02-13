@@ -6,6 +6,7 @@ require 'dbconn.php';
     $inInfo = json_decode(file_get_contents("php://input"));
     $sensorName = $inInfo->sensorName;
 
+            // add user verification !!!
     $sql = "SELECT * FROM sensorData WHERE sensor = ? ORDER BY datId";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, 's', $sensorName);
