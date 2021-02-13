@@ -1,6 +1,7 @@
-.nav-wrapper {
-    background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
-    /*background-image: linear-gradient(rgba(13,84,138,1), rgba(51,221,225,1));*/
+#nav_header {
+  /* max-height: 56px; */
+  background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
+  /*background-image: linear-gradient(rgba(13,84,138,1), rgba(51,221,225,1));*/
 }
 
 #header_img {
