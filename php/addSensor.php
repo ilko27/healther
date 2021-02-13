@@ -16,7 +16,7 @@ if (!mysqli_stmt_prepare($stmt, $sql)) {
     mysqli_stmt_store_result($stmt);
     $resultCheck = mysqli_stmt_num_rows($stmt);
     if ($resultCheck > 0) { // if sensor is real:
-        $sql = "SELECT shareable FROM sensors WHERE sensor_id = ? AND admin = 1";
+        $sql = "SELECT id FROM sensors WHERE sensor_id = ? AND admin = 1";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             $outp = 'error_sql_error2';
