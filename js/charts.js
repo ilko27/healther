@@ -153,5 +153,5 @@ function loadChart(chart, n) {
 //     return "";
 // }
 // let cookieSensorId = getCookie("sfffensorId");
-// getData(12);
+// getData(0);
 // console.log(cookieSensorId);

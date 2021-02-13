@@ -97,9 +97,6 @@ if (screen.width <= 1100) {
         }
     ?>
 
-    <script>
-    
-    </script>
 
     </div>
     
@@ -163,8 +160,8 @@ if (screen.width <= 1100) {
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(JSON.parse(this.responseText));
-                    // location.reload();
+                    // console.log(JSON.parse(this.responseText));
+                    location.reload();
                 }
             };
             xmlhttp.open("POST", "php/addSensor.php", false);
