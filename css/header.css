@@ -4,13 +4,25 @@
   /*background-image: linear-gradient(rgba(13,84,138,1), rgba(51,221,225,1));*/
 }
 
+.navbar-nav .nav-item:hover .nav-link {
+  color: rgba(51,221,225,1);
+}
+
 #header_img {
   /* max-height: 64px; */
   max-height: 56px;
 }
 
-/* @media (max-width: 600px) {
-    #header_img {
-      height: 56px;
-    }
-  } */
+.navbar-brand {
+  padding: 0;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+@media (max-width: 991px) {
+  .navbar-brand {
+    padding: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  }

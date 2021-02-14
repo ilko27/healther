@@ -31,7 +31,7 @@ $k = '
   </div>
 </nav> -->
 
-<nav id="nav_header" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="nav_header" class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
   <div class="container-fluid">
     <a class="navbar-brand" href="./">
         <img class="d-inline-block align-top" id="header_img" src="images/big_healther_clear.png" alt="Healther">
