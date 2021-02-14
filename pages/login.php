@@ -14,62 +14,58 @@ if (isset($_SESSION['userSession'])) {
     <link rel="stylesheet" href="../css/sign.css">
     <title>Healther Login</title>
 
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <div class="leftDiv">
-        <div class="row center-align">
-            <form class="textform">
-                <p id='message'></p>
-                <!-- <input type="email" id="email" placeholder="email" class="validate"> <br>
-                <input type="password" id="password" placeholder="Password"> <br> -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" type="text" class="validate">
-                        <label for="email">Email</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <!-- <input type="button" onclick="send()" value="Log In" class="waves-effect waves-light btn subButton" > -->
-                <a class="waves-effect waves-light btn" onclick="send()">Log In</a>
-                <p>Sign up <a href="signup.php">Here</a></p>
-            </form>
+    <div id="container">
+
+        <a href="../">
+            <img id="header_img" src="../images/big_healther_clear.png" alt="Healther">
+        </a>
+
+        <div id="form">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div id="buttons">
+                <button type='button' class='btn btn btn-outline-light' onclick='send()'>Log In</button>
+                <button type='button' class='btn btn btn-outline-light' onclick="location.href='signup.php';">Sign Up</button>
+            </div>
         </div>
+
     </div>
+
+
+
     
     <script>
         function send(){
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-            //debugger;
+            let email = document.getElementById("floatingInput").value;
+            let password = document.getElementById("floatingPassword").value;
             var xmlhttp = new XMLHttpRequest();
             var toSend = JSON.stringify({
                 email: email,
                 password: password
             });
             xmlhttp.onreadystatechange = function(){
-                //alert("Response: " + this.responseText );
                 if(this.readyState == 4 && this.status == 200){
                     if(JSON.parse(this.responseText) == "success"){
-                        document.getElementById("message").innerHTML = "Success";
                         window.location.href = "../";
                     } else {
-                        document.getElementById("message").innerHTML = JSON.parse(this.responseText);
+                        console.log(JSON.parse(this.responseText));
                     }
                 }
             };
             xmlhttp.open("POST", "../php/login.php", false);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            //alert("Request: " + toSend);
             xmlhttp.send(toSend);
         }
     </script>

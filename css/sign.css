@@ -7,47 +7,32 @@ html {
     height: 100%;
 }
 body {
-    background: rgb(13,84,138);
     background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgba(51,221,225,1) 100%);
-    /*background-image: linear-gradient(rgba(13,84,138,1), rgba(51,221,225,1));*/
-}
-.healtherlogo {
-    height: 250px;
-    width: 250px;
-}
-.textform {
-    text-align: center;
-    margin-top: 20%;
 }
 
-/*  Label CSS  */
-.input-field label {
-    color: #000 !important;
-}
-
-.subButton {
-    outline:none;
-}
-
-.leftDiv {
-    width: 33%;
+#container {
+    width: 40%;
     float: left;
-}
-#firsthalf {
-    width: 30%;
+    padding: 20px;
     position: absolute;
-    left: 0px;
-    height: 100%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-#secondhalf {
-    background-position: right top;
-    width: 70%;
-    position: absolute;
-    left: 30%;
-    height: 100%;
+
+
+#header_img {
+    max-width: 100%;
+    padding-bottom: 20px;
 }
-.skyphoto {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+
+
+#buttons {
+    display: flex;
+    justify-content: center;
+}
+#buttons button {
+    margin-right: 10px;
+    margin-left: 10px;
 }
