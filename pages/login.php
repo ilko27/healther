@@ -27,6 +27,7 @@ if (isset($_SESSION['userSession'])) {
         </a>
 
         <div id="form">
+            <h5 id="message"></h5>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
@@ -61,6 +62,9 @@ if (isset($_SESSION['userSession'])) {
                         window.location.href = "../";
                     } else {
                         console.log(JSON.parse(this.responseText));
+                        document.getElementById("message").innerHTML = JSON.parse(this.responseText);
+                        document.getElementById("floatingInput").classList.add("is-invalid");
+                        document.getElementById("floatingPassword").classList.add("is-invalid");
                     }
                 }
             };

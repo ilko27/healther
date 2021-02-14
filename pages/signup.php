@@ -14,35 +14,51 @@ if (isset($_SESSION['userSession'])) {
     <link rel="stylesheet" href="../css/sign.css">
     <title>Healther Signup</title>
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-<body>  
-    <div id="firsthalf">
-        <form class="textform">
-            <p id='message'></p>
-            <input type="email" id="email" placeholder="Email" class="textplace"> <br>
-            <input type="text" id="username" placeholder="Username" class="textplace"> <br>
-            <input type="password" id="password" placeholder="Password" class="textplace"> <br>
-            <input type="password" id="re_password" placeholder="Repeat Password" class="textplace"> <br>
-            <a class="waves-effect waves-light btn" onclick="send()">Sign Up</a>
-            <p>Sign in <a href="login.php">Here</a></p>
-        </form>
-    </div>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-    <div id="secondhalf">
-        <img class="skyphoto" src="../images/clouds.jpg"/>
+</head>
+<body>
+
+    <div id="container">
+
+        <a href="../">
+            <img id="header_img" src="../images/big_healther_clear.png" alt="Healther">
+        </a>
+
+        <div id="form">
+            <h5 id="message"></h5>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputEmail" placeholder="Email address">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputUsername" placeholder="Username">
+                <label for="floatingPassword">Username</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingInput">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat password">
+                <label for="floatingPassword">Repeat password</label>
+            </div>
+            <div id="buttons">
+                <button type='button' class='btn btn btn-outline-light' onclick='send()'>Sign Up</button>
+                <button type='button' class='btn btn btn-outline-light' onclick="location.href='login.php';">Log In</button>
+            </div>
+        </div>
+
     </div>
 
     <script>
         function send(){
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
-            let re_password = document.getElementById("re_password").value;
-            let email = document.getElementById("email").value;
-            //debugger;
+            let username = document.getElementById("floatingInputUsername").value;
+            let password = document.getElementById("floatingPassword").value;
+            let re_password = document.getElementById("floatingRepeatPassword").value;
+            let email = document.getElementById("floatingInputEmail").value;
             var xmlhttp = new XMLHttpRequest();
             var toSend = JSON.stringify({
                 username: username,
@@ -50,20 +66,42 @@ if (isset($_SESSION['userSession'])) {
                 re_password: re_password,
                 email: email
             });
-            xmlhttp.onreadystatechange = function(){
-                //alert("Response: " + this.responseText );
-                if(this.readyState == 4 && this.status == 200){
-                    if(JSON.parse(this.responseText) == "success"){
-                        // window.location = "../index.php";
-                        document.getElementById("message").innerHTML = "Please verify your email address using the link we've sent you.";
-                    } else {
-                        document.getElementById("message").innerHTML = JSON.parse(this.responseText);
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let response = JSON.parse(this.responseText);
+                        document.getElementById("floatingInputUsername").classList.remove("is-invalid");
+                        document.getElementById("floatingPassword").classList.remove("is-invalid");
+                        document.getElementById("floatingRepeatPassword").classList.remove("is-invalid");
+                        document.getElementById("floatingInputEmail").classList.remove("is-invalid");
+                    if (response == "success") {
+                        document.getElementById("message").innerHTML = "Please verify your email address.";
+                    } else if (response == "error_empty_fields") {
+                        document.getElementById("message").innerHTML = "There are empty fields.";
+                        document.getElementById("floatingInputUsername").classList.add("is-invalid");
+                        document.getElementById("floatingPassword").classList.add("is-invalid");
+                        document.getElementById("floatingRepeatPassword").classList.add("is-invalid");
+                        document.getElementById("floatingInputEmail").classList.add("is-invalid");
+                    } else if (response == "error_invalid_email") {
+                        document.getElementById("message").innerHTML = "The entered email is invalid.";
+                        document.getElementById("floatingInputEmail").classList.add("is-invalid");
+                    } else if (response == "error_short_password") {
+                        document.getElementById("message").innerHTML = "Your password should be at least 8 symbols.";
+                        document.getElementById("floatingPassword").classList.add("is-invalid");
+                        document.getElementById("floatingRepeatPassword").classList.add("is-invalid");
+                    } else if (response == "error_password_check") {
+                        document.getElementById("message").innerHTML = "Your passwords don't match.";
+                        document.getElementById("floatingRepeatPassword").classList.add("is-invalid");
+                    } else if (response == "error_existing_email") {
+                        document.getElementById("message").innerHTML = "The entered email is already in use.";
+                        document.getElementById("floatingInputEmail").classList.add("is-invalid");
+                    } else {    // SQL errors
+                        console.log(JSON.parse(this.responseText));
+                        document.getElementById("message").innerHTML = "Seek God ;).";
                     }
                 }
             };
             xmlhttp.open("POST", "../php/signup.php", false);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            //alert("Request: " + toSend);
             xmlhttp.send(toSend);
         }
     </script>
