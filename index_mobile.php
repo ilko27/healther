@@ -12,11 +12,6 @@ if(!isset($_SESSION['userSession'])){
     require 'php/dbconn.php';
 }
 ?>
-<script>
-if (screen.width <= 991) {
-    location.href = "index_mobile.php";
-}
-</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,11 +46,11 @@ if (screen.width <= 991) {
     
 </head>
 
-<body>
+<body>   
 
     <?php include 'pages/header.php';?>
 
-    <p id="test"><?php echo $getTemp?></p>
+    
     <div id="leftHalf" class="half">
 
     <?php
@@ -92,7 +87,7 @@ if (screen.width <= 991) {
 
             }
         } else {
-            echo "You don't have any sensors added. You can add one by clicking <button type='button' class='btn btn btn-outline-light gradientColor' onclick='addSensor()'>Here</button>";
+            echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
         }
     ?>
 
@@ -101,27 +96,44 @@ if (screen.width <= 991) {
 
     
     <div id="rightHalf" class="half">
-        <div id='chartsDiv'>
-            <div class="charts">
-                <div class="chartdiv" id="aqi_chartdiv"></div>
-            </div>
-            <div class="charts">
-                <div class="chartdiv" id="t_chartdiv"></div>
-            </div>
-            <div class="charts">
-                <div class="chartdiv" id="h_chartdiv"></div>
+
+
+        <!-- Button trigger modal -->
+        <button id="myInput" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Launch static backdrop modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">                        
+                        <div id='chartsDiv'>
+                            <div class="charts">
+                                <div class="chartdiv" id="aqi_chartdiv"></div>
+                            </div>
+                            <div class="charts">
+                                <div class="chartdiv" id="t_chartdiv"></div>
+                            </div>
+                            <div class="charts">
+                                <div class="chartdiv" id="h_chartdiv"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+
     </div>
 
     
     <script src="js/charts.js"></script>
     
-    <!-- map? don't touch -->
-    <!-- <script src="js/index.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script> -->
 
     <script>
         function editSensor(sensorId) {

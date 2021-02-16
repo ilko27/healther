@@ -29,8 +29,10 @@ let storeTData = new Array();
 let storeHData = new Array();
 let storeAQIData = new Array();
 
-function getData(sensorn){
+function getData(sensorn, sensor_u_name){
 
+    // console.log(sensor_u_name);
+    document.getElementById('staticBackdropLabel').innerHTML = sensor_u_name;
     
     let toSend = JSON.stringify({
         sensorName: sensorn
@@ -69,7 +71,7 @@ function getData(sensorn){
             aqiChart.data = [];
             aqiChart.data = storeAQIData.reverse();
             
-            console.log(tChart.data);
+            // console.log(tChart.data);
         }
     };
     xmlhttp.open("POST", "php/getData.php", false);
@@ -113,19 +115,12 @@ function loadChart(chart, n) {
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     // valueAxis.tooltip.disabled = true;
     valueAxis.title.text = title_text;
-
-    // valueAxis.min = 20;
-    // valueAxis.max = 22;
-    // valueAxis.strictMinMax = true;
-
-    // chart.autoMargins = false; 
     
     let series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.dateX = "date";
     series.dataFields.valueY = dataFields_valueY;
     series.tooltipText = tooltip_Text;
     series.fillOpacity = 0.3;
-    // series.events.off("selectionextremeschanged", valueAxis.handleSelectionExtremesChange, valueAxis, false)
 
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.lineY.opacity = 0;
@@ -136,22 +131,3 @@ function loadChart(chart, n) {
     dateAxis.keepSelection = true;
 
 };
-
-// // Loading a chart on refresh and showing the most recent data
-// function getCookie(cname) {
-//     let name = cname + "=";
-//     let ca = document.cookie.split(';');
-//     for(let i = 0; i < ca.length; i++) {
-//         let c = ca[i];
-//         while (c.charAt(0) == ' ') {
-//             c = c.substring(1);
-//         }
-//         if (c.indexOf(name) == 0) {
-//             return c.substring(name.length, c.length);
-//         }
-//     }
-//     return "";
-// }
-// let cookieSensorId = getCookie("sfffensorId");
-// getData(0);
-// console.log(cookieSensorId);

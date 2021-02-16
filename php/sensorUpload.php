@@ -12,11 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($api_key == $api_key_value) {
         $sensor = test_input($_POST["sensor"]);
         $temp = test_input($_POST["temp"]);
+        $aqi = test_input($_POST["aqi"]);
         $pressure = test_input($_POST["pressure"]);
         $humidity = test_input($_POST["humidity"]);
         
         
-        $sql = "INSERT INTO `sensorData`(`sensor`, `temperatureC`, `pressure`, `humidity`) VALUES ('$sensor', '$temp', '$pressure', '$humidity')";
+        $sql = "INSERT INTO `sensorData`(`sensor`, `aqi`, `temperatureC`, `pressure`, `humidity`) VALUES ('$sensor', '$aqi', '$temp', '$pressure', '$humidity')";
         
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
