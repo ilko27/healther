@@ -27,7 +27,7 @@ body {
     text-align: center;
 }
 
-#leftHalf div {
+#leftHalf div .gradientColor{
     background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
 }
 

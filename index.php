@@ -46,11 +46,11 @@ if(!isset($_SESSION['userSession'])){
     
 </head>
 
-<body>   
+<body>
 
     <?php include 'pages/header.php';?>
 
-    
+    <p id="test"><?php echo $getTemp?></p>
     <div id="leftHalf" class="half">
 
     <?php
@@ -87,7 +87,7 @@ if(!isset($_SESSION['userSession'])){
 
             }
         } else {
-            echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
+            echo "You don't have any sensors added. You can add one by clicking <button type='button' class='btn btn btn-outline-light gradientColor' onclick='addSensor()'>Here</button>";
         }
     ?>
 
