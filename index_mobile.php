@@ -65,7 +65,7 @@ if(!isset($_SESSION['userSession'])){
                 $sensData = $sensorReading->fetch_assoc();
                 
                 echo "
-                    <div class='card text-white bg-secondary mb-3' onclick='getData(".$row['sensor_id'].", `".$row['sensor_name']."`)'>
+                    <div class='card text-white bg-secondary mb-3' data-bs-toggle='modal' data-bs-target='#staticBackdrop' onclick='getData(".$row['sensor_id'].", `".$row['sensor_name']."`)'>
                         <div class='card-body'>
                             <h3 class='card-title'>".$row['sensor_name']."</h3>
                             <br>
@@ -99,9 +99,9 @@ if(!isset($_SESSION['userSession'])){
 
 
         <!-- Button trigger modal -->
-        <button id="myInput" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <!-- <button id="myInput" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Launch static backdrop modal
-        </button>
+        </button> -->
 
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -60,7 +60,25 @@ td {
 }
 
 
+@media screen and (max-width: 991px) {
 
+#leftHalf {
+    float:left;
+    width: 100%;
+    text-align: center;
+}
+#rightHalf {
+    float:right;
+    width: 100%;
+    text-align: center;
+}
+
+.chartdiv {
+    width: 100%;
+    height: 275px;
+}
+
+}
 
 
 
