@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^healther\.online$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.healther\.online$
+RewriteRule ^/?$ "https\:\/\/www\.healther\.online\/" [R=301,L]
+Options -Indexes

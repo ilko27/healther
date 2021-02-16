@@ -51,11 +51,24 @@ if (screen.width <= 991) {
     
 </head>
 
-<body>
+<body>   
 
     <?php include 'pages/header.php';?>
+    
+    <div class="w-100 bg-info">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Temperature outside <i class="fas fa-thermometer-half"></i></h5>
+                <p class="card-text"><?php echo $getTemp ?></p>
+            </div>
+        </div>
 
-    <p id="test"><?php echo $getTemp?></p>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Humidity outside <i class="fas fa-tint"></i></h5>
+                <p class="card-text"><?php echo $getHumidity ?></p>
+            </div>
+        </div>
     <div id="leftHalf" class="half">
 
     <?php
@@ -92,7 +105,7 @@ if (screen.width <= 991) {
 
             }
         } else {
-            echo "You don't have any sensors added. You can add one by clicking <button type='button' class='btn btn btn-outline-light gradientColor' onclick='addSensor()'>Here</button>";
+            echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
         }
     ?>
 

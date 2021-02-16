@@ -32,7 +32,7 @@ let storeAQIData = new Array();
 function getData(sensorn, sensor_u_name){
 
     // console.log(sensor_u_name);
-    document.getElementById('staticBackdropLabel').innerHTML = sensor_u_name;
+    //document.getElementById('staticBackdropLabel').innerHTML = sensor_u_name;
     
     let toSend = JSON.stringify({
         sensorName: sensorn
