@@ -55,29 +55,30 @@ if (screen.width <= 991) {
 
     <?php include 'pages/header.php';?>
     
-    <div class="w-100 bg-info">
-        <div class="card" style="width: 18rem;">
+    <!-- <div class="w-100 bg-info">
+        <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Temperature outside <i class="fas fa-thermometer-half"></i></h5>
-                <p class="card-text"><?php echo $getTemp ?></p>
+                <h5 class="card-title"><i class="fas fa-thermometer-half"></i> Temperature outside: <?php //echo $getTemp ?>°C</h5>
             </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Humidity outside <i class="fas fa-tint"></i></h5>
-                <p class="card-text"><?php echo $getHumidity ?></p>
+                <h5 class="card-title"><i class="fas fa-tint"></i> Humidity outside: <?php //echo $getHumidity ?>%</h5>
             </div>
         </div>
+    </div> -->
+
     <div id="leftHalf" class="half">
 
-    <?php
+        <?php
         $userId = $_SESSION['userId'];
         $sqlQuery = "SELECT * FROM `sensors` WHERE user_id = ".$userId;
         $result = $conn -> query($sqlQuery);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $sensorId = $row['sensor_id'];
+                $sensorName = $row['sensor_name'];
                 $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
                 $sensorReading= $conn -> query($sensorQuery);
                 $sensData = $sensorReading->fetch_assoc();
@@ -90,9 +91,9 @@ if (screen.width <= 991) {
                             <table class='table text-white table-borderless'>
                                 <tbody>
                                     <tr><td class='labelTd'>AQI</td><td class='numberTd'>".$sensData['aqi']."</td></tr>
-                                    <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
-                                    <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
-                                    <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td></tr>        
+                                    <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']." °C</td></tr>
+                                    <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']." %</td></tr>
+                                    <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']." hPa</td></tr>        
                                 </tbody>
                             </table>
                         </div>
@@ -104,10 +105,17 @@ if (screen.width <= 991) {
                 ";
 
             }
+            echo "
+            <script>
+                let chartId = ".$sensorId.";                
+                let chartName = '".$sensorName."';
+            </script>            
+            ";
+
         } else {
             echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
         }
-    ?>
+        ?>
 
 
     </div>
@@ -115,6 +123,7 @@ if (screen.width <= 991) {
     
     <div id="rightHalf" class="half">
         <div id='chartsDiv'>
+            <h4 id="staticBackdropLabel"></h4>
             <div class="charts">
                 <div class="chartdiv" id="aqi_chartdiv"></div>
             </div>

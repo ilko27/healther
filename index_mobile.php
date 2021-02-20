@@ -72,9 +72,9 @@ if(!isset($_SESSION['userSession'])){
                             <table class='table text-white table-borderless'>
                                 <tbody>
                                     <tr><td class='labelTd'>AQI</td><td class='numberTd'>".$sensData['aqi']."</td></tr>
-                                    <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']."</td></tr>
-                                    <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']."</td></tr>
-                                    <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']."</td></tr>        
+                                    <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']." °C</td></tr>
+                                    <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']." %</td></tr>
+                                    <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']." hPa</td></tr>        
                                 </tbody>
                             </table>
                         </div>

@@ -59,6 +59,11 @@ td {
     width: 75%;
 }
 
+/* .card {
+    width: 50%;
+    height: 56px;
+} */
+
 
 @media screen and (max-width: 991px) {
 
@@ -76,6 +81,10 @@ td {
 .chartdiv {
     width: 100%;
     height: 275px;
+}
+
+.card-body {
+    padding-left: 20px;
 }
 
 }

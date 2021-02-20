@@ -9,6 +9,8 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" onclick="addSensor()" aria-current="page" href="#">Add Sensor</a>
         </li>
         <li class="nav-item">
