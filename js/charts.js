@@ -41,6 +41,7 @@ function getData(sensorn, sensor_u_name){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             rs = JSON.parse(this.responseText);
+            // console.log(rs);
             storeTData = [];
             storeHData = [];
             storeAQIData = [];

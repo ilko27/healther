@@ -4,20 +4,23 @@ session_start();
 if(!isset($_SESSION['userSession'])){
     header("Location: pages/login.php");
     exit();
-}
-require 'php/dbconn.php';
+} else {
+    require 'php/dbconn.php';
 
-// CHECK IF SENSOR IS YOURS
-$sensorId = $_GET['sensorId'];
-$userId = $_SESSION['userId'];
-$sql = "SELECT * FROM sensors WHERE sensors.user_id = $userId AND sensors.sensor_id = $sensorId";
-
-$result = mysqli_query($conn, $sql);
-$num_rows = mysqli_num_rows($result);
-//echo $result;
-if($num_rows != 1){
-    header("Location: index.php");
-    exit();
+    // CHECK IF SENSOR IS YOURS
+    $sensorId = $_GET['sensorId'];
+    $userId = $_SESSION['userId'];
+    $sql = "SELECT * FROM sensors WHERE sensors.user_id = ? AND sensors.sensor_id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, 'ii', $userId, $sensorId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $num_rows = mysqli_num_rows($result);
+    
+    if($num_rows != 1){
+        header("Location: index.php");
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
