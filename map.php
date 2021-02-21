@@ -13,9 +13,6 @@ if(!isset($_SESSION['userSession'])){
 }
 ?>
 <script>
-if (screen.width <= 991) {
-    location.href = "index_mobile.php";
-}
 </script>
 
 <!DOCTYPE html>
@@ -58,12 +55,9 @@ if (screen.width <= 991) {
 
     <!-- map? don't touch -->
     <script src="js/map.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script> -->
 
-    <script>
-
-    </script>
 </body>
 </html>
