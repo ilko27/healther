@@ -55,7 +55,7 @@ function defaltPosition(){  // map
 
 function runPosition(x, y, z, accuracy) {   // map
 
-    console.log(x + " || " + y);
+    // console.log(x + " || " + y);
     let OSM_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
     let OSM_ATTRIB = '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';  
     let osmLayer = L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
