@@ -5,7 +5,7 @@ if (isset($_GET["email"])) {    //check url for relevant data
     require '../php/dbconn.php';
 
     
-    $sql = "DELETE FROM users WHERE email = ? AND status != 1;";  // delete user if email and code concur
+    $sql = "DELETE FROM users WHERE email = ? AND status != 1;";  // delete user if email and code are legit
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header( "Location: ../index.php?error=sqlerror");
@@ -14,6 +14,27 @@ if (isset($_GET["email"])) {    //check url for relevant data
         mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
         if (mysqli_affected_rows($conn)!=0) {   //check if changes have been made
+            $out = true;
+        } else {
+            $out = false;
+        }
+        header('Refresh: 5; URL=https://www.healther.online/');
+    }    
+} else if (isset($_GET["code"])) {    //check url for relevant data
+    $code = $_GET["code"];
+
+    require '../php/dbconn.php';
+
+    
+    $sql = "UPDATE users SET update_col = '' WHERE update_col = ? AND status = 1;";  // remove email
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header( "Location: ../index.php?error=sqlerror");
+        exit();
+    } else {
+        mysqli_stmt_bind_param($stmt, "s", $code);
+        mysqli_stmt_execute($stmt);
+        if (mysqli_affected_rows($conn)!=0) {   //check for changes
             $out = true;
         } else {
             $out = false;

@@ -1,22 +1,23 @@
 <?php
 session_start();
 if(!isset($_SESSION['userSession'])){
-    $outp = 'NOTsuccess';
-} else {
+    $outp = 'errorNoUser';
+}  else {
     require 'dbconn.php';
     
     $inInfo = json_decode(file_get_contents("php://input"));
     $task = $inInfo->task;
+
     if ($task == 'change_email') {
         $old_email = $_SESSION['email'];
         $email = $inInfo->new_email;
 
         if (empty($email)) {
-            $outp = 'error_empty_fields';
+            $outp = 'There are empty fields.';
         } else if ($old_email == $email) {
-            $outp = 'error_same_email';
+            $outp = 'The email is the same.';
         } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $outp = 'error_invalid_email';
+            $outp = 'The email is invalid.';
         } else {
             $sql = "SELECT email FROM users WHERE email = ?";
             $stmt = mysqli_stmt_init($conn);
@@ -28,7 +29,7 @@ if(!isset($_SESSION['userSession'])){
                 mysqli_stmt_store_result($stmt);
                 $resultCheck = mysqli_stmt_num_rows($stmt);
                 if ($resultCheck > 0) {
-                    $outp = 'error_existing_email'; 
+                    $outp = 'The email is already in use.'; 
                 } else {
                     $sql = "UPDATE users SET users.update_col = ? WHERE users.email = ? AND users.status = 1;";
                     $stmt = mysqli_stmt_init($conn);
@@ -49,7 +50,7 @@ if(!isset($_SESSION['userSession'])){
 
 
                             If it was not you, <br/>
-                            please inform us by clicking <a href='https://www.healther.online/pages/false_email.php?email=$email'>here</a>.
+                            please inform us by clicking <a href='https://www.healther.online/pages/false_email.php?code=$hash_email'>here</a>.
                             ";
 
                         $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -64,6 +65,35 @@ if(!isset($_SESSION['userSession'])){
                 }
             }
         }
+    } else if ($task == 'change_password') {
+        $userId = $_SESSION['userId'];
+        $old_password = $inInfo->old_password;
+        $password = $inInfo->new_password;
+        $re_password = $inInfo->new_re_password;
+
+        if (empty($old_password) ||empty($password) || empty($re_password)) {
+            $outp = 'There are empty fields.';
+        } else if (mb_strlen($password) < 8) {
+            $outp = 'Your password is too short.';
+        } else if (strcmp($password, $re_password) !== 0) {
+            $outp = 'Passwords do not match.';
+        } else {
+            $sql = "UPDATE users SET users.pass = ? WHERE users.user_id = ? AND users.pass = ?;";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                $outp = 'error_sql_error2';
+            } else {
+                $hash_pass = md5($password);
+                $hash_old_pass = md5($old_password);
+                mysqli_stmt_bind_param($stmt, "sis", $hash_pass, $userId, $hash_old_pass);
+                mysqli_stmt_execute($stmt);
+                if (mysqli_affected_rows($conn)!=0) {   //check for changes
+                    $outp = 'success';
+                } else {
+                    $outp = 'Wrond password.';
+                }
+            }
+        } 
     }
 
 

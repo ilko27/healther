@@ -71,12 +71,16 @@ if(!isset($_SESSION['userSession'])){
             <div class="accordion-body">
                 
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                    <input type="password" class="form-control" id="oldFloatingPassword" placeholder="Old password">
+                    <label for="oldFloatingPassword">Old password</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat password">
-                    <label for="floatingRepeatPassword">Repeat password</label>
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="New password">
+                    <label for="floatingPassword">New password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat new password">
+                    <label for="floatingRepeatPassword">Repeat new password</label>
                 </div>
                 <div id="buttons">
                     <button type='button' class='btn btn btn-outline-light' onclick='change_password()'>Save</button>
@@ -141,8 +145,14 @@ if(!isset($_SESSION['userSession'])){
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(JSON.parse(this.responseText));
-                    document.getElementById("message").innerHTML = "Success";
+                    let response = JSON.parse(this.responseText);
+                        document.getElementById("floatingInputEmail").classList.remove("is-invalid");
+                    if (response == "success") {
+                        document.getElementById("message").innerHTML = "Please verify your email address.";
+                    } else {
+                        document.getElementById("message").innerHTML = response;
+                        document.getElementById("floatingInputEmail").classList.add("is-invalid");
+                    }
                 }
             };
             xmlhttp.open("POST", "php/user_settings.php", false);
@@ -151,18 +161,41 @@ if(!isset($_SESSION['userSession'])){
         }
 
         function change_password() {
-            let task = 'change_email';
+            let task = 'change_password';
+            let old_password = document.getElementById("oldFloatingPassword").value;
             let new_password = document.getElementById("floatingPassword").value;
             let new_re_password = document.getElementById("floatingRepeatPassword").value;
             let dataToSend = JSON.stringify({
                 task: task,
+                old_password: old_password,
                 new_password: new_password,
                 new_re_password: new_re_password
             });
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("message").innerHTML = "Success";
+                    let response = JSON.parse(this.responseText);
+                        document.getElementById("oldFloatingPassword").classList.remove("is-invalid");
+                        document.getElementById("floatingPassword").classList.remove("is-invalid");
+                        document.getElementById("floatingRepeatPassword").classList.remove("is-invalid");
+                        document.getElementById("oldFloatingPassword").value = "";
+                        document.getElementById("floatingPassword").value = "";
+                        document.getElementById("floatingRepeatPassword").value = "";
+                    if (response == "success") {
+                        document.getElementById("message").innerHTML = "Success";
+                    } else if (response == "Wrond password.") {
+                        document.getElementById("message").innerHTML = response;
+                        document.getElementById("oldFloatingPassword").classList.add("is-invalid");
+                    } else if (response == "There are empty fields.") {
+                        document.getElementById("message").innerHTML = response;
+                        document.getElementById("oldFloatingPassword").classList.add("is-invalid");
+                        document.getElementById("floatingPassword").classList.add("is-invalid");
+                        document.getElementById("floatingRepeatPassword").classList.add("is-invalid");
+                    } else {                        
+                        document.getElementById("message").innerHTML = response;
+                        document.getElementById("floatingPassword").classList.add("is-invalid");
+                        document.getElementById("floatingRepeatPassword").classList.add("is-invalid");
+                    }
                 }
             };
             xmlhttp.open("POST", "php/user_settings.php", false);
@@ -171,7 +204,7 @@ if(!isset($_SESSION['userSession'])){
         }
 
         function change_username() {
-            let task = 'change_email';
+            let task = 'change_username';
             let new_username = document.getElementById("floatingInputUsername").value;
             let dataToSend = JSON.stringify({
                 task: task,
