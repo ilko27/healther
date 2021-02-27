@@ -9,7 +9,7 @@ hChart.paddingRight = 20;
 let aqiChart = am4core.create("aqi_chartdiv", am4charts.XYChart);
 aqiChart.paddingRight = 20;
 
-// BAD IDEA; HAHAHA
+// // BAD IDEA; HAHAHA
 // let valueAxis = tChart.yAxes.push(new am4charts.ValueAxis());
 // valueAxis.min = 10;
 // valueAxis.max = 40; 
