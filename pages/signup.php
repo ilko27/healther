@@ -24,26 +24,26 @@ if (isset($_SESSION['userSession'])) {
     <div id="container">
 
         <a href="../">
-            <img id="header_img" src="../images/big_healther_clear.png" alt="Healther">
+            <img id="header_img_big" src="../images/big_healther_clear.png" alt="Healther">
         </a>
 
         <div id="form">
             <h5 id="message"></h5>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInputEmail" placeholder="Email address">
-                <label for="floatingInput">Email address</label>
+                <label for="floatingInputEmail">Email address</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInputUsername" placeholder="Username">
-                <label for="floatingPassword">Username</label>
+                <label for="floatingInputUsername">Username</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingInput">Password</label>
+                <label for="floatingPassword">Password</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat password">
-                <label for="floatingPassword">Repeat password</label>
+                <label for="floatingRepeatPassword">Repeat password</label>
             </div>
             <div id="buttons">
                 <button type='button' class='btn btn btn-outline-light' onclick='send()'>Sign Up</button>

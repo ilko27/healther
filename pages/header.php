@@ -21,7 +21,7 @@
             Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="user_settings.php">Settings</a></li>
             <li><a class="dropdown-item" href="php/logout.php">Logout</a></li>
           </ul>
         </li>

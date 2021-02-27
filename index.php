@@ -4,10 +4,10 @@ if(!isset($_SESSION['userSession'])){
     header("Location: pages/login.php");
     exit();
 } else {
-    $url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
-    $getWeather = simplexml_load_file($url);
-    $getTemp = $getWeather->list->item->temperature['value'];
-    $getHumidity = $getWeather->list->item->humidity['value'];
+    // $url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
+    // $getWeather = simplexml_load_file($url);
+    // $getTemp = $getWeather->list->item->temperature['value'];
+    // $getHumidity = $getWeather->list->item->humidity['value'];
 
     require 'php/dbconn.php';
 }
@@ -139,11 +139,6 @@ if (screen.width <= 991) {
     
     <script src="js/charts.js"></script>
     
-    <!-- map? don't touch -->
-    <!-- <script src="js/index.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script> -->
 
     <script>
         function editSensor(sensorId) {

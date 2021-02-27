@@ -23,7 +23,7 @@ if (isset($_SESSION['userSession'])) {
     <div id="container">
 
         <a href="../">
-            <img id="header_img" src="../images/big_healther_clear.png" alt="Healther">
+            <img id="header_img_big" src="../images/big_healther_clear.png" alt="Healther">
         </a>
 
         <div id="form">
