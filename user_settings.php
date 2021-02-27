@@ -228,19 +228,24 @@ if(!isset($_SESSION['userSession'])){
             xmlhttp.send(dataToSend);
         }
         function delete_user() {
-            let task = 'delete_user';
-            let dataToSend = JSON.stringify({
-                task: task
-            });
-            let xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    window.location.assign('php/logout.php');
-                }
-            };
-            xmlhttp.open("POST", "php/user_settings.php", false);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send(dataToSend);
+
+            let ask = confirm("Do you really want to delete your account?");
+            if (ask == true) {
+                let task = 'delete_user';
+                let dataToSend = JSON.stringify({
+                    task: task
+                });
+                let xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        window.location.assign('php/logout.php');
+                    }
+                };
+                xmlhttp.open("POST", "php/user_settings.php", false);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.send(dataToSend);
+            }
+
         }
 
         

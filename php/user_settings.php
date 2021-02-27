@@ -111,6 +111,18 @@ if(!isset($_SESSION['userSession'])){
                 $outp = 'success';
             }
         } 
+    } else if ($task == 'delete_user') {
+        $userId = $_SESSION['userId'];
+
+        $sql = "DELETE users, sensors FROM users, sensors WHERE users.user_id = ? AND users.user_id = sensors.user_id;";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            $outp = 'error_sql_error2';
+        } else {
+            mysqli_stmt_bind_param($stmt, "i", $userId);
+            mysqli_stmt_execute($stmt);
+            $outp = 'success';
+        }
     }
 
 
