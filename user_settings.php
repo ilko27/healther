@@ -132,13 +132,16 @@ if(!isset($_SESSION['userSession'])){
     <script>
 
         function change_email() {
+            let task = 'change_email';
             let new_email = document.getElementById("floatingInputEmail").value;
             let dataToSend = JSON.stringify({
+                task: task,
                 new_email: new_email
             });
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
+                    console.log(JSON.parse(this.responseText));
                     document.getElementById("message").innerHTML = "Success";
                 }
             };
@@ -148,9 +151,11 @@ if(!isset($_SESSION['userSession'])){
         }
 
         function change_password() {
+            let task = 'change_email';
             let new_password = document.getElementById("floatingPassword").value;
             let new_re_password = document.getElementById("floatingRepeatPassword").value;
             let dataToSend = JSON.stringify({
+                task: task,
                 new_password: new_password,
                 new_re_password: new_re_password
             });
@@ -166,14 +171,31 @@ if(!isset($_SESSION['userSession'])){
         }
 
         function change_username() {
+            let task = 'change_email';
             let new_username = document.getElementById("floatingInputUsername").value;
             let dataToSend = JSON.stringify({
+                task: task,
                 new_username: new_username
             });
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("message").innerHTML = "Success";
+                }
+            };
+            xmlhttp.open("POST", "php/user_settings.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(dataToSend);
+        }
+        function delete_user() {
+            let task = 'delete_user';
+            let dataToSend = JSON.stringify({
+                task: task
+            });
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.assign('php/logout.php');
                 }
             };
             xmlhttp.open("POST", "php/user_settings.php", false);
