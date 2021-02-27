@@ -29,3 +29,30 @@
     </div>
   </div>
 </nav>
+<script>
+  function addSensor(){
+    let sensorId = prompt("Enter sensor id", "");
+
+    if (sensorId == null || sensorId == "") {
+    txt = "User cancelled the prompt.";
+    } else {
+        addInDB(sensorId);
+    }
+  }
+
+  function addInDB(sensorId){
+    let idToSend = JSON.stringify({
+        sensorId: sensorId
+    });
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // console.log(JSON.parse(this.responseText));
+            location.reload();
+        }
+    };
+    xmlhttp.open("POST", "php/addSensor.php", false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(idToSend);
+  }
+</script>

@@ -94,6 +94,23 @@ if(!isset($_SESSION['userSession'])){
                 }
             }
         } 
+    } else if ($task == 'change_username') {
+        $userId = $_SESSION['userId'];
+        $username = $inInfo->new_username;
+
+        if (empty($username)) {
+            $outp = 'There are empty fields.';
+        } else {
+            $sql = "UPDATE users SET users.username = ? WHERE users.user_id = ?;";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                $outp = 'error_sql_error2';
+            } else {
+                mysqli_stmt_bind_param($stmt, "si", $username, $userId);
+                mysqli_stmt_execute($stmt);
+                $outp = 'success';
+            }
+        } 
     }
 
 

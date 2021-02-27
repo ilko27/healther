@@ -146,7 +146,7 @@ if(!isset($_SESSION['userSession'])){
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     let response = JSON.parse(this.responseText);
-                        document.getElementById("floatingInputEmail").classList.remove("is-invalid");
+                    document.getElementById("floatingInputEmail").classList.remove("is-invalid");
                     if (response == "success") {
                         document.getElementById("message").innerHTML = "Please verify your email address.";
                     } else {
@@ -175,12 +175,12 @@ if(!isset($_SESSION['userSession'])){
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     let response = JSON.parse(this.responseText);
-                        document.getElementById("oldFloatingPassword").classList.remove("is-invalid");
-                        document.getElementById("floatingPassword").classList.remove("is-invalid");
-                        document.getElementById("floatingRepeatPassword").classList.remove("is-invalid");
-                        document.getElementById("oldFloatingPassword").value = "";
-                        document.getElementById("floatingPassword").value = "";
-                        document.getElementById("floatingRepeatPassword").value = "";
+                    document.getElementById("oldFloatingPassword").classList.remove("is-invalid");
+                    document.getElementById("floatingPassword").classList.remove("is-invalid");
+                    document.getElementById("floatingRepeatPassword").classList.remove("is-invalid");
+                    document.getElementById("oldFloatingPassword").value = "";
+                    document.getElementById("floatingPassword").value = "";
+                    document.getElementById("floatingRepeatPassword").value = "";
                     if (response == "success") {
                         document.getElementById("message").innerHTML = "Success";
                     } else if (response == "Wrond password.") {
@@ -213,7 +213,14 @@ if(!isset($_SESSION['userSession'])){
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("message").innerHTML = "Success";
+                    let response = JSON.parse(this.responseText);
+                    document.getElementById("floatingInputUsername").classList.remove("is-invalid");
+                    if (response == "success") {
+                        document.getElementById("message").innerHTML = "Success";
+                    } else {
+                        document.getElementById("message").innerHTML = response;
+                        document.getElementById("floatingInputUsername").classList.add("is-invalid");
+                    }
                 }
             };
             xmlhttp.open("POST", "php/user_settings.php", false);
