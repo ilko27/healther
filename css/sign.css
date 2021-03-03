@@ -36,10 +36,15 @@ body {
 #buttons button {
     margin-right: 10px;
     margin-left: 10px;
+    margin-bottom: 16px;
 }
 
 @media (max-width: 991px) {
     #container {
         width: 100%;
+    }
+    #button_modal {
+        position: absolute;
+        margin-top: 56px;
     }
 }

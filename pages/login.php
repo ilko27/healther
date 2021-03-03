@@ -39,7 +39,7 @@ if (isset($_SESSION['userSession'])) {
             <div id="buttons">
                 <button type='button' class='btn btn btn-outline-light' onclick='send()'>Log In</button>
                 <button type='button' class='btn btn btn-outline-light' onclick="location.href='signup.php';">Sign Up</button>
-                <button type="button" class="btn btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Forgotten Password</button>
+                <button id='button_modal' type="button" class="btn btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Forgotten Password</button>
             </div>
 
 

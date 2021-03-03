@@ -50,6 +50,11 @@ body {
     padding-left: 50px;
 }
 
+.table {
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
 td {
     text-align: left;
     font-size: 18px;
@@ -63,10 +68,6 @@ td {
     width: 75%;
 }
 
-/* .card {
-    width: 50%;
-    height: 56px;
-} */
 
 
 @media screen and (max-width: 991px) {
