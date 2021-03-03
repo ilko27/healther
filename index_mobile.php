@@ -12,6 +12,11 @@ if(!isset($_SESSION['userSession'])){
     require 'php/dbconn.php';
 }
 ?>
+<script>
+if (screen.width > 991) {
+    location.href = "index.php";
+}
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +76,7 @@ if(!isset($_SESSION['userSession'])){
                             <br>
                             <table class='table text-white table-borderless'>
                                 <tbody>
-                                    <tr><td class='labelTd'>AQI</td><td class='numberTd'>".$sensData['aqi']."</td></tr>
+                                    <tr><td class='labelTd'>Concentration of PM2.5</td><td class='numberTd'>".$sensData['aqi']." mg/m³</td></tr>
                                     <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']." °C</td></tr>
                                     <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']." %</td></tr>
                                     <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']." hPa</td></tr>        
@@ -79,7 +84,7 @@ if(!isset($_SESSION['userSession'])){
                             </table>
                         </div>
                         <div class='card-footer'>
-                            <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'>Settings</button>
+                            <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'>Rename</button>
                             <button type='button' class='btn btn btn-outline-light' onclick='removeSensor($sensorId)'>Remove</button>
                         </div>
                     </div>

@@ -9,14 +9,6 @@ hChart.paddingRight = 20;
 let aqiChart = am4core.create("aqi_chartdiv", am4charts.XYChart);
 aqiChart.paddingRight = 20;
 
-// // BAD IDEA; HAHAHA
-// let valueAxis = tChart.yAxes.push(new am4charts.ValueAxis());
-// valueAxis.min = 10;
-// valueAxis.max = 40; 
-
-// let valueAxis2 = hChart.yAxes.push(new am4charts.ValueAxis());
-// valueAxis2.min = 30;
-// valueAxis2.max = 100;
 
 // Initiate charts
 am4core.ready(
@@ -89,19 +81,19 @@ function loadChart(chart, n) {
 
     if (n == 1) {
         console.log(1);
-        title_text = 'AQI';
+        title_text = 'Concentration of PM2.5';
         dataFields_valueY = 'aqi';
-        tooltip_Text = '[bold]{valueY}[/]';
+        tooltip_Text = '[bold]{valueY}[/] mg/m³';
     } else if (n == 2) {
         console.log(2);
         title_text = 'Temperature';
         dataFields_valueY = 'temp';
-        tooltip_Text = '[bold]{valueY}[/]°C';
+        tooltip_Text = '[bold]{valueY}[/] °C';
     } else {
         console.log(3);
         title_text = 'Humidity';
         dataFields_valueY = 'hum';
-        tooltip_Text = '[bold]{valueY}[/]';
+        tooltip_Text = '[bold]{valueY}[/] %';
     }
 
     console.log(title_text);

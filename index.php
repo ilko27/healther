@@ -90,7 +90,7 @@ if (screen.width <= 991) {
                             <br>
                             <table class='table text-white table-borderless'>
                                 <tbody>
-                                    <tr><td class='labelTd'>AQI</td><td class='numberTd'>".$sensData['aqi']."</td></tr>
+                                    <tr><td class='labelTd'>Concentration of PM2.5</td><td class='numberTd'>".$sensData['aqi']." mg/m³</td></tr>
                                     <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']." °C</td></tr>
                                     <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']." %</td></tr>
                                     <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']." hPa</td></tr>        
@@ -98,7 +98,7 @@ if (screen.width <= 991) {
                             </table>
                         </div>
                         <div class='card-footer'>
-                            <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'>Settings</button>
+                            <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'>Rename</button>
                             <button type='button' class='btn btn btn-outline-light' onclick='removeSensor($sensorId)'>Remove</button>
                         </div>
                     </div>
@@ -142,7 +142,32 @@ if (screen.width <= 991) {
 
     <script>
         function editSensor(sensorId) {
-            window.location = "settings.php?sensorId=" + sensorId;
+            let new_name = prompt("Enter new name.", "");
+            if (new_name == null || new_name == "") {
+            txt = "User cancelled.";
+            } else {
+                updateSensor(sensorId, new_name);
+            }
+
+        }
+
+        function updateSensor(sensor_id, new_name) {
+            let sensorId = sensor_id;
+            let newName = new_name;
+            let dataToSend = JSON.stringify({
+                sensorId: sensorId,
+                newName: newName
+            });
+            console.log(dataToSend)
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.assign('index.php');
+                }
+            };
+            xmlhttp.open("POST", "php/updateSensor.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(dataToSend);
         }
 
         
