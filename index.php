@@ -88,6 +88,7 @@ if (screen.width <= 991) {
                         <div class='card-body'>
                             <h3 class='card-title'>".$row['sensor_name']."</h3>
                             <br>
+                            <span>".$sensData['readingTime']."</span>
                             <table class='table text-white table-borderless'>
                                 <tbody>
                                     <tr><td class='labelTd'>AQI</td><td class='numberTd'>".$sensData['aqi']."</td></tr>
@@ -100,6 +101,7 @@ if (screen.width <= 991) {
                         <div class='card-footer'>
                             <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'>Settings</button>
                             <button type='button' class='btn btn btn-outline-light' onclick='removeSensor($sensorId)'>Remove</button>
+                            <span class='float-end align-middle'>Id:".$row['sensor_id']."</span>
                         </div>
                     </div>
                 ";
