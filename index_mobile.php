@@ -103,10 +103,6 @@ if (screen.width > 991) {
     <div id="rightHalf" class="half">
 
 
-        <!-- Button trigger modal -->
-        <!-- <button id="myInput" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Launch static backdrop modal
-        </button> -->
 
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -142,7 +138,32 @@ if (screen.width > 991) {
 
     <script>
         function editSensor(sensorId) {
-            window.location = "settings.php?sensorId=" + sensorId;
+            let new_name = prompt("Enter new name.", "");
+            if (new_name == null || new_name == "") {
+            txt = "User cancelled.";
+            } else {
+                updateSensor(sensorId, new_name);
+            }
+
+        }
+
+        function updateSensor(sensor_id, new_name) {
+            let sensorId = sensor_id;
+            let newName = new_name;
+            let dataToSend = JSON.stringify({
+                sensorId: sensorId,
+                newName: newName
+            });
+            console.log(dataToSend)
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.assign('index.php');
+                }
+            };
+            xmlhttp.open("POST", "php/updateSensor.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(dataToSend);
         }
 
 

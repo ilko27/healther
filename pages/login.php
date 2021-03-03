@@ -39,38 +39,42 @@ if (isset($_SESSION['userSession'])) {
             <div id="buttons">
                 <button type='button' class='btn btn btn-outline-light' onclick='send()'>Log In</button>
                 <button type='button' class='btn btn btn-outline-light' onclick="location.href='signup.php';">Sign Up</button>
-                <!-- <button type='button' class='btn btn btn-outline-light' onclick="change_pass()">Forgotton Password</button> -->
+                <button type="button" class="btn btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Forgotten Password</button>
             </div>
-            <div class="modal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Forgotten Password</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="c" placeholder="name@example.com">
-                            <label for="floatingInput_CP">Email address</label>
-                        </div>
-                    
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type='button' class='btn btn btn-outline-light' onclick="change_pass()">Forgotton Password</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
+
+
+
         </div>
 
     </div>
 
 
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Forgotten Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput_CP" placeholder="name@example.com">
+                            <label for="floatingInput_CP">Email address</label>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <h6 id="modal_message"></h6>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="change_pass()">Continue</button>
+                </div>
+                </div>
+            </div>
+            </div>
 
     
     <script>
+
         function send(){
             let task = 'login';
             let email = document.getElementById("floatingInput").value;
@@ -104,11 +108,11 @@ if (isset($_SESSION['userSession'])) {
             var xmlhttp = new XMLHttpRequest();
             var toSend = JSON.stringify({
                 task: task,
-                email = email
+                email: email
             });
             xmlhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 200){
-                    document.getElementById("message").innerHTML = JSON.parse(this.responseText);
+                    document.getElementById("modal_message").innerHTML = JSON.parse(this.responseText);
                 }
             };
             xmlhttp.open("POST", "../php/login.php", false);
