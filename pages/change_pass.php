@@ -29,17 +29,15 @@ if (isset($_SESSION['userSession'])) {
         <div id="form">
             <h5 id="message"></h5>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-            </div>
-            <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat password">
+                <label for="floatingRepeatPassword">Repeat password</label>
+            </div>
             <div id="buttons">
-                <button type='button' class='btn btn btn-outline-light' onclick='send()'>Log In</button>
-                <button type='button' class='btn btn btn-outline-light' onclick="location.href='signup.php';">Sign Up</button>
-                <button type='button' class='btn btn btn-outline-light' onclick="location.href='change_pass.php';">Forgotton Password</button>
+                <button type='button' class='btn btn btn-outline-light' onclick='send()'>Save</button>
             </div>
         </div>
 

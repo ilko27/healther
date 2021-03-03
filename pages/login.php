@@ -59,11 +59,12 @@ if (isset($_SESSION['userSession'])) {
                 </div>
                 <div class="modal-body">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="c" placeholder="name@example.com">
+                            <input type="email" class="form-control" id="floatingInput_CP" placeholder="name@example.com">
                             <label for="floatingInput_CP">Email address</label>
                         </div>
                 </div>
                 <div class="modal-footer">
+                    <h6 id="modal_message"></h6>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" onclick="change_pass()">Continue</button>
                 </div>
@@ -101,23 +102,23 @@ if (isset($_SESSION['userSession'])) {
         }
 
         
-        // function change_pass(){
-        //     let task = 'change_pass';
-        //     let email = document.getElementById("floatingInput_CP").value;
-        //     var xmlhttp = new XMLHttpRequest();
-        //     var toSend = JSON.stringify({
-        //         task: task,
-        //         email = email
-        //     });
-        //     xmlhttp.onreadystatechange = function(){
-        //         if(this.readyState == 4 && this.status == 200){
-        //             document.getElementById("message").innerHTML = JSON.parse(this.responseText);
-        //         }
-        //     };
-        //     xmlhttp.open("POST", "../php/login.php", false);
-        //     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //     xmlhttp.send(toSend);
-        // }
+        function change_pass(){
+            let task = 'change_pass';
+            let email = document.getElementById("floatingInput_CP").value;
+            var xmlhttp = new XMLHttpRequest();
+            var toSend = JSON.stringify({
+                task: task,
+                email: email
+            });
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("modal_message").innerHTML = JSON.parse(this.responseText);
+                }
+            };
+            xmlhttp.open("POST", "../php/login.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(toSend);
+        }
     </script>
 </body>
 </html>

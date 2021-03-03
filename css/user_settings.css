@@ -7,7 +7,8 @@ html {
     height: 100%;
 }
 body {
-    background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgba(51,221,225,1) 100%);
+    background: linear-gradient( 34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
+    /* background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgba(51,221,225,1) 100%); */
 }
 #container {
     /* background: rgb(19, 152, 185);
@@ -21,7 +22,7 @@ body {
     transform: translate(-50%, -50%);
 }
 #accordion {
-    background: rgb(19, 152, 185);
+    /* background: rgb(19, 152, 185); */
     border-style: solid;
     border-color: white;
     border-radius: 10px;
