@@ -39,6 +39,29 @@ if (isset($_SESSION['userSession'])) {
             <div id="buttons">
                 <button type='button' class='btn btn btn-outline-light' onclick='send()'>Log In</button>
                 <button type='button' class='btn btn btn-outline-light' onclick="location.href='signup.php';">Sign Up</button>
+                <!-- <button type='button' class='btn btn btn-outline-light' onclick="change_pass()">Forgotton Password</button> -->
+            </div>
+            <div class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Forgotten Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="c" placeholder="name@example.com">
+                            <label for="floatingInput_CP">Email address</label>
+                        </div>
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type='button' class='btn btn btn-outline-light' onclick="change_pass()">Forgotton Password</button>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -49,10 +72,12 @@ if (isset($_SESSION['userSession'])) {
     
     <script>
         function send(){
+            let task = 'login';
             let email = document.getElementById("floatingInput").value;
             let password = document.getElementById("floatingPassword").value;
             var xmlhttp = new XMLHttpRequest();
             var toSend = JSON.stringify({
+                task: task,
                 email: email,
                 password: password
             });
@@ -61,11 +86,29 @@ if (isset($_SESSION['userSession'])) {
                     if(JSON.parse(this.responseText) == "success"){
                         window.location.href = "../";
                     } else {
-                        console.log(JSON.parse(this.responseText));
                         document.getElementById("message").innerHTML = JSON.parse(this.responseText);
                         document.getElementById("floatingInput").classList.add("is-invalid");
                         document.getElementById("floatingPassword").classList.add("is-invalid");
                     }
+                }
+            };
+            xmlhttp.open("POST", "../php/login.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(toSend);
+        }
+
+        
+        function change_pass(){
+            let task = 'change_pass';
+            let email = document.getElementById("floatingInput_CP").value;
+            var xmlhttp = new XMLHttpRequest();
+            var toSend = JSON.stringify({
+                task: task,
+                email = email
+            });
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("message").innerHTML = JSON.parse(this.responseText);
                 }
             };
             xmlhttp.open("POST", "../php/login.php", false);
