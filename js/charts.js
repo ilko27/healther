@@ -53,7 +53,7 @@ function getData(sensorn, sensor_u_name){
                 storeAQIData.push(
                     {
                         date: new Date(rs[i].readingTime),
-                        aqi: rs[i].aqi
+                        aqi: rs[i].aqi/100
                     }
                 )
             }
@@ -80,23 +80,23 @@ function loadChart(chart, n) {
     let tooltip_Text;
 
     if (n == 1) {
-        console.log(1);
+        // console.log(1);
         title_text = 'Concentration of PM2.5';
         dataFields_valueY = 'aqi';
-        tooltip_Text = '[bold]{valueY}[/] mg/m³';
+        tooltip_Text = '[bold]{valueY}[/] μg/m³';
     } else if (n == 2) {
-        console.log(2);
+        // console.log(2);
         title_text = 'Temperature';
         dataFields_valueY = 'temp';
         tooltip_Text = '[bold]{valueY}[/] °C';
     } else {
-        console.log(3);
+        // console.log(3);
         title_text = 'Humidity';
         dataFields_valueY = 'hum';
         tooltip_Text = '[bold]{valueY}[/] %';
     }
 
-    console.log(title_text);
+    // console.log(title_text);
 
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.baseInterval = {

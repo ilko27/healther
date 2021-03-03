@@ -4,11 +4,6 @@ if(!isset($_SESSION['userSession'])){
     header("Location: pages/login.php");
     exit();
 } else {
-    // $url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
-    // $getWeather = simplexml_load_file($url);
-    // $getTemp = $getWeather->list->item->temperature['value'];
-    // $getHumidity = $getWeather->list->item->humidity['value'];
-
     require 'php/dbconn.php';
 }
 ?>
@@ -65,6 +60,7 @@ if (screen.width > 991) {
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $sensorId = $row['sensor_id'];
+                $sensorName = $row['sensor_name'];
                 $sensorQuery = "SELECT * FROM sensorData WHERE sensor = ".$sensorId." ORDER BY datId DESC LIMIT 1";
                 $sensorReading= $conn -> query($sensorQuery);
                 $sensData = $sensorReading->fetch_assoc();
@@ -73,10 +69,10 @@ if (screen.width > 991) {
                     <div class='card text-white bg-secondary mb-3' data-bs-toggle='modal' data-bs-target='#staticBackdrop' onclick='getData(".$row['sensor_id'].", `".$row['sensor_name']."`)'>
                         <div class='card-body'>
                             <h3 class='card-title'>".$row['sensor_name']."</h3>
-                            <br>
+                            <span>".$sensData['readingTime']."</span>
                             <table class='table text-white table-borderless'>
                                 <tbody>
-                                    <tr><td class='labelTd'>Concentration of PM2.5</td><td class='numberTd'>".$sensData['aqi']." mg/m³</td></tr>
+                                    <tr><td class='labelTd'>Concentration of PM2.5</td><td class='numberTd'>".($sensData['aqi']/100)." μg/m³</td></tr>
                                     <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']." °C</td></tr>
                                     <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']." %</td></tr>
                                     <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']." hPa</td></tr>        
@@ -86,11 +82,18 @@ if (screen.width > 991) {
                         <div class='card-footer'>
                             <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'>Rename</button>
                             <button type='button' class='btn btn btn-outline-light' onclick='removeSensor($sensorId)'>Remove</button>
+                            <span class='float-end align-middle'>Id:".$row['sensor_id']."</span>
                         </div>
                     </div>
                 ";
 
             }
+            echo "
+            <script>
+                let chartId = ".$sensorId.";                
+                let chartName = '".$sensorName."';
+            </script>            
+            ";
         } else {
             echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
         }
@@ -101,7 +104,6 @@ if (screen.width > 991) {
 
     
     <div id="rightHalf" class="half">
-
 
 
         <!-- Modal -->

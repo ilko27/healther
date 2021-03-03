@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (isset($_SESSION['userSession'])) {
-   header("Location: ../");
-   exit();
+if (isset($_GET["email"]) && isset($_GET["code"])) { //  change pass
+    $email = $_GET["email"];
+    $code =  $_GET["code"];
 }
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ if (isset($_SESSION['userSession'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/healther_clean.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="../css/sign.css">
-    <title>Healther Login</title>
+    <title>Healther</title>
 
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -30,11 +30,11 @@ if (isset($_SESSION['userSession'])) {
             <h5 id="message"></h5>
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+                <label for="floatingPassword">New password</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat password">
-                <label for="floatingRepeatPassword">Repeat password</label>
+                <label for="floatingRepeatPassword">Repeat new password</label>
             </div>
             <div id="buttons">
                 <button type='button' class='btn btn btn-outline-light' onclick='send()'>Save</button>
@@ -48,10 +48,16 @@ if (isset($_SESSION['userSession'])) {
     
     <script>
         function send(){
-            let email = document.getElementById("floatingInput").value;
+            let task = 'forgotten_pass';
+            let email = '<?php echo $email; ?>';
+            let code = '<?php echo $code; ?>';
             let password = document.getElementById("floatingPassword").value;
-            var xmlhttp = new XMLHttpRequest();
-            var toSend = JSON.stringify({
+            let re_password = document.getElementById("floatingRepeatPassword").value;
+            let xmlhttp = new XMLHttpRequest();
+            let toSend = JSON.stringify({
+                task: task,
+                email: email,
+                code: code,
                 password: password,
                 re_password: re_password
             });
@@ -60,10 +66,9 @@ if (isset($_SESSION['userSession'])) {
                     if(JSON.parse(this.responseText) == "success"){
                         window.location.href = "../";
                     } else {
-                        console.log(JSON.parse(this.responseText));
                         document.getElementById("message").innerHTML = JSON.parse(this.responseText);
-                        document.getElementById("floatingInput").classList.add("is-invalid");
                         document.getElementById("floatingPassword").classList.add("is-invalid");
+                        document.getElementById("floatingRepeatPassword").classList.add("is-invalid");
                     }
                 }
             };
