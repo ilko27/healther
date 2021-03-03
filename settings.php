@@ -30,7 +30,8 @@ if(!isset($_SESSION['userSession'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensor Settings</title>
     <link rel="icon" href="images/healther_clean.png" type="image/gif" sizes="16x16">
-    <!-- <link rel="stylesheet" href="css/index.css"> -->
+
+    <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/header.css">
 
 

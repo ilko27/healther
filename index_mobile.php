@@ -4,10 +4,10 @@ if(!isset($_SESSION['userSession'])){
     header("Location: pages/login.php");
     exit();
 } else {
-    $url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
-    $getWeather = simplexml_load_file($url);
-    $getTemp = $getWeather->list->item->temperature['value'];
-    $getHumidity = $getWeather->list->item->humidity['value'];
+    // $url = "http://api.openweathermap.org/data/2.5/find?lon=27.8333&lat=43.5667&units=metric&type=accurate&mode=xml&APPID=d53b7d430ab2e82f0aaa4572bdcb38c9";
+    // $getWeather = simplexml_load_file($url);
+    // $getTemp = $getWeather->list->item->temperature['value'];
+    // $getHumidity = $getWeather->list->item->humidity['value'];
 
     require 'php/dbconn.php';
 }
@@ -140,15 +140,6 @@ if(!isset($_SESSION['userSession'])){
             window.location = "settings.php?sensorId=" + sensorId;
         }
 
-        function addSensor(){
-            let sensorId = prompt("Enter sensor id", "");
-
-            if (sensorId == null || sensorId == "") {
-            txt = "User cancelled the prompt.";
-            } else {
-                addInDB(sensorId);
-            }
-        }
 
         function removeSensor(sensorId) {
             let idToSend = JSON.stringify({
@@ -165,21 +156,6 @@ if(!isset($_SESSION['userSession'])){
             xmlhttp.send(idToSend);
         }
 
-        function addInDB(sensorId){
-            let idToSend = JSON.stringify({
-                sensorId: sensorId
-            });
-            let xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // console.log(JSON.parse(this.responseText));
-                    location.reload();
-                }
-            };
-            xmlhttp.open("POST", "php/addSensor.php", false);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send(idToSend);
-        }
     </script>
 </body>
 </html>

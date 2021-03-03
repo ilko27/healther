@@ -8,8 +8,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item">
-        </li>
+
+        <?php
+        if ($_SESSION['userId'] == 0) {
+          echo '
+            <li class="nav-item">
+              <a class="nav-link active" onclick="createSensor()" aria-current="page" href="#">Create Sensor</a>
+            </li>
+          ';
+        }
+
+
+        ?>
+        
+
         <li class="nav-item">
           <a class="nav-link active" onclick="addSensor()" aria-current="page" href="#">Add Sensor</a>
         </li>
@@ -21,7 +33,7 @@
             Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="user_settings.php">Settings</a></li>
             <li><a class="dropdown-item" href="php/logout.php">Logout</a></li>
           </ul>
         </li>
@@ -29,3 +41,58 @@
     </div>
   </div>
 </nav>
+<script>
+  function addSensor(){
+    let sensorId = prompt("Enter sensor id", "");
+
+    if (sensorId == null || sensorId == "") {
+    txt = "User cancelled the prompt.";
+    } else {
+        addInDB(sensorId);
+    }
+  }
+
+  function addInDB(sensorId){
+    let idToSend = JSON.stringify({
+        sensorId: sensorId
+    });
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // console.log(JSON.parse(this.responseText));
+            location.reload();
+        }
+    };
+    xmlhttp.open("POST", "php/addSensor.php", false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(idToSend);
+  }
+
+  <?php
+  if ($_SESSION['userId'] == 0) {
+    echo '
+    function createSensor(){
+      let sensor_id = prompt("Creating sensor with id:", "");
+
+      if (sensor_id == null || sensor_id == "") {
+      txt = "User cancelled the prompt.";
+      } else {
+        let idToSend = JSON.stringify({
+          sensor_id: sensor_id
+        });
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              alert("Successfully added sensor: ".concat(sensor_id) );
+            }
+        };
+        xmlhttp.open("POST", "php/createSensor.php", false);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(idToSend);
+      }
+    }
+    ';
+  }
+  ?>
+
+</script>
