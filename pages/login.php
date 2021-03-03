@@ -39,19 +39,17 @@ if (isset($_SESSION['userSession'])) {
             <div id="buttons">
                 <button type='button' class='btn btn btn-outline-light' onclick='send()'>Log In</button>
                 <button type='button' class='btn btn btn-outline-light' onclick="location.href='signup.php';">Sign Up</button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-            </button>
-                <!-- <button id='modalInput' type='button' class='btn btn btn-outline-light' data-bs-toggle="modal" data-bs-target="#exampleModal">Forgotten Password</button> -->
+                <button type="button" class="btn btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Forgotten Password</button>
             </div>
 
 
-            <!-- Button trigger modal
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-            </button>
 
-            Modal
+        </div>
+
+    </div>
+
+
+            <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -71,70 +69,10 @@ if (isset($_SESSION['userSession'])) {
                 </div>
                 </div>
             </div>
-            </div> -->
-
-            <!-- <div class="modal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Forgotten Password</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="c" placeholder="name@example.com">
-                            <label for="floatingInput_CP">Email address</label>
-                        </div>
-                    
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type='button' class='btn btn btn-outline-light' onclick="change_pass()">Forgotton Password</button>
-                    </div>
-                    </div>
-                </div>
-            </div> -->
-
-        </div>
-
-    </div>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Forgotten Password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="c" placeholder="name@example.com">
-                            <label for="floatingInput_CP">Email address</label>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary" onclick="change_pass()">Continue</button> -->
-                </div>
-                </div>
-            </div>
             </div>
 
     
     <script>
-        // let myModal = document.getElementById('exampleModal')
-        // let myInput = document.getElementById('modalInput')
-
-        // myModal.addEventListener('shown.bs.modal', function () {
-        // myInput.focus()
-        // })
 
         function send(){
             let task = 'login';
