@@ -68,7 +68,9 @@ td {
     width: 75%;
 }
 
-
+.float-end {
+    margin-top: 5px;
+}
 
 @media screen and (max-width: 991px) {
 
@@ -92,41 +94,5 @@ td {
     padding-left: 20px;
 }
 
+
 }
-
-
-
-/* @media screen and (max-width: 900px) {
-    body {
-        text-align: center;
-    }
-    #chartsDiv, #map {
-        float: none;
-        width: 100%;
-    }
-    #map {
-        width: 0%;
-    }
-    .charts {
-        margin-top: 20px;
-        height: max-content;
-    }
-    #map {
-        margin-top: 100px;
-        height: 300px;
-    }
-    * {
-        border: none;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-    }
-    .cardGroup, .excessCards {
-        width: 48%;
-        margin: 1%;
-        float: left;
-    }
-    .excessGroup {
-        width: 98%;
-    }
-} */

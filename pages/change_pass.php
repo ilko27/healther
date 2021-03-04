@@ -3,6 +3,20 @@ session_start();
 if (isset($_GET["email"]) && isset($_GET["code"])) { //  change pass
     $email = $_GET["email"];
     $code =  $_GET["code"];
+    $outp = 'change';
+} else if (isset($_GET["code"])) {
+    session_start();
+    require '../php/dbconn.php';
+    $code =  $_GET["code"];
+    $sql = "UPDATE users SET users.forget = '' WHERE users.forget = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        $outp = 'error_sql_error';
+    } else {
+        mysqli_stmt_bind_param($stmt, "s", $code);
+        mysqli_stmt_execute($stmt);
+        $outp = 'success';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -26,20 +40,33 @@ if (isset($_GET["email"]) && isset($_GET["code"])) { //  change pass
             <img id="header_img_big" src="../images/big_healther_clear.png" alt="Healther">
         </a>
 
-        <div id="form">
-            <h5 id="message"></h5>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">New password</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat password">
-                <label for="floatingRepeatPassword">Repeat new password</label>
-            </div>
-            <div id="buttons">
-                <button type='button' class='btn btn btn-outline-light' onclick='send()'>Save</button>
-            </div>
-        </div>
+        <?php
+        if ($outp == 'change') {
+            echo '
+            <div id="form">
+                <h5 id="message"></h5>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">New password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat password">
+                    <label for="floatingRepeatPassword">Repeat new password</label>
+                </div>
+                <div id="buttons">
+                    <button type="button" class="btn btn btn-outline-light" onclick="send()">Save</button>
+                </div>
+            </div>            
+            ';
+        } else if ($outp == 'success') {
+            echo '<p>Thank you.</p>';
+        } else {
+            echo '<p>Error.</p>';
+        }
+
+        
+
+        ?>
 
     </div>
 
@@ -77,5 +104,7 @@ if (isset($_GET["email"]) && isset($_GET["code"])) { //  change pass
             xmlhttp.send(toSend);
         }
     </script>
+
+
 </body>
 </html>
