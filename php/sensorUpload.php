@@ -19,12 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $sql = "INSERT INTO `sensorData`(`sensor`, `aqi`, `temperatureC`, `pressure`, `humidity`) VALUES ('$sensor', '$aqi', '$temp', '$pressure', '$humidity')";
         
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } 
-        else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+        if ($temp > -100) {
+            if ($conn->query($sql) === TRUE) {
+                echo "New record created successfully";
+            } 
+            else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        } else {
+            echo "Error: -144";
         }
+        
     
         $conn->close();
     }
