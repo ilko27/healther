@@ -46,8 +46,8 @@
             <script>translate('changeLanguage', language);</script>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" onclick="setLS('en')">EN</a></li>
-            <li><a class="dropdown-item" onclick="setLS('bg')">BG</a></li>
+            <li><a class="dropdown-item" onclick="setLS('en')">EN <img style="height: 25px; float: right" src="images/gbflag.png"/></a></li>
+            <li><a class="dropdown-item" onclick="setLS('bg')">BG <img style="height: 25px; float: right" src="images/bgflag.png"/></a></li>
           </ul>
         </li>
       </ul>
