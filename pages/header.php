@@ -1,4 +1,6 @@
 <nav id="nav_header" class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
+<script src="js/languages.js"></script>
+
   <div class="container-fluid">
     <a id="navbar-brand" class="navbar-brand" href="./">
         <img class="d-inline-block align-top" id="header_img" src="images/big_healther_clear.png" alt="Healther">
@@ -23,18 +25,18 @@
         
 
         <li class="nav-item">
-          <a class="nav-link active" onclick="addSensor()" aria-current="page" href="#">Add Sensor</a>
+          <a class="nav-link active" onclick="addSensor()" aria-current="page" href="#"><script>translate('addSensor', language);</script></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="map.php">Map</a>
+          <a class="nav-link active" href="map.php"><script>translate('map', language);</script></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Account
+            <script>translate('account', language);</script>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="user_settings.php">Settings</a></li>
-            <li><a class="dropdown-item" href="php/logout.php">Logout</a></li>
+            <li><a class="dropdown-item" href="user_settings.php"><script>translate('settings', language);</script></a></li>
+            <li><a class="dropdown-item" href="php/logout.php"><script>translate('logout', language);</script></a></li>
           </ul>
         </li>
       </ul>
@@ -43,12 +45,12 @@
 </nav>
 <script>
   function addSensor(){
-    let sensorId = prompt("Enter sensor id", "");
+    let sensorId = prompt(dictionary["enterSensorId"][language], "");
 
     if (sensorId == null || sensorId == "") {
-    txt = "User cancelled the prompt.";
+      txt = "User cancelled the prompt.";
     } else {
-        addInDB(sensorId);
+      addInDB(sensorId);
     }
   }
 

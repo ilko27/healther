@@ -20,6 +20,8 @@ if (isset($_SESSION['userSession'])) {
 
 </head>
 <body>
+    <script src="../js/languages.js"></script>
+
     <div id="container">
 
         <a href="../">
@@ -30,16 +32,16 @@ if (isset($_SESSION['userSession'])) {
             <h5 id="message"></h5>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
+                <label for="floatingInput"><script>translate('emailAddress', language);</script></label>
             </div>
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+                <label for="floatingPassword"><script>translate('password', language);</script></label>
             </div>
             <div id="buttons">
-                <button type='button' class='btn btn btn-outline-light' onclick='send()'>Log In</button>
-                <button type='button' class='btn btn btn-outline-light' onclick="location.href='signup.php';">Sign Up</button>
-                <button id='button_modal' type="button" class="btn btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Forgotten Password</button>
+                <button type='button' class='btn btn btn-outline-light' onclick='send()'><script>translate('login', language);</script></button>
+                <button type='button' class='btn btn btn-outline-light' onclick="location.href='signup.php';"><script>translate('signup', language);</script></button>
+                <button id='button_modal' type="button" class="btn btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal"><script>translate('forgottenPassword', language);</script></button>
             </div>
 
 
@@ -54,19 +56,19 @@ if (isset($_SESSION['userSession'])) {
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Forgotten Password</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><script>translate('forgottenPassword', language);</script></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput_CP" placeholder="name@example.com">
-                            <label for="floatingInput_CP">Email address</label>
+                            <label for="floatingInput_CP"><script>translate('emailAddress', language);</script></label>
                         </div>
                 </div>
                 <div class="modal-footer">
                     <h6 id="modal_message"></h6>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="change_pass()">Continue</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><script>translate('close', language);</script></button>
+                    <button type="button" class="btn btn-primary" onclick="change_pass()"><script>translate('continue', language);</script></button>
                 </div>
                 </div>
             </div>

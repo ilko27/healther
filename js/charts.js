@@ -73,25 +73,23 @@ function getData(sensorn, sensor_u_name){
 }
 
 function loadChart(chart, n) {
-
-
     let title_text;
     let dataFields_valueY;
     let tooltip_Text;
 
     if (n == 1) {
         // console.log(1);
-        title_text = 'Concentration of PM2.5';
+        title_text = dictionary['concentration'][language];
         dataFields_valueY = 'aqi';
         tooltip_Text = '[bold]{valueY}[/] μg/m³';
     } else if (n == 2) {
         // console.log(2);
-        title_text = 'Temperature';
+        title_text = dictionary['temperature'][language];
         dataFields_valueY = 'temp';
         tooltip_Text = '[bold]{valueY}[/] °C';
     } else {
         // console.log(3);
-        title_text = 'Humidity';
+        title_text = dictionary['humidity'][language];
         dataFields_valueY = 'hum';
         tooltip_Text = '[bold]{valueY}[/] %';
     }
