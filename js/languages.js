@@ -135,7 +135,7 @@ const dictionary = {
         en: "Language",
         bg: "Език"
     },
-    weeklyNotificatios: {
+    weeklyNotifications: {
         en: "Weekly notificatios",
         bg: "Седмични известия"
     }

@@ -41,12 +41,27 @@ if(!isset($_SESSION['userSession'])){
     <br>
     <div class="accordion" id="accordion">
         <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+            <script>translate('weeklyNotifications', language);</script>
+            </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordion">
+            <div class="accordion-body">
+                
+                <!-- put on/off button for wn -->
+                fhdfhdfh
+
+            </div>
+            </div>
+        </div>
+        <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
             <script>translate('changeEmailAddress', language);</script>
             </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
             <div class="accordion-body">
                 
                         

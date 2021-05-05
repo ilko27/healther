@@ -54,8 +54,6 @@ for ($i = 0; $i < $num_rows; $i++) {
 
             echo "***EMAIL SENDING***";
 
-            echo "   EMAIL SENDING   ";
-
             $message = 
                     "
                     Hello from <a href='https://www.healther.online'>Healther</a>, <br><br>
@@ -91,16 +89,16 @@ for ($i = 0; $i < $num_rows; $i++) {
             $sensor_name = $data_sensor_name[0];
 
             $data_aqi = array_filter($data_aqi);
-            $average_data_aqi = array_sum($data_aqi)/count($data_aqi);
+            $average_data_aqi = round(array_sum($data_aqi)/count($data_aqi), 2);
 
             $data_temperatureC = array_filter($data_temperatureC);
-            $average_data_temperatureC = array_sum($data_temperatureC)/count($data_temperatureC);
+            $average_data_temperatureC = round(array_sum($data_temperatureC)/count($data_temperatureC), 2);
 
             $data_humidity = array_filter($data_humidity);
-            $average_data_humidity = array_sum($data_humidity)/count($data_humidity);
+            $average_data_humidity = round(array_sum($data_humidity)/count($data_humidity), 2);
 
             $data_pressure = array_filter($data_pressure);
-            $average_data_pressure = array_sum($data_pressure)/count($data_pressure);
+            $average_data_pressure = round(array_sum($data_pressure)/count($data_pressure), 2);
 
             echo "***EMAIL SENDING***";
 
