@@ -29,10 +29,8 @@ $data_temperatureC = array();
 $data_humidity = array();
 $data_pressure = array();
 for ($i = 0; $i < $num_rows; $i++) {
-    echo 'fffffff'.$i.'ffffff';
-    // echo $i."   ".$res->rows[$i]->email." ||||| \r\n";
     if (in_array($res->rows[$i]->email, $data_email) && in_array($res->rows[$i]->sensor_name, $data_sensor_name)){
-        echo '     DD     ';
+
         array_push($data_aqi, $res->rows[$i]->aqi);
         array_push($data_temperatureC, $res->rows[$i]->temperatureC);
         array_push($data_humidity, $res->rows[$i]->humidity);
