@@ -126,6 +126,18 @@ const dictionary = {
     createSensor: {
         en: "Create Sensor",
         bg: "Създаване на сензор"
+    },
+    noSensorsAdded: {
+        en: "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>",
+        bg: "Нямате добавени сензори. Може да добавите един като натиснете <a onclick='addSensor()' class='waves-effect waves-light btn'>Тук</a>"
+    },
+    changeLanguage: {
+        en: "Language",
+        bg: "Език"
+    },
+    weeklyNotificatios: {
+        en: "Weekly notificatios",
+        bg: "Седмични известия"
     }
 };
 

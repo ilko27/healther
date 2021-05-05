@@ -49,8 +49,6 @@ if (screen.width > 991) {
 <body>   
 
     <?php include 'pages/header.php';?>
-    <button onclick="setLS('en')">EN</button>
-    <button onclick="setLS('bg')">BG</button>
     
     <div id="leftHalf" class="half">
 
@@ -96,7 +94,7 @@ if (screen.width > 991) {
             </script>            
             ";
         } else {
-            echo "You don't have any sensors added. You can add one by clicking <a onclick='addSensor()' class='waves-effect waves-light btn'>Here</a>";
+            echo "<script>translate('noSensorsAdded', language);</script>";
         }
     ?>
 
