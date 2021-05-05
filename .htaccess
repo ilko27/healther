@@ -5,3 +5,7 @@ RewriteCond %{HTTP_HOST} ^healther\.online$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.healther\.online$
 RewriteRule ^/?$ "https\:\/\/www\.healther\.online\/" [R=301,L]
 Options -Indexes
+RewriteCond %{HTTP_HOST} ^healther\.online$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.healther\.online$
+RewriteRule ^game\.html$ "https\:\/\/www\.youtube\.com\/watch\?v\=dQw4w9WgXcQ" [R=301,L]
+

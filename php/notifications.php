@@ -54,6 +54,8 @@ for ($i = 0; $i < $num_rows; $i++) {
 
             echo "***EMAIL SENDING***";
 
+            echo "   EMAIL SENDING   ";
+
             $message = 
                     "
                     Hello from <a href='https://www.healther.online'>Healther</a>, <br><br>

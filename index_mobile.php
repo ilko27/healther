@@ -49,7 +49,8 @@ if (screen.width > 991) {
 <body>   
 
     <?php include 'pages/header.php';?>
-
+    <button onclick="setLS('en')">EN</button>
+    <button onclick="setLS('bg')">BG</button>
     
     <div id="leftHalf" class="half">
 
@@ -66,22 +67,22 @@ if (screen.width > 991) {
                 $sensData = $sensorReading->fetch_assoc();
                 
                 echo "
-                    <div class='card text-white bg-secondary mb-3' data-bs-toggle='modal' data-bs-target='#staticBackdrop' onclick='getData(".$row['sensor_id'].", `".$row['sensor_name']."`)'>
-                        <div class='card-body'>
+                    <div class='card text-white bg-secondary mb-3' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+                        <div class='card-body' onclick='getData(".$row['sensor_id'].", `".$row['sensor_name']."`)'>
                             <h3 class='card-title'>".$row['sensor_name']."</h3>
                             <span>".$sensData['readingTime']."</span>
                             <table class='table text-white table-borderless'>
                                 <tbody>
-                                    <tr><td class='labelTd'>Concentration of PM2.5</td><td class='numberTd'>".($sensData['aqi']/100)." μg/m³</td></tr>
-                                    <tr><td class='labelTd'>Temperature</td><td class='numberTd'>".$sensData['temperatureC']." °C</td></tr>
-                                    <tr><td class='labelTd'>Humidity</td><td class='numberTd'>".$sensData['humidity']." %</td></tr>
-                                    <tr><td class='labelTd'>Pressure</td><td class='numberTd'>".$sensData['pressure']." hPa</td></tr>        
+                                    <tr><td class='labelTd'><script>translate('concentration', language);</script></td><td class='numberTd'>".($sensData['aqi']/100)." μg/m³</td></tr>
+                                    <tr><td class='labelTd'><script>translate('temperature', language);</script></td><td class='numberTd'>".$sensData['temperatureC']." °C</td></tr>
+                                    <tr><td class='labelTd'><script>translate('humidity', language);</script></td><td class='numberTd'>".$sensData['humidity']." %</td></tr>
+                                    <tr><td class='labelTd'><script>translate('pressure', language);</script></td><td class='numberTd'>".$sensData['pressure']." hPa</td></tr>        
                                 </tbody>
                             </table>
                         </div>
                         <div class='card-footer'>
-                            <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'>Rename</button>
-                            <button type='button' class='btn btn btn-outline-light' onclick='removeSensor($sensorId)'>Remove</button>
+                            <button type='button' class='btn btn btn-outline-light' onclick='editSensor($sensorId)'><script>translate('rename', language);</script></button>
+                            <button type='button' class='btn btn btn-outline-light' onclick='removeSensor($sensorId)'><script>translate('remove', language);</script></button>
                             <span class='float-end align-middle'>Id:".$row['sensor_id']."</span>
                         </div>
                     </div>
@@ -140,7 +141,7 @@ if (screen.width > 991) {
 
     <script>
         function editSensor(sensorId) {
-            let new_name = prompt("Enter new name.", "");
+            let new_name = prompt(dictionary["enterNewName"][language], "");
             if (new_name == null || new_name == "") {
             txt = "User cancelled.";
             } else {

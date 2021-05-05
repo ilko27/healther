@@ -43,7 +43,7 @@ if(!isset($_SESSION['userSession'])){
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Change email address
+            <script>translate('changeEmailAddress', language);</script>
             </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
@@ -52,10 +52,10 @@ if(!isset($_SESSION['userSession'])){
                         
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInputEmail" placeholder="Email address">
-                    <label for="floatingInputEmail">New email address</label>
+                    <label for="floatingInputEmail"><script>translate('newEmailAddress', language);</script></label>
                 </div>
                 <div id="buttons">
-                    <button type='button' class='btn btn btn-outline-light' onclick='change_email()'>Save</button>
+                    <button type='button' class='btn btn btn-outline-light' onclick='change_email()'><script>translate('save', language);</script></button>
                 </div>
 
             </div>
@@ -64,7 +64,7 @@ if(!isset($_SESSION['userSession'])){
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Change password
+                <script>translate('changePassword', language);</script>
             </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
@@ -72,18 +72,18 @@ if(!isset($_SESSION['userSession'])){
                 
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="oldFloatingPassword" placeholder="Old password">
-                    <label for="oldFloatingPassword">Old password</label>
+                    <label for="oldFloatingPassword"><script>translate('oldPassword', language);</script></label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="New password">
-                    <label for="floatingPassword">New password</label>
+                    <label for="floatingPassword"><script>translate('newPassword', language);</script></label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="floatingRepeatPassword" placeholder="Repeat new password">
-                    <label for="floatingRepeatPassword">Repeat new password</label>
+                    <label for="floatingRepeatPassword"><script>translate('reNewPassword', language);</script></label>
                 </div>
                 <div id="buttons">
-                    <button type='button' class='btn btn btn-outline-light' onclick='change_password()'>Save</button>
+                    <button type='button' class='btn btn btn-outline-light' onclick='change_password()'><script>translate('save', language);</script></button>
                 </div>
 
             
@@ -93,7 +93,7 @@ if(!isset($_SESSION['userSession'])){
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Change username
+                <script>translate('changeUsername', language);</script>
             </button>
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
@@ -102,10 +102,10 @@ if(!isset($_SESSION['userSession'])){
             
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInputUsername" placeholder="Username">
-                    <label for="floatingInputUsername">Username</label>
+                    <label for="floatingInputUsername"><script>translate('username', language);</script></label>
                 </div>
                 <div id="buttons">
-                    <button type='button' class='btn btn btn-outline-light' onclick='change_username()'>Save</button>
+                    <button type='button' class='btn btn btn-outline-light' onclick='change_username()'><script>translate('changeUsername', language);</script></button>
                 </div>
 
             </div>
@@ -114,7 +114,7 @@ if(!isset($_SESSION['userSession'])){
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingFour">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                Delete account
+                <script>translate('deleteAccount', language);</script>
             </button>
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
@@ -122,7 +122,7 @@ if(!isset($_SESSION['userSession'])){
             
         
                 <div id="buttons">
-                    <button type='button' class='btn btn btn-outline-light' onclick='delete_user()'>Delete account</button>
+                    <button type='button' class='btn btn btn-outline-light' onclick='delete_user()'><script>translate('deleteAccount', language);</script></button>
                 </div>
 
 
