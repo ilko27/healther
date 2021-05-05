@@ -21,7 +21,6 @@ if (isset($_SESSION['userSession'])) {
 </head>
 <body>
     <script src="../js/languages.js"></script>
-
     <div id="container">
 
         <a href="../">
@@ -122,5 +121,6 @@ if (isset($_SESSION['userSession'])) {
             xmlhttp.send(toSend);
         }
     </script>
+
 </body>
 </html>

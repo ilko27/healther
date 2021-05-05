@@ -15,7 +15,7 @@
         if ($_SESSION['userId'] == 0) {
           echo '
             <li class="nav-item">
-              <a class="nav-link active" onclick="createSensor()" aria-current="page" href="#">Create Sensor</a>
+              <a class="nav-link active" onclick="createSensor()" aria-current="page" href="#"><script>translate(`createSensor`, language);</script></a>
             </li>
           ';
         }

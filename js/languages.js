@@ -122,8 +122,13 @@ const dictionary = {
     enterSensorId: {
         en: "Enter sensor id:",
         bg: "Въведете id на сензора:"
+    },
+    createSensor: {
+        en: "Create Sensor",
+        bg: "Създаване на сензор"
     }
 };
+
 function translate(item, lang){
     document.write(dictionary[item][lang]);
 }
@@ -132,3 +137,7 @@ function setLS(lang){
     location.reload();
 }
 let language = localStorage.getItem("language");
+if(language === null){
+    localStorage.setItem("language", "en");
+    language = localStorage.getItem("language");
+}
