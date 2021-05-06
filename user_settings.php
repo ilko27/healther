@@ -4,7 +4,20 @@ if(!isset($_SESSION['userSession'])){
     header("Location: pages/login.php");
     exit();
 } else {
-    // require 'php/dbconn.php';
+    require 'php/dbconn.php';
+
+    $sql = 'SELECT users.notifications FROM users WHERE users.user_id = ?';
+    $stmt = mysqli_stmt_init($conn); 
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $_SESSION['userId']);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $notification_status);
+    while (mysqli_stmt_fetch($stmt)) {
+        $notification_status;
+        
+
+    }
+
 }
 ?>
 <!DOCTYPE html>
@@ -63,8 +76,9 @@ if(!isset($_SESSION['userSession'])){
             <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordion">
             <div class="accordion-body">
                 
-                <!-- put on/off button for wn -->
-                fhdfhdfh
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="change_notification_status()" <?php if ($notification_status == true) echo "checked='checked'"; ?>>
+                </div>
 
             </div>
             </div>
@@ -276,7 +290,25 @@ if(!isset($_SESSION['userSession'])){
             }
 
         }
-
+        function change_notification_status() {
+            let task = 'notification_status';
+            let notification_status = document.getElementById("flexSwitchCheckDefault").hasAttribute("checked");
+            console.log(notification_status);
+            let dataToSend = JSON.stringify({
+                task: task,
+                notification_status: notification_status
+            });
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // location.reload();
+                    console.log(JSON.parse(this.responseText));
+                }
+            };
+            xmlhttp.open("POST", "php/user_settings.php", false);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(dataToSend);
+        }
         
     </script>
 </body>

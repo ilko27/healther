@@ -31,8 +31,16 @@ body {
 
 }
 #message {
-    
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+button.accordion-button.collapsed {
+    color: white;
+}
+
+#flexSwitchCheckDefault {
+    width: 40px;
+    height: 20px;
 }
