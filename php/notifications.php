@@ -19,7 +19,6 @@ while($row = mysqli_fetch_object($result)){
     $res->rows[] = $row;
 }
 
-// dataArrays();
 $data_email = array();
 $data_sensor_name = array();
 $data_aqi = array();
@@ -28,9 +27,7 @@ $data_humidity = array();
 $data_pressure = array();
 
 for ($i = 0; $i < $num_rows; $i++) {
-    echo '<br>    fffffff'.$i.'ffffff';
     if (in_array($res->rows[$i]->email, $data_email) && in_array($res->rows[$i]->sensor_name, $data_sensor_name)){
-        echo '     DD     ';
         array_push($data_aqi, $res->rows[$i]->aqi);
         array_push($data_temperatureC, $res->rows[$i]->temperatureC);
         array_push($data_humidity, $res->rows[$i]->humidity);
@@ -51,8 +48,6 @@ for ($i = 0; $i < $num_rows; $i++) {
 
             $data_pressure = array_filter($data_pressure);
             $average_data_pressure = round(array_sum($data_pressure)/count($data_pressure), 2);
-
-            echo "***EMAIL SENDING***";
 
             $message = 
                     "
@@ -84,7 +79,6 @@ for ($i = 0; $i < $num_rows; $i++) {
     } else{
 
         if (!empty($data_email)) {
-            // mailData();
             $email = $data_email[0];
             $sensor_name = $data_sensor_name[0];
 
@@ -99,8 +93,6 @@ for ($i = 0; $i < $num_rows; $i++) {
 
             $data_pressure = array_filter($data_pressure);
             $average_data_pressure = round(array_sum($data_pressure)/count($data_pressure), 2);
-
-            echo "***EMAIL SENDING***";
 
             $message = 
                     "
@@ -120,7 +112,6 @@ for ($i = 0; $i < $num_rows; $i++) {
 
             mail($email,"Healther Weekly Notification",$message,$headers);
 
-            // dataArrays(); 
             $data_email = array();
             $data_sensor_name = array();
             $data_aqi = array();
