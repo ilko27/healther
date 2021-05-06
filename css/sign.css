@@ -9,6 +9,7 @@ html {
 body {
     background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
 }
+html, body { min-height: 100vh; }
 #container {
     width: 40%;
     float: left;

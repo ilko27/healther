@@ -50,6 +50,8 @@ if (screen.width <= 991) {
 
     <?php include 'pages/header.php';?>
 
+
+
     <div id="leftHalf" class="half">
 
         <?php
@@ -103,7 +105,7 @@ if (screen.width <= 991) {
     </div>
 
     
-    <div id="rightHalf" class="half">
+    <div id="rightHalf"  class="half">
         <div id='chartsDiv'>
             <h4 id="staticBackdropLabel"></h4>
             <div class="charts">
@@ -122,6 +124,24 @@ if (screen.width <= 991) {
     <script src="js/charts.js"></script>
     
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script>
+        VANTA.WAVES({
+            el: "html",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x848496,
+            shininess: 0.00
+        });
+    </script>
+    
     <script>
         function editSensor(sensorId) {
             let new_name = prompt(dictionary["enterNewName"][language], "");

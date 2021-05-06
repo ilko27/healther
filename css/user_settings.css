@@ -3,9 +3,9 @@
     box-sizing: border-box;
     margin: 0;
 }
-html {
-    height: 100%;
-}
+
+html, body { min-height: 100vh; }
+
 body {
     background: linear-gradient( 34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
     /* background: linear-gradient(34deg, rgba(13,84,138,1) 0%, rgba(51,221,225,1) 100%); */
@@ -21,11 +21,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 #accordion {
     /* background: rgb(19, 152, 185); */
     border-style: solid;
     border-color: white;
     border-radius: 10px;
+    background: linear-gradient( 34deg, rgba(13,84,138,1) 0%, rgb(31, 119, 121) 100%);
+
 }
 #message {
     

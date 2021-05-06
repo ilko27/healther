@@ -6,7 +6,11 @@
     padding-bottom: 0;
     margin-bottom: 0;
 }
-
+html, body {
+    /* To make use of full height of page*/
+    min-height: 100%;
+    margin: 0;
+}
 body {
     background-color: #d6d6d6;
     margin: 0;
@@ -25,6 +29,7 @@ body {
     float:right;
     width: 50%;
     text-align: center;
+    background-color: #d6d6d6;
 }
 
 #leftHalf div {
