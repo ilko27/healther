@@ -301,8 +301,7 @@ if(!isset($_SESSION['userSession'])){
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    // location.reload();
-                    console.log(JSON.parse(this.responseText));
+                    location.reload();
                 }
             };
             xmlhttp.open("POST", "php/user_settings.php", false);

@@ -137,9 +137,8 @@ if(!isset($_SESSION['userSession'])){
     } else if ($task == 'notification_status') {
         $userId = $_SESSION['userId'];
         $notification_status = $inInfo->notification_status;
-
-        if $notification_status = true { // if notifi are on, turn them off
-            $outp = $notification_status;
+        // $outp = '$notification_status';
+        if ($notification_status == true) { // if notifi are on, turn them off
             $sql = 'UPDATE users
                     SET notifications = 0
                     WHERE users.user_id = ?';
@@ -149,8 +148,7 @@ if(!isset($_SESSION['userSession'])){
             mysqli_stmt_bind_param($stmt, "i", $_SESSION['userId']);
             mysqli_stmt_execute($stmt);
 
-        } else { //if notifi are off, turn them on            
-            $outp = $notification_status;
+        } else { //if notifi are off, turn them on
             $sql = 'UPDATE users
             SET notifications = 1
             WHERE users.user_id = ?';

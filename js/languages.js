@@ -41,7 +41,7 @@ const dictionary = {
     },
     login: {
         en: "Log In",
-        bg: "Влизане"
+        bg: "Вход"
     },
     logout: {
         en: "Logout",
