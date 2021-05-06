@@ -77,7 +77,7 @@ if(!isset($_SESSION['userSession'])){
             <div class="accordion-body">
                 
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="change_notification_status()" <?php if ($notification_status == true) echo "checked='checked'"; ?>>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="change_notification_status()" <?php if ($notification_status == true) echo "checked"; ?>>
                 </div>
 
             </div>
@@ -301,7 +301,12 @@ if(!isset($_SESSION['userSession'])){
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    location.reload();
+                    // location.reload();
+                    if (notification_status == true) {
+                        document.getElementById("flexSwitchCheckDefault").removeAttribute("checked");
+                    } else {
+                        document.getElementById("flexSwitchCheckDefault").setAttribute("checked", "checked");
+                    }
                 }
             };
             xmlhttp.open("POST", "php/user_settings.php", false);
