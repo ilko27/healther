@@ -49,23 +49,50 @@ for ($i = 0; $i < $num_rows; $i++) {
             $data_pressure = array_filter($data_pressure);
             $average_data_pressure = round(array_sum($data_pressure)/count($data_pressure), 2);
 
-            $message = 
-                    "
-                    Hello from <a href='https://www.healther.online'>Healther</a>, <br><br>
-                    This week your sensor '".$sensor_name."' has collected some data. <br>
-                    Here are the average results from the sensor: <br><br>
-                    Average Concentration of PM2.5: ".$average_data_aqi." μg/m³ <br>
-                    Average Temperature: ".$average_data_temperatureC." °C <br>
-                    Average Humidity: ".$average_data_humidity." % <br>
-                    Average Pressure: ".$average_data_pressure." hPa <br>
-                    ";
+            // $message = 
+            //         "
+            //         <img src='https://healther.online/images/big_healther_clear.png'/>
+
+            //         Hello from <a href='https://www.healther.online'>Healther</a>, <br><br>
+            //         This week your sensor '".$sensor_name."' has collected some data. <br>
+            //         Here are the average results from the sensor: <br><br>
+            //         Average Concentration of PM2.5: ".$average_data_aqi." μg/m³ <br>
+            //         Average Temperature: ".$average_data_temperatureC." °C <br>
+            //         Average Humidity: ".$average_data_humidity." % <br>
+            //         Average Pressure: ".$average_data_pressure." hPa <br>
+            //         ";
+
+            $message = "
+                <html>
+                <head>
+                    <title>Healther Weekly Notification</title>
+                    <style>
+                        img {
+                            width: 250px;
+                        }
+
+                    </style>
+                </head>
+                    <body>
+                        <img src='https://healther.online/images/big_healther_clear.png'/>
+
+                        <p>Hello from <a href='https://www.healther.online'>Healther</a>,</p> <br>
+                        <p>This week your sensor '".$sensor_name."' has collected some data.</p>
+                        <p>Here are the average results from the sensor:</p>
+                        <p>Average Concentration of PM2.5: ".$average_data_aqi." μg/m³</p>
+                        <p>Average Temperature: ".$average_data_temperatureC." °C</p>
+                        <p>Average Humidity: ".$average_data_humidity." %</p>
+                        <p>Average Pressure: ".$average_data_pressure." hPa</p>
+
+                    </body>
+                </html>";
 
             $headers  = 'MIME-Version: 1.0' . "\r\n";
             $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
             $headers .= 'To: '.$email.' ' . "\r\n";
             $headers .= 'From: Healther <notifications@healther.online>' . "\r\n";
 
-            mail($email,"Healther Weekly Notification",$message,$headers);
+            mail($email, "Healther Weekly Notification", $message, $headers);
 
             // dataArrays(); 
             $data_email = array();
