@@ -137,6 +137,7 @@ if (screen.width <= 991) {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
+            waveSpeed: 0.50,
             color: 0x848496,
             shininess: 0.00
         });

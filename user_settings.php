@@ -58,6 +58,7 @@ if(!isset($_SESSION['userSession'])){
         minWidth: 200.00,
         scale: 1.00,
         scaleMobile: 1.00,
+        waveSpeed: 0.50,
         color: 0x0d548a
         })
     </script>
