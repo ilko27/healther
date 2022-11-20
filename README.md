@@ -18,7 +18,7 @@ GSM: 0895355091
 email: eg.m.kirilova@gmail.com
 Senior teacher
 
-Д-р инженер Светлана Василева Бояджиева
+Dr. engineer Svetlana Vasileva Boyadzhieva
 GSM: 0884164221
 email: svetlanaeli@abv.bg
 
@@ -27,10 +27,10 @@ email: svetlanaeli@abv.bg
 Our idea was to create a device and an associated Internet application that would measure, analyze and present the characteristics of the air in a room, office or other interior room. Our goal is the collected and analyzed air data - temperature, humidity and pollution to be presented in a user-friendly way and be used for inferences and changes.
 
 ## Main stages in the implementation of the project:
-Първият етап беше проучване за необходимите за проекта материали.
-Вторият етап беше закупуване на ESP32, сензори и др., след това конструирахме устройството.
-Разпределихме задачите, свързани с програмиране на уеб системата.
-Планирахме нашата работа и реализиране на възложените задачи. В процеса на работа тествахме приложението и устройството.
+The first stage was research on the materials needed for the project.
+The second stage was buying the ESP32, sensors, etc., then we built the device.
+We distributed the tasks related to programming the web system.
+We planned our work and implementation of assigned tasks. In the process of working, we tested the application and the device.
 
 ![image](https://user-images.githubusercontent.com/71490066/202903277-39870ff5-3127-4a18-ac11-dd661b6eaa03.png)
 ![image](https://user-images.githubusercontent.com/71490066/202903279-872ab27d-ef20-4068-98ba-fd412f9dc1fa.png)
